@@ -4,21 +4,21 @@ import { BRAND } from '../../constants/tokens';
 import { GoldCoinsOverlay } from '../common/GoldCoinsOverlay';
 
 /**
- * HERO SECTION - SIVA KAVERI CHITS RBT (POLISHED & OPTIMIZED)
+ * HERO SECTION - SIVA KAVERI CHITS RBT (SEAMLESS BILINGUAL CYCLE & REFINED SCALE)
  * 
  * CORE HERO STATEMENT:
  * Telugu: "చిన్న చిన్న పొదుపులే… పెద్ద పెద్ద కలలకు పునాది."
  * English: "Small savings become the foundation for big dreams."
  */
 
-const HOLD_DURATION = 4600;
-const MORPH_DURATION = 1400;
+const HOLD_DURATION = 4200;
+const MORPH_DURATION = 1300;
 
 export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme }) {
   const [currentLang, setCurrentLang] = useState('te'); 
   const [targetLang, setTargetLang] = useState('te');
   const [isAuto, setIsAuto] = useState(true);
-  const [phase, setPhase] = useState('HOLD_TE');
+  const [phase, setPhase] = useState('HOLD_TE'); // 'HOLD_TE' | 'MORPHING_TO_EN' | 'HOLD_EN' | 'MORPHING_TO_TE'
 
   const teluguStatement = useMemo(() => ({
     line1: [
@@ -49,39 +49,35 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
     ]
   }), []);
 
+  // Robust 4-stage State Machine: Telugu ↔ English continuous auto-loop
   useEffect(() => {
     if (!isAuto) return;
 
-    let holdTimer;
-    let morphTimer;
+    let timer;
 
     if (phase === 'HOLD_TE') {
-      holdTimer = setTimeout(() => {
+      timer = setTimeout(() => {
         setPhase('MORPHING_TO_EN');
         setTargetLang('en');
-
-        morphTimer = setTimeout(() => {
-          setCurrentLang('en');
-          setPhase('HOLD_EN');
-        }, MORPH_DURATION);
       }, HOLD_DURATION);
-
+    } else if (phase === 'MORPHING_TO_EN') {
+      timer = setTimeout(() => {
+        setCurrentLang('en');
+        setPhase('HOLD_EN');
+      }, MORPH_DURATION);
     } else if (phase === 'HOLD_EN') {
-      holdTimer = setTimeout(() => {
+      timer = setTimeout(() => {
         setPhase('MORPHING_TO_TE');
         setTargetLang('te');
-
-        morphTimer = setTimeout(() => {
-          setCurrentLang('te');
-          setPhase('HOLD_TE');
-        }, MORPH_DURATION);
       }, HOLD_DURATION);
+    } else if (phase === 'MORPHING_TO_TE') {
+      timer = setTimeout(() => {
+        setCurrentLang('te');
+        setPhase('HOLD_TE');
+      }, MORPH_DURATION);
     }
 
-    return () => {
-      clearTimeout(holdTimer);
-      clearTimeout(morphTimer);
-    };
+    return () => clearTimeout(timer);
   }, [isAuto, phase]);
 
   const handleSelectLanguage = useCallback((lang) => {
@@ -92,17 +88,9 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
     if (lang === 'en' && currentLang !== 'en') {
       setPhase('MORPHING_TO_EN');
       setTargetLang('en');
-      setTimeout(() => {
-        setCurrentLang('en');
-        setPhase('HOLD_EN');
-      }, MORPH_DURATION);
     } else if (lang === 'te' && currentLang !== 'te') {
       setPhase('MORPHING_TO_TE');
       setTargetLang('te');
-      setTimeout(() => {
-        setCurrentLang('te');
-        setPhase('HOLD_TE');
-      }, MORPH_DURATION);
     }
   }, [currentLang, targetLang, isAuto]);
 
@@ -117,8 +105,8 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
 
   const getWordStyle = (lang, lineIndex, wordIndex) => {
     const totalIndex = lineIndex * 4 + wordIndex;
-    const enterDelay = totalIndex * 65;
-    const exitDelay = totalIndex * 45;
+    const enterDelay = totalIndex * 60;
+    const exitDelay = totalIndex * 40;
 
     const isTeluguActive = phase === 'HOLD_TE';
     const isEnglishActive = phase === 'HOLD_EN';
@@ -140,7 +128,7 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
           filter: 'blur(6px)',
           transform: 'translate3d(0, -6px, 0) scale(0.97)',
           letterSpacing: '0.02em',
-          transition: `opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1) ${exitDelay}ms, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${exitDelay}ms, filter 0.7s ease ${exitDelay}ms`,
+          transition: `opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1) ${exitDelay}ms, transform 0.75s cubic-bezier(0.4, 0, 0.2, 1) ${exitDelay}ms, filter 0.65s ease ${exitDelay}ms`,
         };
       }
       if (isEnglishActive) {
@@ -157,7 +145,7 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
           filter: 'blur(0px)',
           transform: 'translate3d(0, 0, 0) scale(1)',
           letterSpacing: 'normal',
-          transition: `opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) ${enterDelay}ms, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${enterDelay}ms, filter 0.8s ease ${enterDelay}ms`,
+          transition: `opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${enterDelay}ms, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) ${enterDelay}ms, filter 0.75s ease ${enterDelay}ms`,
         };
       }
     }
@@ -177,7 +165,7 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
           filter: 'blur(6px)',
           transform: 'translate3d(0, 6px, 0) scale(1.02)',
           letterSpacing: '0.03em',
-          transition: `opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1) ${exitDelay}ms, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${exitDelay}ms, filter 0.7s ease ${exitDelay}ms`,
+          transition: `opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1) ${exitDelay}ms, transform 0.75s cubic-bezier(0.4, 0, 0.2, 1) ${exitDelay}ms, filter 0.65s ease ${exitDelay}ms`,
         };
       }
       if (isTeluguActive) {
@@ -194,7 +182,7 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
           filter: 'blur(0px)',
           transform: 'translate3d(0, 0, 0) scale(1)',
           letterSpacing: '0.02em',
-          transition: `opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) ${enterDelay}ms, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${enterDelay}ms, filter 0.8s ease ${enterDelay}ms`,
+          transition: `opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${enterDelay}ms, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) ${enterDelay}ms, filter 0.75s ease ${enterDelay}ms`,
         };
       }
     }
@@ -232,7 +220,7 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
         విశ్వాసం
       </div>
 
-      {/* Ultra-Lightweight Falling Gold Coins */}
+      {/* Prominently Floating & Glowing Gold Coins */}
       <GoldCoinsOverlay />
 
       {/* Top Header Bar */}
@@ -322,10 +310,10 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
       <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-8 max-w-6xl mx-auto w-full my-auto py-12">
         
         {/* Visual Center Frame */}
-        <div className="relative w-full flex flex-col items-center justify-center select-none py-2 min-h-[170px] sm:min-h-[220px] md:min-h-[260px] lg:min-h-[290px]">
+        <div className="relative w-full flex flex-col items-center justify-center select-none py-2 min-h-[160px] sm:min-h-[200px] md:min-h-[240px] lg:min-h-[270px]">
           
           {/* Line 1 Frame */}
-          <div className="relative w-full flex items-center justify-center h-[70px] sm:h-[90px] md:h-[115px] lg:h-[135px]">
+          <div className="relative w-full flex items-center justify-center h-[65px] sm:h-[85px] md:h-[110px] lg:h-[125px]">
             
             {/* Telugu Line 1 */}
             <div 
@@ -346,9 +334,9 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
               })}
             </div>
 
-            {/* English Line 1 */}
+            {/* English Line 1 (Refined & Smaller for aesthetic harmony) */}
             <div 
-              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-2.5 sm:gap-x-4 md:gap-x-6 font-english-display text-2xl sm:text-4xl md:text-5xl lg:text-[4.25rem] font-bold tracking-tight text-forest dark:text-ivory leading-none"
+              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-2 sm:gap-x-3.5 md:gap-x-5 font-english-display text-xl sm:text-3xl md:text-4xl lg:text-[3.25rem] font-semibold tracking-tight text-forest dark:text-ivory leading-none"
               aria-hidden={targetLang !== 'en'}
             >
               {englishStatement.line1.map((item, idx) => {
@@ -368,7 +356,7 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
           </div>
 
           {/* Line 2 Frame */}
-          <div className="relative w-full flex items-center justify-center h-[70px] sm:h-[90px] md:h-[115px] lg:h-[135px] mt-1 sm:mt-2">
+          <div className="relative w-full flex items-center justify-center h-[65px] sm:h-[85px] md:h-[110px] lg:h-[125px] mt-1 sm:mt-2">
             
             {/* Telugu Line 2 */}
             <div 
@@ -389,9 +377,9 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
               })}
             </div>
 
-            {/* English Line 2 */}
+            {/* English Line 2 (Refined & Smaller for aesthetic harmony) */}
             <div 
-              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-2.5 sm:gap-x-4 md:gap-x-6 font-english-display text-2xl sm:text-4xl md:text-5xl lg:text-[4.25rem] font-bold tracking-tight text-forest dark:text-ivory leading-none"
+              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-2 sm:gap-x-3.5 md:gap-x-5 font-english-display text-xl sm:text-3xl md:text-4xl lg:text-[3.25rem] font-semibold tracking-tight text-forest dark:text-ivory leading-none"
               aria-hidden={targetLang !== 'en'}
             >
               {englishStatement.line2.map((item, idx) => {
