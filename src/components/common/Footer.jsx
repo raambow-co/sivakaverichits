@@ -1,17 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 /**
- * SECTION 11 — FINAL FOOTER (ముగింపు & అధికారిక వివరాలు)
+ * SECTION 11 — FINAL FOOTER (100% MOBILE RESPONSIVE & POLISHED)
  * 
- * CORE IDEA:
- *   The final frame of the website.
- *   Conclude the story quietly: "పొదుపుతో మొదలైన ప్రయాణం… లక్ష్యంతో ముందుకు."
- * 
- * VISUAL CONCEPT:
- * - Deep forest green canvas (#04130E) settling down the visual world.
- * - Single subtle gold coin-inspired circular hairline callback near the edge.
- * - Simple, dignified typography links (no icons, no standard corporate grid).
- * - Telugu-first navigation, minimal contact placeholders, social text links, and legal links.
+ * CORE STATEMENT:
+ *   "పొదుపుతో మొదలైన ప్రయాణం… లక్ష్యంతో ముందుకు."
  */
 
 export function Footer() {
@@ -52,16 +45,11 @@ export function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="relative w-full py-20 sm:py-24 px-6 sm:px-12 lg:px-20 overflow-hidden bg-[#04130E] text-ivory border-t border-gold/20 select-none"
+      className="relative w-full py-14 sm:py-24 px-4 sm:px-12 lg:px-20 overflow-hidden bg-[#04130E] text-ivory border-t border-gold/20 select-none"
     >
-      {/* =========================================================================
-          BACKGROUND ARCHITECTURE: DEEP CANVAS, GRAIN & COIN CALLBACK
-          ========================================================================= */}
-
-      {/* Handcrafted Paper Grain Overlay */}
+      {/* Background Texture & Ambient Halos */}
       <div className="grain-overlay absolute inset-0 pointer-events-none opacity-[0.04] z-[1] mix-blend-screen" />
 
-      {/* Ambient Soft Emerald Halo */}
       <div
         className="absolute inset-0 pointer-events-none z-[1]"
         style={{
@@ -72,42 +60,38 @@ export function Footer() {
         }}
       />
 
-      {/* Signature Visual: Single Subtle Gold Circular Form Callback */}
-      <div className="absolute -bottom-16 -right-16 w-64 h-64 sm:w-80 sm:h-80 rounded-full border border-gold/15 pointer-events-none z-[1]">
+      {/* Signature Visual Callback */}
+      <div className="absolute -bottom-16 -right-16 w-48 h-48 sm:w-80 sm:h-80 rounded-full border border-gold/15 pointer-events-none z-[1]">
         <div className="absolute inset-3 rounded-full border border-dashed border-gold/10" />
         <div className="absolute inset-8 rounded-full border border-gold/5" />
       </div>
 
       <div
-        className={`relative z-10 max-w-[1360px] mx-auto space-y-16 sm:space-y-20 transition-all duration-1000 ease-out ${
+        className={`relative z-10 max-w-[1360px] mx-auto space-y-10 sm:space-y-20 transition-all duration-1000 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}
       >
-        {/* =======================================================================
-            TOP CLOSING THOUGHT STATEMENT
-            ======================================================================= */}
-        <div className="text-center sm:text-left border-b border-gold/15 pb-10">
-          <p className="font-telugu-display text-lg sm:text-xl text-ivory/80 italic font-medium">
+        {/* Top Closing Thought Statement */}
+        <div className="text-center sm:text-left border-b border-gold/15 pb-6 sm:pb-10">
+          <p className="font-telugu-display text-base sm:text-xl text-ivory/80 italic font-medium">
             "పొదుపుతో మొదలైన ప్రయాణం… లక్ష్యంతో ముందుకు."
           </p>
         </div>
 
-        {/* =======================================================================
-            MAIN EDITORIAL FOOTER COMPOSITION (Brand, Nav, Contact, Location)
-            ======================================================================= */}
-        <div className="flex flex-col lg:flex-row justify-between gap-12 lg:gap-16">
+        {/* Main Editorial Footer Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16">
           
-          {/* Brand & Monogram Area */}
-          <div className="space-y-4 max-w-sm">
-            <div className="flex items-center gap-3.5">
-              <div className="w-11 h-11 rounded-[2px] border border-gold/60 bg-[#08221A] flex items-center justify-center text-gold font-telugu-display text-2xl font-bold shadow-xs">
+          {/* Brand & Monogram Area (lg:col-span-4) */}
+          <div className="sm:col-span-2 lg:col-span-4 space-y-3 sm:space-y-4 max-w-sm">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-[2px] border border-gold/60 bg-[#08221A] flex items-center justify-center text-gold font-telugu-display text-xl font-bold shadow-xs flex-shrink-0">
                 శ్రీ
               </div>
               <div>
-                <div className="font-telugu-display text-xl font-bold text-ivory tracking-tight">
+                <div className="font-telugu-display text-lg sm:text-xl font-bold text-ivory tracking-tight">
                   శివ కావేరి చిట్స్ ప్రై.లి.
                 </div>
-                <div className="font-english-display text-[0.65rem] tracking-[0.2em] text-gold-light/80 uppercase">
+                <div className="font-english-display text-[0.62rem] sm:text-[0.65rem] tracking-[0.18em] text-gold-light/80 uppercase">
                   SIVA KAVERI CHITS
                 </div>
               </div>
@@ -117,17 +101,17 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Navigation Links (Telugu-first simple text links) */}
-          <div className="space-y-3">
+          {/* Navigation Links (lg:col-span-3) */}
+          <div className="lg:col-span-3 space-y-2.5 sm:space-y-3">
             <div className="font-english-display text-[0.68rem] tracking-[0.2em] text-gold uppercase font-bold">
               విభాగాలు
             </div>
-            <ul className="space-y-2.5 font-telugu-body text-sm text-ivory/75">
+            <ul className="space-y-2 font-telugu-body text-xs sm:text-sm text-ivory/75">
               {navLinks.map((link, idx) => (
                 <li key={idx}>
                   <a
                     href={link.href}
-                    className="hover:text-gold transition-colors duration-200 block"
+                    className="hover:text-gold transition-colors duration-200 block py-0.5"
                   >
                     {link.label}
                   </a>
@@ -136,40 +120,39 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact Placeholders (Text Only) */}
-          <div className="space-y-3">
+          {/* Contact Placeholders (lg:col-span-2) */}
+          <div className="lg:col-span-2 space-y-2.5 sm:space-y-3">
             <div className="font-english-display text-[0.68rem] tracking-[0.2em] text-gold uppercase font-bold">
               సంప్రదించండి
             </div>
-            <div className="space-y-2.5 font-telugu-body text-sm text-ivory/75">
+            <div className="space-y-2 font-telugu-body text-xs sm:text-sm text-ivory/75">
               <div>
-                <span className="text-ivory/40 text-xs block">ఫోన్</span>
+                <span className="text-ivory/40 text-[0.68rem] block">ఫోన్</span>
                 <span className="font-english-display text-gold-light tracking-wider font-medium">XXXXXXXXXX</span>
               </div>
               <div>
-                <span className="text-ivory/40 text-xs block">ఈమెయిల్</span>
+                <span className="text-ivory/40 text-[0.68rem] block">ఈమెయిల్</span>
                 <span className="font-english-display text-gold-light font-medium">example@example.com</span>
               </div>
             </div>
           </div>
 
-          {/* Location & Social (Text Only) */}
-          <div className="space-y-3">
+          {/* Location & Social (lg:col-span-3) */}
+          <div className="lg:col-span-3 space-y-2.5 sm:space-y-3">
             <div className="font-english-display text-[0.68rem] tracking-[0.2em] text-gold uppercase font-bold">
               స్థానం & అనుసరణ
             </div>
-            <div className="space-y-2.5">
-              <div className="font-telugu-display text-base font-semibold text-ivory">
+            <div className="space-y-2">
+              <div className="font-telugu-display text-sm sm:text-base font-semibold text-ivory">
                 ఎలూరు, ఆంధ్రప్రదేశ్
               </div>
               <p className="font-telugu-body text-xs text-ivory/60">
                 మీకు చేరువగా ఉండే స్థానిక సేవ.
               </p>
               
-              {/* Social Text Links */}
-              <div className="pt-2 flex items-center gap-4 text-xs font-english-display text-ivory/70">
+              <div className="pt-1.5 flex items-center gap-4 text-xs font-english-display text-ivory/70">
                 {socialLinks.map((s, idx) => (
-                  <span key={idx} className="hover:text-gold transition-colors cursor-pointer">
+                  <span key={idx} className="hover:text-gold transition-colors cursor-pointer py-1">
                     {s}
                   </span>
                 ))}
@@ -179,22 +162,19 @@ export function Footer() {
 
         </div>
 
-        {/* =======================================================================
-            BOTTOM LEGAL BAR & COPYRIGHT
-            ======================================================================= */}
-        <div className="pt-8 border-t border-gold/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-telugu-body text-ivory/50 text-center sm:text-left">
+        {/* Bottom Legal Bar & Copyright */}
+        <div className="pt-6 sm:pt-8 border-t border-gold/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.7rem] sm:text-xs font-telugu-body text-ivory/50 text-center sm:text-left">
           
           <div>
             © 2026 శివ కావేరి చిట్స్ ప్రై.లి. All rights reserved.
           </div>
 
-          {/* Legal Placeholder Links */}
-          <div className="flex flex-wrap items-center justify-center gap-6 font-english-display text-[0.7rem] text-ivory/60">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-english-display text-[0.65rem] sm:text-[0.7rem] text-ivory/60">
             {legalLinks.map((item, idx) => (
               <a
                 key={idx}
                 href="#"
-                className="hover:text-gold transition-colors duration-200"
+                className="hover:text-gold transition-colors duration-200 py-1"
               >
                 {item}
               </a>

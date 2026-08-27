@@ -4,7 +4,7 @@ import { BRAND } from '../../constants/tokens';
 import { GoldCoinsOverlay } from '../common/GoldCoinsOverlay';
 
 /**
- * HERO SECTION - SIVA KAVERI CHITS RBT (SEAMLESS BILINGUAL CYCLE & REFINED SCALE)
+ * HERO SECTION - SIVA KAVERI CHITS RBT (100% MOBILE RESPONSIVE & POLISHED)
  * 
  * CORE HERO STATEMENT:
  * Telugu: "చిన్న చిన్న పొదుపులే… పెద్ద పెద్ద కలలకు పునాది."
@@ -18,7 +18,7 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
   const [currentLang, setCurrentLang] = useState('te'); 
   const [targetLang, setTargetLang] = useState('te');
   const [isAuto, setIsAuto] = useState(true);
-  const [phase, setPhase] = useState('HOLD_TE'); // 'HOLD_TE' | 'MORPHING_TO_EN' | 'HOLD_EN' | 'MORPHING_TO_TE'
+  const [phase, setPhase] = useState('HOLD_TE');
 
   const teluguStatement = useMemo(() => ({
     line1: [
@@ -191,7 +191,7 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
   };
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col justify-between overflow-hidden bg-ivory dark:bg-[#03120C] text-charcoal dark:text-ivory selection:bg-gold selection:text-white transition-colors duration-500">
+    <section className="relative w-full min-h-[100svh] flex flex-col justify-between overflow-hidden bg-ivory dark:bg-[#03120C] text-charcoal dark:text-ivory selection:bg-gold selection:text-white transition-colors duration-500">
       
       {/* Background Texture & Ambient Halos */}
       <div className="grain-overlay absolute inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.045] z-[1] mix-blend-multiply dark:mix-blend-screen" />
@@ -216,7 +216,7 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
       />
 
       {/* Subtle Telugu Typography Watermarks */}
-      <div className="absolute top-[4%] -right-[3%] pointer-events-none select-none z-[2] font-telugu-display font-black text-[clamp(5.5rem,13vw,17rem)] leading-none text-gold/[0.04] dark:text-gold/[0.04]">
+      <div className="absolute top-[4%] -right-[3%] pointer-events-none select-none z-[2] font-telugu-display font-black text-[clamp(4.5rem,12vw,17rem)] leading-none text-gold/[0.04] dark:text-gold/[0.04]">
         విశ్వాసం
       </div>
 
@@ -224,49 +224,49 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
       <GoldCoinsOverlay />
 
       {/* Top Header Bar */}
-      <header className="relative z-10 pt-6 sm:pt-8 px-6 sm:px-12 lg:px-16 flex items-center justify-between gap-4 max-w-7xl mx-auto w-full">
+      <header className="relative z-10 pt-4 sm:pt-8 px-4 sm:px-12 lg:px-16 flex items-center justify-between gap-2 sm:gap-4 max-w-7xl mx-auto w-full">
         
         {/* Brand Logo & Title */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-[2px] bg-forest dark:bg-forest-dark border border-gold/60 text-gold flex items-center justify-center font-telugu-display text-xl sm:text-2xl font-bold shadow-xs">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-[2px] bg-forest dark:bg-forest-dark border border-gold/60 text-gold flex items-center justify-center font-telugu-display text-lg sm:text-2xl font-bold shadow-xs flex-shrink-0">
             శ్రీ
           </div>
           <div className="flex flex-col">
-            <span className="font-telugu-display text-base sm:text-lg font-bold text-forest dark:text-ivory leading-tight tracking-tight">
+            <span className="font-telugu-display text-sm sm:text-lg font-bold text-forest dark:text-ivory leading-tight tracking-tight">
               {BRAND.nameTelugu}
             </span>
-            <span className="font-english-display text-[0.62rem] sm:text-[0.68rem] tracking-[0.18em] text-gold-dark dark:text-gold-light uppercase">
+            <span className="font-english-display text-[0.55rem] sm:text-[0.68rem] tracking-[0.16em] sm:tracking-[0.18em] text-gold-dark dark:text-gold-light uppercase">
               {BRAND.nameEnglish} • ELURU
             </span>
           </div>
         </div>
 
         {/* Minimal Utilities: Theme Toggle + Language Mode */}
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="flex items-center gap-1.5 sm:gap-4">
           
           {onToggleTheme && (
             <button
               onClick={onToggleTheme}
-              className="w-8 h-8 rounded-full flex items-center justify-center text-charcoal/70 dark:text-ivory/80 hover:text-forest dark:hover:text-gold hover:bg-forest/5 dark:hover:bg-gold/10 transition-colors cursor-pointer"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-charcoal/70 dark:text-ivory/80 hover:text-forest dark:hover:text-gold hover:bg-forest/5 dark:hover:bg-gold/10 transition-colors cursor-pointer"
               title={theme === 'dark-forest' ? 'లైట్ థీమ్‌కు మారండి' : 'డార్క్ థీమ్‌కు మారండి'}
               aria-label="Toggle theme"
             >
               {theme === 'dark-forest' ? (
-                <Sun className="w-4 h-4 text-gold-light" />
+                <Sun className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold-light" />
               ) : (
-                <Moon className="w-4 h-4 text-forest" />
+                <Moon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-forest" />
               )}
             </button>
           )}
 
           <div 
-            className="flex items-center gap-1 sm:gap-1.5 p-1 bg-white/80 dark:bg-forest-dark/80 backdrop-blur-sm border border-gold/30 rounded-full shadow-xs text-xs"
+            className="flex items-center gap-0.5 sm:gap-1.5 p-0.5 sm:p-1 bg-white/80 dark:bg-forest-dark/80 backdrop-blur-sm border border-gold/30 rounded-full shadow-xs text-xs"
             role="group"
             aria-label="Language selection"
           >
             <button
               onClick={handleResumeAuto}
-              className={`px-2.5 py-1 rounded-full font-telugu-body text-[0.68rem] sm:text-xs font-semibold transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
+              className={`px-2 sm:px-2.5 py-1 rounded-full font-telugu-body text-[0.62rem] sm:text-xs font-semibold transition-all duration-300 flex items-center gap-1 cursor-pointer ${
                 isAuto
                   ? 'bg-forest/10 dark:bg-gold/20 text-forest dark:text-gold font-bold'
                   : 'text-charcoal/50 dark:text-ivory/40 hover:text-charcoal dark:hover:text-ivory'
@@ -277,11 +277,11 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
               <span className="hidden sm:inline">ఆటో</span>
             </button>
 
-            <span className="text-gold/30">|</span>
+            <span className="text-gold/30 text-[0.65rem]">|</span>
 
             <button
               onClick={() => handleSelectLanguage('te')}
-              className={`px-2 sm:px-2.5 py-1 rounded-full font-telugu-body text-[0.68rem] sm:text-xs font-semibold transition-all duration-300 cursor-pointer ${
+              className={`px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full font-telugu-body text-[0.62rem] sm:text-xs font-semibold transition-all duration-300 cursor-pointer ${
                 targetLang === 'te'
                   ? 'bg-forest text-white dark:bg-gold dark:text-forest-deep shadow-xs'
                   : 'text-charcoal/60 dark:text-ivory/60 hover:text-forest dark:hover:text-gold'
@@ -292,7 +292,7 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
 
             <button
               onClick={() => handleSelectLanguage('en')}
-              className={`px-2 sm:px-2.5 py-1 rounded-full font-english-display text-[0.68rem] sm:text-xs font-semibold tracking-wider transition-all duration-300 cursor-pointer ${
+              className={`px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full font-english-display text-[0.62rem] sm:text-xs font-semibold tracking-wider transition-all duration-300 cursor-pointer ${
                 targetLang === 'en'
                   ? 'bg-forest text-white dark:bg-gold dark:text-forest-deep shadow-xs'
                   : 'text-charcoal/60 dark:text-ivory/60 hover:text-forest dark:hover:text-gold'
@@ -307,17 +307,17 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
       </header>
 
       {/* Center Cinematic Typography Frame */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-8 max-w-6xl mx-auto w-full my-auto py-12">
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-8 max-w-6xl mx-auto w-full my-auto py-8 sm:py-12">
         
         {/* Visual Center Frame */}
-        <div className="relative w-full flex flex-col items-center justify-center select-none py-2 min-h-[160px] sm:min-h-[200px] md:min-h-[240px] lg:min-h-[270px]">
+        <div className="relative w-full flex flex-col items-center justify-center select-none py-2 min-h-[140px] sm:min-h-[180px] md:min-h-[220px] lg:min-h-[260px]">
           
           {/* Line 1 Frame */}
-          <div className="relative w-full flex items-center justify-center h-[65px] sm:h-[85px] md:h-[110px] lg:h-[125px]">
+          <div className="relative w-full flex items-center justify-center h-[55px] sm:h-[75px] md:h-[100px] lg:h-[120px]">
             
             {/* Telugu Line 1 */}
             <div 
-              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-3 sm:gap-x-5 md:gap-x-7 font-telugu-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-forest dark:text-ivory leading-none"
+              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-2 sm:gap-x-4 md:gap-x-7 font-telugu-display text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-forest dark:text-ivory leading-none text-center"
               aria-hidden={targetLang !== 'te'}
             >
               {teluguStatement.line1.map((item, idx) => {
@@ -334,9 +334,9 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
               })}
             </div>
 
-            {/* English Line 1 (Refined & Smaller for aesthetic harmony) */}
+            {/* English Line 1 */}
             <div 
-              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-2 sm:gap-x-3.5 md:gap-x-5 font-english-display text-xl sm:text-3xl md:text-4xl lg:text-[3.25rem] font-semibold tracking-tight text-forest dark:text-ivory leading-none"
+              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-1.5 sm:gap-x-3 md:gap-x-5 font-english-display text-lg sm:text-2xl md:text-4xl lg:text-[3.25rem] font-semibold tracking-tight text-forest dark:text-ivory leading-none text-center"
               aria-hidden={targetLang !== 'en'}
             >
               {englishStatement.line1.map((item, idx) => {
@@ -356,11 +356,11 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
           </div>
 
           {/* Line 2 Frame */}
-          <div className="relative w-full flex items-center justify-center h-[65px] sm:h-[85px] md:h-[110px] lg:h-[125px] mt-1 sm:mt-2">
+          <div className="relative w-full flex items-center justify-center h-[55px] sm:h-[75px] md:h-[100px] lg:h-[120px] mt-1 sm:mt-2">
             
             {/* Telugu Line 2 */}
             <div 
-              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-3 sm:gap-x-5 md:gap-x-7 font-telugu-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-forest dark:text-ivory leading-none"
+              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-2 sm:gap-x-4 md:gap-x-7 font-telugu-display text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-forest dark:text-ivory leading-none text-center"
               aria-hidden={targetLang !== 'te'}
             >
               {teluguStatement.line2.map((item, idx) => {
@@ -377,9 +377,9 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
               })}
             </div>
 
-            {/* English Line 2 (Refined & Smaller for aesthetic harmony) */}
+            {/* English Line 2 */}
             <div 
-              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-2 sm:gap-x-3.5 md:gap-x-5 font-english-display text-xl sm:text-3xl md:text-4xl lg:text-[3.25rem] font-semibold tracking-tight text-forest dark:text-ivory leading-none"
+              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-1.5 sm:gap-x-3 md:gap-x-5 font-english-display text-lg sm:text-2xl md:text-4xl lg:text-[3.25rem] font-semibold tracking-tight text-forest dark:text-ivory leading-none text-center"
               aria-hidden={targetLang !== 'en'}
             >
               {englishStatement.line2.map((item, idx) => {
@@ -401,11 +401,11 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
         </div>
 
         {/* Supporting Calls to Action */}
-        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-10 sm:mt-14 w-full">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mt-8 sm:mt-14 w-full max-w-md sm:max-w-none">
           
           <a
             href="#schemes"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#B88E38] via-[#D4AF57] to-[#B88E38] hover:from-[#D4AF57] hover:to-[#B88E38] text-[#08221A] rounded-[2px] font-telugu-body font-bold text-sm sm:text-base shadow-xs hover:shadow-heritage-sm transition-all duration-300 hover:-translate-y-0.5 cursor-pointer group"
+            className="w-full sm:w-auto text-center inline-flex items-center justify-center gap-3 px-7 py-3.5 sm:px-8 sm:py-4 bg-gradient-to-r from-[#B88E38] via-[#D4AF57] to-[#B88E38] hover:from-[#D4AF57] hover:to-[#B88E38] text-[#08221A] rounded-[2px] font-telugu-body font-bold text-sm sm:text-base shadow-xs hover:shadow-heritage-sm transition-all duration-300 hover:-translate-y-0.5 cursor-pointer group"
           >
             <span>చిట్ పథకాలను చూడండి</span>
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -413,7 +413,7 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
 
           <button
             onClick={onOpenInquiry}
-            className="inline-flex items-center gap-2 px-7 py-4 bg-white/70 dark:bg-forest-dark/70 hover:bg-white dark:hover:bg-forest-dark text-forest dark:text-ivory rounded-[2px] border border-forest/20 dark:border-gold/40 shadow-xs transition-all duration-300 hover:-translate-y-0.5 font-telugu-body font-semibold text-sm sm:text-base cursor-pointer"
+            className="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-7 sm:py-4 bg-white/70 dark:bg-forest-dark/70 hover:bg-white dark:hover:bg-forest-dark text-forest dark:text-ivory rounded-[2px] border border-forest/20 dark:border-gold/40 shadow-xs transition-all duration-300 hover:-translate-y-0.5 font-telugu-body font-semibold text-sm sm:text-base cursor-pointer"
           >
             <span>మమ్మల్ని సంప్రదించండి</span>
           </button>
@@ -423,10 +423,10 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
       </main>
 
       {/* Bottom Subtext */}
-      <footer className="relative z-10 pb-6 sm:pb-8 px-6 sm:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-7xl mx-auto w-full text-xs font-telugu-body text-charcoal/60 dark:text-ivory/60 border-t border-gold/15 pt-4">
+      <footer className="relative z-10 pb-4 sm:pb-8 px-4 sm:px-12 flex flex-col sm:flex-row items-center justify-between gap-3 max-w-7xl mx-auto w-full text-[0.7rem] sm:text-xs font-telugu-body text-charcoal/60 dark:text-ivory/60 border-t border-gold/15 pt-3 sm:pt-4 text-center sm:text-left">
         
-        <div className="flex items-center gap-2 text-center sm:text-left">
-          <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+        <div className="flex items-center justify-center sm:justify-start gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse flex-shrink-0" />
           <span>
             ఆంధ్రప్రదేశ్ ప్రభుత్వ గుర్తింపు పొందిన రిజిస్టర్డ్ చిట్ ఫండ్ సంస్థ • ఏలూరు
           </span>
@@ -434,10 +434,10 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
 
         <a 
           href="#brand-story" 
-          className="flex items-center gap-1.5 text-charcoal/50 dark:text-ivory/50 hover:text-gold transition-colors select-none"
+          className="inline-flex items-center gap-1.5 text-charcoal/50 dark:text-ivory/50 hover:text-gold transition-colors select-none"
         >
-          <span className="text-[0.7rem] tracking-wider uppercase font-english-display">SCROLL</span>
-          <ArrowDown className="w-3.5 h-3.5" />
+          <span className="text-[0.65rem] sm:text-[0.7rem] tracking-wider uppercase font-english-display">SCROLL</span>
+          <ArrowDown className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
         </a>
 
       </footer>
