@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Outer Concentric Rings -->
+  <circle cx="60" cy="60" r="56" stroke="#B79A5B" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="60" cy="60" r="50" stroke="#B79A5B" stroke-width="0.75"/>
+  <circle cx="60" cy="60" r="46" stroke="#B79A5B" stroke-width="1.25"/>
+  
+  <!-- Andhra Star / Octagonal Center Geometry -->
+  <path d="M60 20L68 44H92L73 58L80 82L60 68L40 82L47 58L28 44H52L60 20Z" fill="url(#crestGoldGrad)" fill-opacity="0.15" stroke="#B79A5B" stroke-width="1"/>
+  
+  <!-- Central Telugu Initial Glyph "శ్రీ" / "శి" -->
+  <circle cx="60" cy="60" r="18" fill="#163C32" stroke="#B79A5B" stroke-width="1"/>
+  <circle cx="60" cy="60" r="4" fill="#A85D3A"/>
+  
+  <defs>
+    <linearGradient id="crestGoldGrad" x1="28" y1="20" x2="92" y2="82" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D2B87F"/>
+      <stop offset="0.5" stop-color="#B79A5B"/>
+      <stop offset="1" stop-color="#844527"/>
+    </linearGradient>
+  </defs>
+</svg>

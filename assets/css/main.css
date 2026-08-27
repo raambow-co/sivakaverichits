@@ -1,0 +1,235 @@
+/* ==========================================================================
+   MASTER STYLESHEET ENTRYPOINT
+   SIVA KAVERI CHITS RBT (ELURU, WEST GODAVARI)
+   "Telugu Heritage × Modern Finance"
+   ========================================================================== */
+
+/* 1. External Typography: Noto Serif Telugu, Noto Sans Telugu, Cinzel, Plus Jakarta Sans */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Noto+Sans+Telugu:wght@300;400;500;600;700&family=Noto+Serif+Telugu:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* 2. Foundation Layers */
+@import url('reset.css');
+@import url('variables.css');
+@import url('typography.css');
+@import url('backgrounds.css');
+@import url('components.css');
+@import url('animations.css');
+
+/* ---------------------------------------------------------
+   3. GLOBAL SITE ARCHITECTURE
+   --------------------------------------------------------- */
+.site-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-canvas-base);
+  color: var(--color-text-primary);
+}
+
+/* Master Header / Top Specimen Navigation Bar */
+.master-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-header-nav);
+  background: rgba(8, 24, 20, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-border-primary);
+  padding: var(--space-4) var(--space-8);
+  transition: background-color var(--duration-normal) ease;
+}
+
+.master-header-inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.brand-identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.brand-logo-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-subtle);
+  border: 1px solid var(--color-gold);
+  background: radial-gradient(circle, rgba(183, 154, 91, 0.15) 0%, rgba(22, 60, 50, 0.9) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  font-family: var(--font-telugu-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  box-shadow: 0 0 12px rgba(183, 154, 91, 0.2);
+}
+
+.brand-naming {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name-telugu {
+  font-family: var(--font-telugu-display);
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--color-ivory);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.brand-name-sub {
+  font-family: var(--font-english-display);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--color-gold-light);
+  text-transform: uppercase;
+}
+
+/* Header Controls & Specimen Actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.theme-pill-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 4px 12px;
+  background: rgba(183, 154, 91, 0.1);
+  border: 1px solid var(--color-gold-border);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-telugu-body);
+  font-size: var(--text-xs);
+  color: var(--color-ivory);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.theme-pill-toggle:hover {
+  background: rgba(183, 154, 91, 0.2);
+  border-color: var(--color-gold);
+}
+
+/* ---------------------------------------------------------
+   4. LAYOUT GRIDS & EDITORIAL SURFACES
+   --------------------------------------------------------- */
+.grid-2-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8);
+}
+
+.grid-3-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+.grid-4-col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+.grid-asymmetric-editorial {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .grid-2-col,
+  .grid-3-col,
+  .grid-4-col,
+  .grid-asymmetric-editorial {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+/* ---------------------------------------------------------
+   5. SPECIMEN SECTION CARDS & TOKEN EXPLORER PANELS
+   --------------------------------------------------------- */
+.specimen-card {
+  position: relative;
+  background: rgba(15, 42, 35, 0.6);
+  border: 1px solid rgba(183, 154, 91, 0.25);
+  border-radius: var(--radius-subtle);
+  padding: var(--space-8);
+  backdrop-filter: blur(8px);
+}
+
+.specimen-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid rgba(183, 154, 91, 0.18);
+}
+
+.specimen-tag {
+  font-family: var(--font-english-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+}
+
+/* Palette Swatch Grid */
+.palette-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-4);
+}
+
+.swatch-box {
+  border-radius: var(--radius-subtle);
+  overflow: hidden;
+  border: 1px solid rgba(183, 154, 91, 0.2);
+  background: rgba(8, 24, 20, 0.5);
+}
+
+.swatch-preview {
+  height: 80px;
+  width: 100%;
+}
+
+.swatch-info {
+  padding: var(--space-3) var(--space-4);
+}
+
+.swatch-name {
+  font-family: var(--font-telugu-display);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-ivory);
+}
+
+.swatch-hex {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-gold-light);
+  margin-top: 2px;
+}
+
+.swatch-role {
+  font-family: var(--font-english-body);
+  font-size: 0.7rem;
+  color: var(--color-ivory-muted);
+}

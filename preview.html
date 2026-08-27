@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="te" data-theme="warm-ivory">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>శివ కావేరి చిట్స్ | SIVA KAVERI CHITS RBT — ఏలూరు • పశ్చిమ గోదావరి</title>
+  <meta name="description" content="శివ కావేరి చిట్స్ RBT, ఏలూరు, పశ్చిమ గోదావరి — ఆంధ్రప్రదేశ్ ప్రభుత్వ రిజిస్టర్డ్ చిట్ ఫండ్ సంస్థ. 25+ ఏళ్ల విశ్వసనీయ పొదుపు మరియు వేలం సేవలు." />
+
+  <!-- Google Fonts for Telugu & Editorial English -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Noto+Sans+Telugu:wght@300;400;500;600;700&family=Noto+Serif+Telugu:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN with Custom Theme Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark-forest"]'],
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              DEFAULT: '#0F382C',
+              dark: '#08221A',
+              deep: '#04130E',
+              light: '#1B5342',
+              surface: '#EBF3F0',
+            },
+            ivory: {
+              DEFAULT: '#FCFAF6',
+              light: '#FFFFFF',
+              dark: '#F3EEDB',
+              surface: '#F9F5EC',
+              border: '#E8DEC8',
+            },
+            terracotta: {
+              DEFAULT: '#C05621',
+              light: '#DD6B20',
+              dark: '#9C4221',
+            },
+            gold: {
+              DEFAULT: '#B88E38',
+              light: '#D4AF57',
+              dark: '#8C671C',
+            },
+            charcoal: {
+              DEFAULT: '#1E2623',
+              light: '#3C4944',
+              muted: '#60706A',
+            },
+          },
+          fontFamily: {
+            'telugu-display': ['"Noto Serif Telugu"', 'serif'],
+            'telugu-body': ['"Noto Sans Telugu"', 'sans-serif'],
+            'english-display': ['Cinzel', 'serif'],
+            'english-body': ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          boxShadow: {
+            'card-light': '0 4px 20px -2px rgba(15, 56, 44, 0.07)',
+            'card-hover': '0 12px 30px -4px rgba(15, 56, 44, 0.12)',
+            'heritage-md': '0 8px 24px rgba(15, 56, 44, 0.12)',
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Textures & CSS Layers -->
+  <style>
+    :root {
+      --color-canvas: #FCFAF6;
+      --color-primary: #0F382C;
+    }
+    [data-theme="dark-forest"] {
+      --color-canvas: #04130E;
+      --color-primary: #FCFAF6;
+    }
+    body {
+      background-color: var(--color-canvas);
+      font-family: "Noto Sans Telugu", "Plus Jakarta Sans", sans-serif;
+    }
+    .text-gradient-gold {
+      background: linear-gradient(135deg, #8C671C 0%, #B88E38 40%, #E2C275 60%, #8C671C 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: goldSweep 4s linear infinite;
+    }
+    [data-theme="dark-forest"] .text-gradient-gold {
+      background: linear-gradient(135deg, #F3EEDB 0%, #D4AF57 40%, #FFF3D6 60%, #B88E38 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: goldSweep 4s linear infinite;
+    }
+    @keyframes goldSweep {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes cinematicIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+        filter: blur(6px);
+      }
+      60% {
+        opacity: 0.95;
+        transform: translateY(-2px) scale(1.005);
+        filter: blur(0px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0px);
+      }
+    }
+    @keyframes cinematicOut {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0px);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-14px) scale(0.97);
+        filter: blur(5px);
+      }
+    }
+    .animate-cinematic-in {
+      animation: cinematicIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .animate-cinematic-out {
+      animation: cinematicOut 0.3s cubic-bezier(0.4, 0, 1, 1) forwards;
+    }
+  </style>
+
+  <!-- React 18 & Babel for standalone browser preview -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-[#FCFAF6] text-[#1E2623] antialiased selection:bg-[#B88E38] selection:text-white">
+  
+  <div id="root"></div>
+
+  <!-- React Execution -->
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const BRAND = {
+      nameTelugu: "శివ కావేరి చిట్స్",
+      nameEnglish: "SIVA KAVERI CHITS RBT",
+      taglineTelugu: "తెలుగు వారసత్వం × ఆధునిక ఆర్థిక విశ్వాసం",
+      regionTelugu: "ఏలూరు, పశ్చిమ గోదావరి జిల్లా",
+      registrationNumber: "AP/ELR/REG/2026/894",
+      phone: "+91 8812 234567",
+      mobile: "+91 94401 23456",
+      whatsapp: "+91 94401 23456",
+      address: "డోర్ నెం: 23B-5-12, మెయిన్ బజార్, ఫైర్ స్టేషన్ ఎదురుగా, ఏలూరు - 534001",
+      workingHours: "ఉదయం 9:30 - రాత్రి 7:00 (సోమ-శని)",
+    };
+
+    const CHIT_SCHEMES = [
+      { id: '1', name: 'లక్ష్మీ పొదుపు చిట్', value: '₹50,000', monthly: '₹2,000 / నెలకు', tenure: '25 నెలలు', dividend: '₹4,000 – ₹7,500', badge: 'త్వరగా ముగిసే అవకాశం', target: 'గృహిణులు, చిరు వ్యాపారులు' },
+      { id: '2', name: 'శుభలాభ్ ఫ్యామిలీ చిట్', value: '₹1,00,000', monthly: '₹4,000 / నెలకు', tenure: '25 నెలలు', dividend: '₹8,000 – ₹15,000', badge: 'అత్యంత ప్రజాదరణ', target: 'పిల్లల చదువు, కుటుంబ పొదుపు' },
+      { id: '3', name: 'గోదావరి సమృద్ధి చిట్', value: '₹2,50,000', monthly: '₹8,333 / నెలకు', tenure: '30 నెలలు', dividend: '₹20,000 – ₹38,000', badge: 'వ్యాపారుల ఛాయిస్', target: 'రైతులు, ట్రేడర్లు, రిటైల్ షాపులు' },
+      { id: '4', name: 'రత్న గర్భ ప్రీమియం చిట్', value: '₹5,00,000', monthly: '₹12,500 / నెలకు', tenure: '40 నెలలు', dividend: '₹45,000 – ₹85,000', badge: 'హై డివిడెండ్', target: 'హోల్‌సేల్ వ్యాపారులు, కాంట్రాక్టర్లు' },
+      { id: '5', name: 'విజయ వైభవ్ మెగా చిట్', value: '₹10,00,000', monthly: '₹20,000 / నెలకు', tenure: '50 నెలలు', dividend: '₹1,20,000 – ₹2,10,000', badge: 'మెగా గ్రూప్', target: 'నూతన ప్రాజెక్టులు, ఆస్తి కొనుగోలు' },
+      { id: '6', name: 'రాజరాజేశ్వరి రాయల్ చిట్', value: '₹25,00,000', monthly: '₹50,000 / నెలకు', tenure: '50 నెలలు', dividend: '₹3,50,000 – ₹5,80,000', badge: 'రాయల్ ఎలైట్', target: 'ఎంటర్‌ప్రెన్యూర్లు, పరిశ్రమలు' },
+    ];
+
+    function App() {
+      const [theme, setTheme] = useState('warm-ivory');
+      const [isEnglish, setIsEnglish] = useState(false);
+      const [isExiting, setIsExiting] = useState(false);
+      const [progress, setProgress] = useState(0);
+      const [calcValue, setCalcValue] = useState(500000);
+      const [calcTenure, setCalcTenure] = useState(40);
+      const [formSubmitted, setFormSubmitted] = useState(false);
+
+      // Non-stop 2-phase 5-second auto flip
+      useEffect(() => {
+        const cycle = 5000;
+        const exitTime = 380;
+        const interval = 40;
+        const step = (interval / cycle) * 100;
+
+        const timer = setInterval(() => {
+          setProgress((prev) => {
+            const next = prev + step;
+            if (next >= ((cycle - exitTime) / cycle) * 100 && !isExiting) {
+              setIsExiting(true);
+            }
+            if (next >= 100) {
+              setIsEnglish((c) => !c);
+              setIsExiting(false);
+              return 0;
+            }
+            return next;
+          });
+        }, interval);
+        return () => clearInterval(timer);
+      }, [isExiting]);
+
+      const grossMonthly = Math.round(calcValue / calcTenure);
+      const avgDividend = Math.round(grossMonthly * 0.18);
+      const netMonthly = grossMonthly - avgDividend;
+      const totalDividend = avgDividend * calcTenure;
+
+      const formatINR = (n) => '₹' + n.toLocaleString('en-IN');
+
+      const toggleTheme = () => {
+        const next = theme === 'warm-ivory' ? 'dark-forest' : 'warm-ivory';
+        setTheme(next);
+        document.documentElement.setAttribute('data-theme', next);
+      };
+
+      const animClass = isExiting ? 'animate-cinematic-out' : 'animate-cinematic-in';
+
+      return (
+        <div className="min-h-screen bg-[#FCFAF6] dark:bg-[#04130E] text-[#1E2623] dark:text-[#FCFAF6] transition-colors duration-300">
+          
+          {/* Top Bar */}
+          <div className="bg-[#0F382C] text-white text-xs py-2 px-4 sm:px-8 border-b border-[#B88E38]/30">
+            <div className="max-w-[1360px] mx-auto flex items-center justify-between flex-wrap gap-2">
+              <div className="flex items-center gap-2">
+                <span>🛡️ {isEnglish ? "Govt. of AP Registered Chit Fund • Reg:" : "ఆంధ్రప్రదేశ్ ప్రభుత్వ నమోదిత సంస్థ • Reg:"} <strong>{BRAND.registrationNumber}</strong></span>
+              </div>
+              <div className="flex items-center gap-4">
+                <span>📞 {isEnglish ? "Helpline:" : "హెల్ప్‌లైన్:"} <strong>{BRAND.phone} / {BRAND.mobile}</strong></span>
+              </div>
+            </div>
+          </div>
+
+          {/* Header */}
+          <header className="sticky top-0 z-50 bg-white/95 dark:bg-[#08221A]/95 backdrop-blur-md border-b border-[#B88E38]/30 px-4 sm:px-8 py-3.5 shadow-sm">
+            <div className="max-w-[1360px] mx-auto flex items-center justify-between">
+              
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded border-2 border-[#B88E38] bg-[#0F382C] text-[#B88E38] font-bold text-2xl flex items-center justify-center font-serif">
+                  శ్రీ
+                </div>
+                <div>
+                  <h1 className="font-serif text-xl sm:text-2xl font-extrabold text-[#0F382C] dark:text-white leading-tight">
+                    {BRAND.nameTelugu}
+                  </h1>
+                  <span className="text-[0.68rem] tracking-widest text-[#8C671C] dark:text-[#D4AF57] font-bold block uppercase">
+                    {BRAND.nameEnglish} • ELURU
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                
+                {/* 5s Language Flip Pill with SVG progress ring */}
+                <button
+                  onClick={() => { setIsExiting(true); setTimeout(() => { setIsEnglish(!isEnglish); setIsExiting(false); setProgress(0); }, 150); }}
+                  className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-white/10 rounded-full text-xs font-bold border border-[#B88E38]/40"
+                  title="Click to toggle language manually"
+                >
+                  <span className={!isEnglish ? "text-[#0F382C] font-extrabold" : "opacity-40"}>తెలుగు</span>
+                  <span className="opacity-30">•</span>
+                  <span className={isEnglish ? "text-[#0F382C] font-extrabold" : "opacity-40"}>EN</span>
+                  
+                  <div className="w-8 h-1.5 bg-gray-300 dark:bg-white/20 rounded-full overflow-hidden ml-1">
+                    <div className="h-full bg-[#0F382C] dark:bg-[#B88E38]" style={{ width: `${progress}%` }} />
+                  </div>
+                  <span className="text-[0.55rem] font-mono opacity-70">5s</span>
+                </button>
+
+                <button
+                  onClick={toggleTheme}
+                  className="px-3 py-1.5 bg-gray-100 dark:bg-white/10 rounded-full text-xs font-semibold border border-gray-300 dark:border-white/20"
+                >
+                  {theme === 'warm-ivory' ? '🌙 డార్క్' : '☀️ లైట్'}
+                </button>
+                <a
+                  href="#contact"
+                  className="hidden sm:inline-block px-4 py-2 bg-[#0F382C] hover:bg-[#1B5342] text-white rounded text-xs font-bold shadow-sm"
+                >
+                  {isEnglish ? "Join Chit Group →" : "చిట్‌లో చేరండి →"}
+                </a>
+              </div>
+
+            </div>
+          </header>
+
+          {/* Clean Hero Section with Automatic 5s Bilingual Flip */}
+          <section className="px-4 sm:px-8 py-10 lg:py-16 max-w-[1360px] mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              
+              <div className="lg:col-span-7 space-y-6">
+                
+                <div className={animClass}>
+                  <div className="inline-block px-3.5 py-1.5 bg-[#B88E38]/15 border border-[#B88E38]/40 rounded text-xs font-bold text-[#0F382C] dark:text-[#D4AF57]">
+                    {isEnglish ? "✨ TRUSTED LOCAL SAVINGS • SECURE TOMORROW" : "✨ నమ్మకమైన పొదుపు • సురక్షితమైన రేపటి ప్రణాళిక"}
+                  </div>
+                </div>
+
+                <div className={`${animClass} min-h-[110px] flex flex-col justify-center`}>
+                  {isEnglish ? (
+                    <h1 className="text-3xl sm:text-5xl font-extrabold font-serif text-[#0F382C] dark:text-white leading-[1.2]">
+                      Telugu Regional Heritage <br />
+                      <span className="text-gradient-gold">× Modern Financial Trust</span>
+                    </h1>
+                  ) : (
+                    <h1 className="text-3xl sm:text-5xl font-extrabold font-serif text-[#0F382C] dark:text-white leading-[1.2]">
+                      తెలుగు సాంప్రదాయం <br />
+                      <span className="text-gradient-gold">× ఆధునిక ఆర్థిక విశ్వాసం</span>
+                    </h1>
+                  )}
+                </div>
+
+                <div className={`${animClass} grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-gray-800 dark:text-gray-200`}>
+                  <div className="p-3 bg-white/80 dark:bg-white/5 rounded border border-gray-200 dark:border-white/10 shadow-sm flex items-center gap-2">
+                    <span className="text-[#0F382C] font-bold">✓</span>
+                    <span>{isEnglish ? "100% Bank Guarantee Security" : "100% బ్యాంక్ గ్యారెంటీ & ప్రభుత్వ భద్రత"}</span>
+                  </div>
+                  <div className="p-3 bg-white/80 dark:bg-white/5 rounded border border-gray-200 dark:border-white/10 shadow-sm flex items-center gap-2">
+                    <span className="text-[#0F382C] font-bold">✓</span>
+                    <span>{isEnglish ? "Audited Transparent Auctions" : "పారదర్శకమైన లైవ్ వేలం పద్ధతి"}</span>
+                  </div>
+                  <div className="p-3 bg-white/80 dark:bg-white/5 rounded border border-gray-200 dark:border-white/10 shadow-sm flex items-center gap-2">
+                    <span className="text-[#0F382C] font-bold">✓</span>
+                    <span>{isEnglish ? "24-48 Hour Instant Payouts" : "24-48 గంటల్లో వేగవంతమైన చెల్లింపులు"}</span>
+                  </div>
+                  <div className="p-3 bg-white/80 dark:bg-white/5 rounded border border-gray-200 dark:border-white/10 shadow-sm flex items-center gap-2">
+                    <span className="text-[#0F382C] font-bold">✓</span>
+                    <span>{isEnglish ? "Monthly Dividend Bonus" : "ప్రతి నెలా క్రమం తప్పని డివిడెండ్ బోనస్"}</span>
+                  </div>
+                </div>
+
+                <div className={`${animClass} flex flex-wrap gap-4 pt-2`}>
+                  <a
+                    href="#schemes"
+                    className="px-6 py-3.5 bg-[#0F382C] hover:bg-[#1B5342] text-white font-bold rounded shadow-md"
+                  >
+                    {isEnglish ? "Explore Chit Schemes →" : "అందుబాటులో ఉన్న పథకాలు →"}
+                  </a>
+                  <a
+                    href="#calculator"
+                    className="px-6 py-3.5 bg-white dark:bg-white/10 text-[#0F382C] dark:text-white border-2 border-[#0F382C]/30 dark:border-[#B88E38] font-bold rounded shadow-sm"
+                  >
+                    {isEnglish ? "Chit Calculator" : "చిట్ క్యాలిక్యులేటర్"}
+                  </a>
+                </div>
+
+                <div className={`${animClass} grid grid-cols-3 gap-4 pt-4 border-t border-gray-200 dark:border-white/20`}>
+                  <div>
+                    <span className="text-2xl font-extrabold text-[#0F382C] dark:text-[#D4AF57] block">25+</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-300">{isEnglish ? "Years Trust" : "సంవత్సరాల అనుభవం"}</span>
+                  </div>
+                  <div>
+                    <span className="text-2xl font-extrabold text-[#0F382C] dark:text-[#D4AF57] block">12,500+</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-300">{isEnglish ? "Subscribers" : "సంతృప్త కుటుంబాలు"}</span>
+                  </div>
+                  <div>
+                    <span className="text-2xl font-extrabold text-[#0F382C] dark:text-[#D4AF57] block">100%</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-300">{isEnglish ? "Govt. Security" : "ప్రభుత్వ భద్రత"}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Certificate Card */}
+              <div className="lg:col-span-5 bg-white dark:bg-[#08221A] p-6 sm:p-8 rounded border-2 border-[#B88E38]/60 shadow-lg space-y-4">
+                <div className="flex items-center justify-between border-b border-gray-100 dark:border-white/10 pb-3">
+                  <div>
+                    <div className="text-[0.65rem] tracking-widest text-[#C05621] uppercase font-bold">GOVT. APPROVED</div>
+                    <div className="text-lg font-bold font-serif text-[#0F382C] dark:text-white">
+                      {isEnglish ? "Registrar of Chits, Eluru" : "ఏలూరు బ్రాంచ్ కార్యాలయం"}
+                    </div>
+                  </div>
+                  <div className="font-mono text-xs text-[#8C671C] font-bold">
+                    {BRAND.registrationNumber}
+                  </div>
+                </div>
+
+                <div className="p-3.5 bg-[#EBF3F0] dark:bg-white/5 rounded border border-[#0F382C]/20 text-xs space-y-2">
+                  <div className="font-bold text-[#0F382C] dark:text-[#D4AF57]">✨ {isEnglish ? "March 2026 Open Groups:" : "మార్చి 2026 కొత్త గ్రూపులు ఓపెన్:"}</div>
+                  <div className="flex justify-between"><span>₹1 లక్ష చిట్:</span><span className="font-bold">₹4,000 / {isEnglish ? "mo" : "నెలకు"}</span></div>
+                  <div className="flex justify-between"><span>₹2.5 లక్షల చిట్:</span><span className="font-bold">₹8,333 / {isEnglish ? "mo" : "నెలకు"}</span></div>
+                  <div className="flex justify-between"><span>₹5 లక్షల చిట్:</span><span className="font-bold">₹12,500 / {isEnglish ? "mo" : "నెలకు"}</span></div>
+                </div>
+
+                <div className="text-xs text-gray-600 dark:text-gray-300 italic border-l-2 border-[#0F382C] pl-3 py-1">
+                  "{BRAND.mottoTelugu}"
+                </div>
+
+                <a
+                  href="#contact"
+                  className="block w-full py-2.5 bg-[#0F382C] hover:bg-[#1B5342] text-white text-center font-bold text-xs rounded"
+                >
+                  {isEnglish ? `Call Helpline: ${BRAND.mobile}` : `నేరుగా సంప్రదించండి: ${BRAND.mobile}`}
+                </a>
+              </div>
+
+            </div>
+          </section>
+
+          {/* Calculator Section */}
+          <section id="calculator" className="py-16 px-4 sm:px-8 max-w-[1360px] mx-auto border-t border-gray-200 dark:border-white/10">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <h2 className="text-3xl font-extrabold font-serif text-[#0F382C] dark:text-white mb-2">
+                చిట్ & డివిడెండ్ క్యాలిక్యులేటర్
+              </h2>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                చిట్ మొత్తం మరియు నెలల ఆధారంగా వాయిదా మరియు డివిడెండ్ లెక్కింపు:
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              <div className="lg:col-span-6 bg-white dark:bg-[#08221A] p-6 sm:p-8 rounded border border-[#B88E38]/40 shadow-sm space-y-6">
+                <div>
+                  <label className="text-xs font-bold text-[#0F382C] dark:text-[#D4AF57] block mb-2">చిట్ మొత్తం ఎంచుకోండి:</label>
+                  <div className="grid grid-cols-3 gap-2">
+                    {[100000, 250000, 500000, 1000000, 2500000].map(v => (
+                      <button
+                        key={v}
+                        onClick={() => setCalcValue(v)}
+                        className={`py-2 text-xs font-bold rounded border ${calcValue === v ? 'bg-[#0F382C] text-white' : 'bg-gray-50 dark:bg-white/5'}`}
+                      >
+                        {formatINR(v)}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-sm font-bold mb-1">
+                    <span>చిట్ విలువ:</span>
+                    <span className="text-[#0F382C] dark:text-[#D4AF57] text-lg font-bold">{formatINR(calcValue)}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="50000"
+                    max="2500000"
+                    step="25000"
+                    value={calcValue}
+                    onChange={(e) => setCalcValue(Number(e.target.value))}
+                    className="w-full accent-[#0F382C]"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-xs font-bold text-[#0F382C] dark:text-[#D4AF57] block mb-2">వ్యవధి (నెలలు):</label>
+                  <div className="grid grid-cols-4 gap-2">
+                    {[25, 30, 40, 50].map(t => (
+                      <button
+                        key={t}
+                        onClick={() => setCalcTenure(t)}
+                        className={`py-2 text-xs font-bold rounded border ${calcTenure === t ? 'bg-[#0F382C] text-white' : 'bg-gray-50 dark:bg-white/5'}`}
+                      >
+                        {t} నెలలు
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Calculated Results */}
+              <div className="lg:col-span-6 bg-white dark:bg-[#08221A] p-6 sm:p-8 rounded border-2 border-[#B88E38]/60 shadow-md space-y-4">
+                <h3 className="font-serif text-xl font-bold text-[#0F382C] dark:text-white border-b pb-2">
+                  అంచనా ఫలితాల పట్టిక
+                </h3>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="p-3 bg-gray-50 dark:bg-white/5 rounded">
+                    <span className="text-xs text-gray-500 block">అసలు వాయిదా:</span>
+                    <span className="text-xl font-bold">{formatINR(grossMonthly)}</span>
+                  </div>
+                  <div className="p-3 bg-[#EBF3F0] dark:bg-white/10 rounded">
+                    <span className="text-xs text-[#0F382C] font-bold block">నెట్ సగటు వాయిదా:</span>
+                    <span className="text-xl font-bold text-[#0F382C] dark:text-[#D4AF57]">{formatINR(netMonthly)}</span>
+                  </div>
+                  <div className="p-3 bg-[#FFF8EE] rounded">
+                    <span className="text-xs text-[#8C671C] font-bold block">మొత్తం డివిడెండ్ బోనస్:</span>
+                    <span className="text-xl font-bold text-[#8C671C]">~ {formatINR(totalDividend)}</span>
+                  </div>
+                  <div className="p-3 bg-gray-50 dark:bg-white/5 rounded">
+                    <span className="text-xs text-[#C05621] font-bold block">తక్షణ వేలం నిధులు:</span>
+                    <span className="text-xl font-bold text-[#C05621]">{formatINR(calcValue * 0.70)}</span>
+                  </div>
+                </div>
+
+                <a
+                  href="#contact"
+                  className="block w-full py-3 bg-[#0F382C] hover:bg-[#1B5342] text-white text-center font-bold text-sm rounded mt-4"
+                >
+                  ఈ ప్లాన్ ({formatINR(calcValue)}) కోసం నమోదు చేసుకోండి →
+                </a>
+              </div>
+            </div>
+          </section>
+
+          {/* Schemes Section */}
+          <section id="schemes" className="py-16 px-4 sm:px-8 max-w-[1360px] mx-auto border-t border-gray-200 dark:border-white/10">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <h2 className="text-3xl font-extrabold font-serif text-[#0F382C] dark:text-white mb-2">
+                ప్రస్తుతం అందుబాటులో ఉన్న చిట్ పథకాలు
+              </h2>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                మీ బడ్జెట్‌కు తగిన గ్రూప్‌ను ఎంచుకోండి:
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {CHIT_SCHEMES.map(s => (
+                <div key={s.id} className="bg-white dark:bg-[#08221A] border border-[#B88E38]/40 rounded p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                  <div>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-xs font-bold text-[#C05621]">{s.badge}</span>
+                    </div>
+                    <h3 className="font-serif text-lg font-bold text-[#0F382C] dark:text-white">{s.name}</h3>
+                    <div className="text-3xl font-extrabold text-[#0F382C] dark:text-[#D4AF57] my-2">{s.value}</div>
+                    
+                    <div className="space-y-1.5 text-xs text-gray-600 dark:text-gray-300 py-3 border-y border-gray-100 dark:border-white/10">
+                      <div className="flex justify-between"><span>వాయిదా:</span><span className="font-bold text-gray-900 dark:text-white">{s.monthly}</span></div>
+                      <div className="flex justify-between"><span>వ్యవధి:</span><span className="font-bold">{s.tenure}</span></div>
+                      <div className="flex justify-between"><span>డివిడెండ్:</span><span className="font-bold text-[#8C671C]">{s.dividend}</span></div>
+                    </div>
+                    <div className="text-xs text-gray-500 my-3 bg-gray-50 dark:bg-white/5 p-2 rounded">
+                      <strong>అనుకూలం:</strong> {s.target}
+                    </div>
+                  </div>
+
+                  <a
+                    href="#contact"
+                    className="block w-full py-2 bg-[#0F382C] hover:bg-[#1B5342] text-white text-center text-xs font-bold rounded"
+                  >
+                    ఈ గ్రూప్‌లో చేరండి →
+                  </a>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Contact / Inquiry */}
+          <section id="contact" className="py-16 px-4 sm:px-8 max-w-[1360px] mx-auto border-t border-gray-200 dark:border-white/10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              
+              <div className="lg:col-span-6 space-y-4">
+                <h2 className="text-2xl font-serif font-extrabold text-[#0F382C] dark:text-white">
+                  ఏలూరు బ్రాంచ్ కార్యాలయం
+                </h2>
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+                  {BRAND.address}
+                </p>
+                <div className="space-y-2 text-xs font-semibold">
+                  <div>📞 ఫోన్: {BRAND.phone}</div>
+                  <div>📱 మొబైల్: {BRAND.mobile}</div>
+                  <div>⏰ పని వేళలు: {BRAND.workingHours}</div>
+                </div>
+              </div>
+
+              <div className="lg:col-span-6 bg-white dark:bg-[#08221A] p-6 rounded border-2 border-[#B88E38]/50 shadow-md">
+                <h3 className="font-serif text-lg font-bold text-[#0F382C] dark:text-white mb-3">
+                  సభ్యత్వ విచారణ ఫారం
+                </h3>
+                {formSubmitted ? (
+                  <div className="p-4 bg-[#EBF3F0] rounded text-center text-xs text-[#0F382C] font-bold">
+                    ధన్యవాదాలు! మీ విచారణ అందింది. మా ఏలూరు బ్రాంచ్ ప్రతినిధి వెంటనే సంప్రదిస్తారు.
+                  </div>
+                ) : (
+                  <form onSubmit={(e) => { e.preventDefault(); setFormSubmitted(true); }} className="space-y-3 text-xs">
+                    <div>
+                      <label className="font-bold block mb-1">మీ పేరు:</label>
+                      <input required type="text" placeholder="పూర్తి పేరు" className="w-full p-2 border rounded" />
+                    </div>
+                    <div>
+                      <label className="font-bold block mb-1">మొబైల్ నంబర్:</label>
+                      <input required type="tel" placeholder="9876543210" className="w-full p-2 border rounded" />
+                    </div>
+                    <button type="submit" className="w-full py-2.5 bg-[#0F382C] text-white font-bold rounded">
+                      కాల్ బ్యాక్ అభ్యర్థించండి →
+                    </button>
+                  </form>
+                )}
+              </div>
+
+            </div>
+          </section>
+
+          {/* Footer */}
+          <footer className="bg-[#08221A] text-white text-xs py-8 px-4 text-center border-t-2 border-[#B88E38]">
+            <div className="max-w-[1360px] mx-auto space-y-2">
+              <div className="font-serif text-base font-bold">{BRAND.nameTelugu} ప్రై.లి. • {BRAND.regionTelugu}</div>
+              <div className="text-gray-300">ఆంధ్రప్రదేశ్ చిట్ ఫండ్స్ చట్టం 1982 కింద 100% ప్రభుత్వ రిజిస్టర్డ్ సంస్థ (Reg: {BRAND.registrationNumber})</div>
+              <div className="text-gray-400 pt-2">© {new Date().getFullYear()} SIVA KAVERI CHITS RBT. All Rights Reserved.</div>
+            </div>
+          </footer>
+
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

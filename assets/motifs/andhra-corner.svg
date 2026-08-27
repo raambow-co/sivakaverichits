@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Outer Corner Lines -->
+  <path d="M2 62V14C2 7.37258 7.37258 2 14 2H62" stroke="#B79A5B" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Inner Hairline -->
+  <path d="M8 62V18C8 12.4772 12.4772 8 18 8H62" stroke="#B79A5B" stroke-width="0.75" stroke-opacity="0.6"/>
+  <!-- Andhra Ornamental Diamond Accent -->
+  <path d="M18 18L24 12L30 18L24 24L18 18Z" fill="#B79A5B" fill-opacity="0.8"/>
+  <circle cx="24" cy="24" r="2" fill="#A85D3A"/>
+  <circle cx="6" cy="6" r="2" fill="#B79A5B"/>
+</svg>

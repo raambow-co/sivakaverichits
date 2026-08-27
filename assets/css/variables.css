@@ -1,0 +1,152 @@
+/* ==========================================================================
+   DESIGN TOKENS & VARIABLES
+   SIVA KAVERI CHITS RBT - Telugu Heritage × Modern Finance
+   ========================================================================== */
+
+:root {
+  /* ---------------------------------------------------------
+     1. COLOR PALETTE
+     --------------------------------------------------------- */
+  
+  /* Primary: Deep Forest Green (Trust, Prosperity, Godavari Delta) */
+  --color-forest: #163C32;
+  --color-forest-dark: #0F2A23;
+  --color-forest-deep: #081814;
+  --color-forest-light: #225648;
+  --color-forest-subtle: rgba(22, 60, 50, 0.08);
+  --color-forest-glass: rgba(22, 60, 50, 0.85);
+
+  /* Secondary: Warm Ivory (Handcrafted Parchment, Clarity) */
+  --color-ivory: #F7F1E3;
+  --color-ivory-light: #FDFBF7;
+  --color-ivory-dark: #E8DFC8;
+  --color-ivory-muted: rgba(247, 241, 227, 0.7);
+  --color-ivory-glass: rgba(247, 241, 227, 0.88);
+
+  /* Accent: Terracotta (Earth, Godavari Clay, Cultural Warmth) */
+  --color-terracotta: #A85D3A;
+  --color-terracotta-light: #C1734E;
+  --color-terracotta-dark: #844527;
+  --color-terracotta-subtle: rgba(168, 93, 58, 0.12);
+  --color-terracotta-glass: rgba(168, 93, 58, 0.85);
+
+  /* Supporting: Muted Antique Gold (Heritage, Value, Security) */
+  --color-gold: #B79A5B;
+  --color-gold-light: #D2B87F;
+  --color-gold-dark: #91773E;
+  --color-gold-subtle: rgba(183, 154, 91, 0.15);
+  --color-gold-border: rgba(183, 154, 91, 0.35);
+
+  /* Text & Editorial: Deep Charcoal & Neutrals */
+  --color-charcoal: #292724;
+  --color-charcoal-light: #48443F;
+  --color-charcoal-muted: #726D65;
+  --color-sand: #ECE4D0;
+
+  /* Semantic Theme Tokens (Default Dark Forest Mode) */
+  --color-canvas-base: var(--color-forest-deep);
+  --color-canvas-surface: var(--color-forest);
+  --color-canvas-elevated: var(--color-forest-light);
+  --color-text-primary: var(--color-ivory);
+  --color-text-secondary: var(--color-ivory-muted);
+  --color-text-accent: var(--color-gold);
+  --color-border-primary: var(--color-gold-border);
+  --color-border-subtle: rgba(247, 241, 227, 0.1);
+
+  /* ---------------------------------------------------------
+     2. TYPOGRAPHY SYSTEM
+     --------------------------------------------------------- */
+  --font-telugu-display: 'Noto Serif Telugu', 'Suranna', Georgia, serif;
+  --font-telugu-body: 'Noto Sans Telugu', 'Tenali Ramakrishna', sans-serif;
+  --font-english-display: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  --font-english-body: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Type Scale */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.8125rem);
+  --text-sm: clamp(0.875rem, 0.82rem + 0.28vw, 0.9375rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+  --text-lg: clamp(1.125rem, 1.05rem + 0.38vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.35rem + 0.75vw, 1.875rem);
+  --text-3xl: clamp(1.875rem, 1.65rem + 1.12vw, 2.375rem);
+  --text-4xl: clamp(2.25rem, 1.95rem + 1.5vw, 3rem);
+  --text-5xl: clamp(2.75rem, 2.3rem + 2.25vw, 3.875rem);
+  --text-6xl: clamp(3.25rem, 2.7rem + 2.75vw, 4.75rem);
+  --text-watermark: clamp(5rem, 4rem + 8vw, 11rem);
+
+  /* ---------------------------------------------------------
+     3. SPACING & SIZING
+     --------------------------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  --container-max: 1360px;
+  --container-editorial: 1040px;
+  --container-narrow: 760px;
+
+  /* ---------------------------------------------------------
+     4. LAYER Z-INDEX ARCHITECTURE (MAXIMUM-BACKGROUND)
+     --------------------------------------------------------- */
+  --z-canvas-base: 0;
+  --z-canvas-texture: 1;
+  --z-watermark-telugu: 2;
+  --z-motifs-geometric: 3;
+  --z-ornamental-lines: 4;
+  --z-lighting-vignette: 5;
+  --z-content-layer: 10;
+  --z-content-elevated: 20;
+  --z-header-nav: 100;
+  --z-modal-overlay: 1000;
+
+  /* ---------------------------------------------------------
+     5. ELEVATIONS & SHADOWS
+     --------------------------------------------------------- */
+  --shadow-heritage-sm: 0 2px 8px rgba(8, 24, 20, 0.25);
+  --shadow-heritage-md: 0 8px 24px rgba(8, 24, 20, 0.35);
+  --shadow-heritage-lg: 0 16px 48px rgba(8, 24, 20, 0.45);
+  --shadow-gold-glow: 0 0 30px rgba(183, 154, 91, 0.2);
+  --shadow-terracotta-glow: 0 0 35px rgba(168, 93, 58, 0.25);
+
+  /* ---------------------------------------------------------
+     6. MOTION & ANIMATION TIMING
+     --------------------------------------------------------- */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-heritage-slow: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 250ms;
+  --duration-normal: 450ms;
+  --duration-slow: 800ms;
+  --duration-cinematic: 1400ms;
+
+  /* ---------------------------------------------------------
+     7. BORDER RADIUS & CORNER TREATMENTS
+     --------------------------------------------------------- */
+  --radius-sharp: 0px;
+  --radius-subtle: 2px;
+  --radius-heritage: 4px;
+  --radius-card: 8px;
+  --radius-pill: 9999px;
+}
+
+/* Light / Warm Ivory Heritage Variant */
+[data-theme="warm-ivory"] {
+  --color-canvas-base: #F7F1E3;
+  --color-canvas-surface: #FDFBF7;
+  --color-canvas-elevated: #ECE4D0;
+  --color-text-primary: #163C32;
+  --color-text-secondary: #48443F;
+  --color-text-accent: #A85D3A;
+  --color-border-primary: rgba(183, 154, 91, 0.45);
+  --color-border-subtle: rgba(22, 60, 50, 0.12);
+}

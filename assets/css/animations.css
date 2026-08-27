@@ -1,0 +1,115 @@
+/* ==========================================================================
+   ANIMATION & MOTION ENGINE
+   Intentional, Calm, Cinematic, Premium Easing
+   ========================================================================== */
+
+/* ---------------------------------------------------------
+   1. KEYFRAME ANIMATIONS
+   --------------------------------------------------------- */
+
+/* Subtle slow ambient atmospheric breath */
+@keyframes ambientDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-12px, -8px) scale(1.03);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Subtle gold glint shimmer */
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Slow editorial reveal */
+@keyframes editorialRevealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes editorialFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ---------------------------------------------------------
+   2. REUSABLE ANIMATION CLASSES
+   --------------------------------------------------------- */
+.anim-ambient-drift {
+  animation: ambientDrift 24s ease-in-out infinite alternate;
+}
+
+.anim-reveal-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--duration-cinematic) var(--ease-heritage-slow), transform var(--duration-cinematic) var(--ease-heritage-slow);
+}
+
+.anim-reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.anim-fade-in {
+  opacity: 0;
+  transition: opacity var(--duration-slow) var(--ease-editorial);
+}
+
+.anim-fade-in.is-visible {
+  opacity: 1;
+}
+
+/* Stagger Delays for Editorial Sequences */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+.delay-800 { transition-delay: 800ms; }
+
+/* Micro-interaction hovers */
+.hover-lift {
+  transition: transform var(--duration-normal) var(--ease-editorial), box-shadow var(--duration-normal) var(--ease-editorial);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-gold-glow {
+  transition: box-shadow var(--duration-normal) var(--ease-editorial);
+}
+
+.hover-gold-glow:hover {
+  box-shadow: var(--shadow-gold-glow);
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

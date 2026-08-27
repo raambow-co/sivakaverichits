@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   SIVA KAVERI CHITS — HERITAGE DESIGN SYSTEM & VISIBLE FLOATING ANIMATIONS
+   ========================================================================== */
+
+:root {
+  --color-canvas: #FCFAF6;
+  --color-canvas-surface: #FFFFFF;
+  --color-primary: #0F382C;
+  --color-text-main: #1E2623;
+  --color-text-muted: #60706A;
+  --color-border: #E8DEC8;
+  --color-gold: #B88E38;
+}
+
+[data-theme="dark-forest"] {
+  --color-canvas: #04130E;
+  --color-canvas-surface: #08221A;
+  --color-primary: #FCFAF6;
+  --color-text-main: #FCFAF6;
+  --color-text-muted: #E8DFC8;
+  --color-border: #8C671C;
+  --color-gold: #D4AF57;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-text-main);
+  font-family: "Noto Sans Telugu", "Plus Jakarta Sans", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Custom Heritage Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F3EEDB;
+}
+::-webkit-scrollbar-thumb {
+  background: #B88E38;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8C671C;
+}
+
+[data-theme="dark-forest"] ::-webkit-scrollbar-track {
+  background: #04130E;
+}
+[data-theme="dark-forest"] ::-webkit-scrollbar-thumb {
+  background: #8C671C;
+}
+[data-theme="dark-forest"] ::-webkit-scrollbar-thumb:hover {
+  background: #D4AF57;
+}
+
+@layer components {
+  /* Paper Grain Procedural Texture Overlay */
+  .grain-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Gold Shimmer Text Gradient */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #8C671C 0%, #B88E38 40%, #E2C275 60%, #8C671C 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldSweep 6s linear infinite;
+  }
+
+  [data-theme="dark-forest"] .text-gradient-gold {
+    background: linear-gradient(135deg, #F3EEDB 0%, #D4AF57 40%, #FFF3D6 60%, #B88E38 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldSweep 6s linear infinite;
+  }
+
+  @keyframes goldSweep {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+
+  /* ==========================================================================
+     ORGANIC LANGUAGE METAMORPHOSIS UTILITIES
+     ========================================================================== */
+  .morph-word {
+    display: inline-block;
+    transition-property: opacity, transform, filter, letter-spacing;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform, filter;
+  }
+
+  /* ==========================================================================
+     PROMINENT, VISIBLE 60FPS GPU FLOATING & GLOWING 3D GOLD COIN ANIMATIONS
+     - Fluid 26px - 34px vertical float range with realistic 3D pitch/roll tilts
+     - Pure GPU transform for silky 60fps with zero lag
+     ========================================================================== */
+  @keyframes coinFloatActive1 {
+    0%, 100% {
+      transform: translate3d(0, 0px, 0) rotateX(12deg) rotateY(-10deg) rotateZ(0deg);
+    }
+    50% {
+      transform: translate3d(4px, -26px, 0) rotateX(24deg) rotateY(12deg) rotateZ(8deg);
+    }
+  }
+
+  @keyframes coinFloatActive2 {
+    0%, 100% {
+      transform: translate3d(0, 0px, 0) rotateX(-12deg) rotateY(16deg) rotateZ(4deg);
+    }
+    50% {
+      transform: translate3d(-6px, -32px, 0) rotateX(-2deg) rotateY(-12deg) rotateZ(-6deg);
+    }
+  }
+
+  @keyframes coinFloatActive3 {
+    0%, 100% {
+      transform: translate3d(0, 0px, 0) rotateX(14deg) rotateY(12deg) rotateZ(-6deg);
+    }
+    50% {
+      transform: translate3d(5px, -28px, 0) rotateX(6deg) rotateY(-16deg) rotateZ(8deg);
+    }
+  }
+
+  @keyframes coinFloatActive4 {
+    0%, 100% {
+      transform: translate3d(0, 0px, 0) rotateX(-8deg) rotateY(-14deg) rotateZ(8deg);
+    }
+    50% {
+      transform: translate3d(-4px, -22px, 0) rotateX(18deg) rotateY(10deg) rotateZ(-6deg);
+    }
+  }
+
+  @keyframes coinFloatActive5 {
+    0%, 100% {
+      transform: translate3d(0, 0px, 0) rotateX(15deg) rotateY(14deg) rotateZ(4deg);
+    }
+    50% {
+      transform: translate3d(4px, -26px, 0) rotateX(-12deg) rotateY(-10deg) rotateZ(-8deg);
+    }
+  }
+
+  .animate-coin-float-1 {
+    animation: coinFloatActive1 3.8s ease-in-out infinite !important;
+    will-change: transform;
+  }
+  .animate-coin-float-2 {
+    animation: coinFloatActive2 4.4s ease-in-out infinite !important;
+    will-change: transform;
+  }
+  .animate-coin-float-3 {
+    animation: coinFloatActive3 3.6s ease-in-out infinite !important;
+    will-change: transform;
+  }
+  .animate-coin-float-4 {
+    animation: coinFloatActive4 4.8s ease-in-out infinite !important;
+    will-change: transform;
+  }
+  .animate-coin-float-5 {
+    animation: coinFloatActive5 4.1s ease-in-out infinite !important;
+    will-change: transform;
+  }
+
+  /* ==========================================================================
+     REDUCED MOTION ACCESSIBILITY (prefers-reduced-motion)
+     ========================================================================== */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    .morph-word {
+      transition: opacity 0.3s ease !important;
+      transform: none !important;
+      filter: none !important;
+      letter-spacing: normal !important;
+    }
+
+    .animate-coin-float-1,
+    .animate-coin-float-2,
+    .animate-coin-float-3,
+    .animate-coin-float-4,
+    .animate-coin-float-5 {
+      animation: none !important;
+      transform: none !important;
+    }
+  }
+}

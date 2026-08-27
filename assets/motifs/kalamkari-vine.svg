@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 40" fill="none">
+  <path d="M0 20C40 20 60 5 100 20C140 35 160 20 200 20C240 20 260 5 300 20C340 35 360 20 400 20" stroke="#B79A5B" stroke-width="1" stroke-opacity="0.7"/>
+  <!-- Leaflet motifs -->
+  <path d="M100 20C105 12 115 12 120 20C115 28 105 28 100 20Z" fill="#A85D3A" fill-opacity="0.6"/>
+  <path d="M200 20C195 12 185 12 180 20C185 28 195 28 200 20Z" fill="#163C32" stroke="#B79A5B" stroke-width="0.5"/>
+  <path d="M300 20C305 12 315 12 320 20C315 28 305 28 300 20Z" fill="#A85D3A" fill-opacity="0.6"/>
+  <!-- Center Gem -->
+  <circle cx="200" cy="20" r="3" fill="#B79A5B"/>
+</svg>
