@@ -54,7 +54,7 @@ export function ContactInquiry({ selectedScheme, onResetScheme }) {
               return (
                 <div
                   key={idx}
-                  className="bg-white dark:bg-forest/80 border border-gold/30 rounded-[3px] overflow-hidden shadow-card-light transition-all"
+                  className="bg-white dark:bg-forest/80 border border-gold/30 rounded-xl overflow-hidden shadow-card-light transition-all"
                 >
                   <button
                     onClick={() => setActiveFaq(isOpen ? null : idx)}
@@ -79,7 +79,7 @@ export function ContactInquiry({ selectedScheme, onResetScheme }) {
           </div>
 
           {/* Quick Branch Visit Card */}
-          <div className="bg-[#FAF6EC] dark:bg-forest-dark/80 border border-gold/40 rounded-[3px] p-5 space-y-3">
+          <div className="bg-[#FAF6EC] dark:bg-forest-dark/80 border border-gold/40 rounded-2xl p-5 space-y-3">
             <h4 className="font-telugu-display text-base font-bold text-forest dark:text-gold-light">
               ప్రత్యక్షంగా మా ఏలూరు కార్యాలయాన్ని సందర్శించండి:
             </h4>

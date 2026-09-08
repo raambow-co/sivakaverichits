@@ -1,4 +1,5 @@
 import React from 'react';
+import { BRAND } from '../../constants/tokens';
 
 export function SealPill({ text = "రిజిస్టర్డ్ చిట్ ఫండ్ • పశ్చిమ గోదావరి", variant = "gold" }) {
   const styles = variant === "emerald"
@@ -15,19 +16,13 @@ export function SealPill({ text = "రిజిస్టర్డ్ చిట�
 
 export function CircularEmblem({
   year = "ESTD 1998",
-  nameTelugu = "శివ కావేరి",
   city = "ELURU"
 }) {
   return (
-    <div className="relative w-24 h-24 rounded-full border-2 border-gold/70 flex flex-col items-center justify-center text-center p-2 bg-gradient-to-b from-forest-surface to-white dark:from-forest-dark dark:to-forest text-forest dark:text-ivory shadow-card-light">
-      <span className="font-english-display text-[0.62rem] tracking-widest text-gold-dark dark:text-gold font-bold">
-        {year}
-      </span>
-      <span className="font-telugu-display text-xs font-bold text-forest dark:text-ivory leading-tight my-0.5">
-        {nameTelugu}
-      </span>
-      <span className="font-english-display text-[0.55rem] tracking-widest text-terracotta dark:text-gold-light uppercase font-semibold">
-        {city}
+    <div className="relative w-24 h-24 rounded-full border-2 border-gold/70 flex flex-col items-center justify-center text-center p-1.5 bg-gradient-to-b from-forest-surface to-white dark:from-forest-dark dark:to-forest text-forest dark:text-ivory shadow-card-light overflow-hidden">
+      <img src={BRAND.logo} alt="Siva Kaveri Chits Logo" className="w-14 h-14 object-contain" />
+      <span className="font-english-display text-[0.55rem] tracking-widest text-gold-dark dark:text-gold font-bold">
+        {year} • {city}
       </span>
     </div>
   );

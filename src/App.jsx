@@ -6,9 +6,8 @@ import { HowChitsWorkSection } from './components/sections/HowChitsWorkSection';
 import { TrustTransparencySection } from './components/sections/TrustTransparencySection';
 import { WhyChooseUsSection } from './components/sections/WhyChooseUsSection';
 import { PeopleLocalPresenceSection } from './components/sections/PeopleLocalPresenceSection';
-import { AuctionExperienceSection } from './components/sections/AuctionExperienceSection';
-import { FAQSection } from './components/sections/FAQSection';
 import { StartJourneySection } from './components/sections/StartJourneySection';
+import { FAQSection } from './components/sections/FAQSection';
 import { Footer } from './components/common/Footer';
 
 export default function App() {
@@ -88,10 +87,10 @@ export default function App() {
       <PeopleLocalPresenceSection />
 
       {/* 
-        SECTION 08: AUCTION EXPERIENCE
-        Single editorial auction panel & timeline progression ("వేలం… చిట్ ప్రయాణంలో ఒక ముఖ్యమైన అడుగు.")
+        SECTION 08: START YOUR CHIT JOURNEY
+        Emotional closing composition & hero callback ("మీ కలలకు… మీ పొదుపుతో తొలి అడుగు.")
       */}
-      <AuctionExperienceSection />
+      <StartJourneySection />
 
       {/* 
         SECTION 09: FAQ
@@ -100,13 +99,7 @@ export default function App() {
       <FAQSection />
 
       {/* 
-        SECTION 10: START YOUR CHIT JOURNEY
-        Emotional closing composition & hero callback ("మీ కలలకు… మీ పొదుపుతో తొలి అడుగు.")
-      */}
-      <StartJourneySection />
-
-      {/* 
-        SECTION 11: FINAL FOOTER
+        SECTION 10: FINAL FOOTER
         Final closing thought, Telugu navigation, placeholders, and signature gold coin callback
       */}
       <Footer />

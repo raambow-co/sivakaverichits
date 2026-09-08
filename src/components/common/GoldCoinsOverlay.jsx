@@ -3,7 +3,8 @@ import React from 'react';
 /**
  * GoldCoinsOverlay
  * 
- * Prominently Floating & Glowing 3D Gold Coins Environment.
+ * Prominently Floating & Glowing 3D Mint Gold Coins Environment.
+ * - Clean, sleek metallic gold mint finish without text or icons.
  * - Active 26px - 34px vertical floating travel with realistic 3D pitch/roll tilts.
  * - Sits at high z-index (z-20) framing the Hero with radiant golden glow.
  * - 5 coins on Desktop, 2 coins on Mobile.
@@ -39,12 +40,13 @@ function GoldCoinSvg({ className = "" }) {
           <stop offset="100%" stopColor="#4D3608" />
         </radialGradient>
 
-        {/* Central Emboss Gradient */}
-        <linearGradient id="emblemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        {/* Central Emboss Core Gradient */}
+        <radialGradient id="coinCenterGrad" cx="42%" cy="38%" r="60%">
           <stop offset="0%" stopColor="#FFFFFF" />
-          <stop offset="45%" stopColor="#FCE082" />
-          <stop offset="100%" stopColor="#A88120" />
-        </linearGradient>
+          <stop offset="40%" stopColor="#FDE68A" />
+          <stop offset="80%" stopColor="#D4AF37" />
+          <stop offset="100%" stopColor="#996515" />
+        </radialGradient>
       </defs>
 
       {/* 1. Outer Beveled Rim Disc */}
@@ -77,42 +79,28 @@ function GoldCoinSvg({ className = "" }) {
         opacity="0.5"
       />
 
-      {/* 5. Central Embossed Relief ("శ్రీ" Telugu Sacred Monogram) */}
-      <text
-        x="61"
-        y="66.5"
-        fontFamily="'Noto Serif Telugu', Georgia, serif"
-        fontWeight="900"
-        fontSize="28"
-        fill="#332103"
-        textAnchor="middle"
-        opacity="0.8"
-      >
-        శ్రీ
-      </text>
-      <text
-        x="59.2"
-        y="64.5"
-        fontFamily="'Noto Serif Telugu', Georgia, serif"
-        fontWeight="900"
-        fontSize="28"
-        fill="#FFFDEB"
-        textAnchor="middle"
+      {/* 5. Clean Embossed Mint Medallion Center */}
+      <circle
+        cx="60"
+        cy="60"
+        r="32"
+        fill="url(#coinCenterGrad)"
+        stroke="#FFE899"
+        strokeWidth="1"
         opacity="0.95"
-      >
-        శ్రీ
-      </text>
-      <text
-        x="60"
-        y="65.5"
-        fontFamily="'Noto Serif Telugu', Georgia, serif"
-        fontWeight="900"
-        fontSize="28"
-        fill="url(#emblemGrad)"
-        textAnchor="middle"
-      >
-        శ్రీ
-      </text>
+      />
+      <circle
+        cx="60"
+        cy="60"
+        r="22"
+        fill="none"
+        stroke="#8C6614"
+        strokeWidth="0.8"
+        strokeDasharray="2 2"
+        opacity="0.65"
+      />
+      <circle cx="60" cy="60" r="8" fill="#FFFBEB" opacity="0.9" />
+      <circle cx="60" cy="60" r="5" fill="#D4AF37" />
 
       {/* 6. Specular Highlight */}
       <path

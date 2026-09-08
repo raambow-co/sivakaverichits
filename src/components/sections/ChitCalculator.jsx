@@ -54,7 +54,7 @@ export function ChitCalculator({ onSelectSchemeForInquiry }) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
         {/* Left Side: Interactive Controls */}
-        <div className="lg:col-span-6 bg-white dark:bg-forest/80 p-6 sm:p-8 rounded-[4px] border border-gold/30 shadow-card-light space-y-7">
+        <div className="lg:col-span-6 bg-white dark:bg-forest/80 p-6 sm:p-8 rounded-3xl border border-gold/30 shadow-card-light space-y-7">
           
           {/* Preset Buttons */}
           <div>
@@ -67,7 +67,7 @@ export function ChitCalculator({ onSelectSchemeForInquiry }) {
                   key={p.value}
                   type="button"
                   onClick={() => setChitValue(p.value)}
-                  className={`py-2 px-1 text-xs font-bold font-telugu-body rounded-[2px] border transition-all ${
+                  className={`py-2 px-1 text-xs font-bold font-telugu-body rounded-lg border transition-all ${
                     chitValue === p.value
                       ? 'bg-forest text-white border-forest dark:bg-gold dark:text-forest-deep shadow-sm'
                       : 'bg-forest-surface dark:bg-forest-dark text-charcoal dark:text-ivory border-gray-200 dark:border-forest hover:border-gold'
@@ -114,7 +114,7 @@ export function ChitCalculator({ onSelectSchemeForInquiry }) {
                   key={m}
                   type="button"
                   onClick={() => setTenure(m)}
-                  className={`py-2.5 text-xs font-bold font-telugu-body rounded-[2px] border text-center transition-all ${
+                  className={`py-2.5 text-xs font-bold font-telugu-body rounded-lg border text-center transition-all ${
                     tenure === m
                       ? 'bg-forest text-white border-forest dark:bg-gold dark:text-forest-deep shadow-sm'
                       : 'bg-forest-surface dark:bg-forest-dark text-charcoal dark:text-ivory border-gray-200 dark:border-forest hover:border-gold'
@@ -128,7 +128,7 @@ export function ChitCalculator({ onSelectSchemeForInquiry }) {
           </div>
 
           {/* Why Chit Fund is unique alert */}
-          <div className="p-4 bg-[#FAF6EC] dark:bg-forest-dark/80 border border-gold/40 rounded-[2px] space-y-1.5">
+          <div className="p-4 bg-[#FAF6EC] dark:bg-forest-dark/80 border border-gold/40 rounded-xl space-y-1.5">
             <div className="flex items-center gap-2 font-telugu-body text-xs font-bold text-terracotta dark:text-gold-light">
               <Sparkles className="w-4 h-4" />
               <span>చిట్ ఫండ్ ప్రత్యేకత — డ్యూయల్ బెనిఫిట్ (Dual Benefit)</span>
@@ -164,7 +164,7 @@ export function ChitCalculator({ onSelectSchemeForInquiry }) {
             {/* Key Number Metrics Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              <div className="p-4 bg-white dark:bg-forest/60 border border-gold/20 rounded-[2px] shadow-sm">
+              <div className="p-4 bg-white dark:bg-forest/60 border border-gold/20 rounded-xl shadow-sm">
                 <span className="font-telugu-body text-xs text-charcoal/70 dark:text-ivory/70 block">
                   అసలు నెలవారీ వాయిదా (Gross):
                 </span>
@@ -176,7 +176,7 @@ export function ChitCalculator({ onSelectSchemeForInquiry }) {
                 </span>
               </div>
 
-              <div className="p-4 bg-forest-surface border border-forest/20 rounded-[2px] shadow-sm">
+              <div className="p-4 bg-forest-surface border border-forest/20 rounded-xl shadow-sm">
                 <span className="font-telugu-body text-xs font-bold text-forest block">
                   సగటు నెట్ వాయిదా (Net Installment):
                 </span>
@@ -188,7 +188,7 @@ export function ChitCalculator({ onSelectSchemeForInquiry }) {
                 </span>
               </div>
 
-              <div className="p-4 bg-[#FFF8EE] border border-gold/40 rounded-[2px] shadow-sm">
+              <div className="p-4 bg-[#FFF8EE] border border-gold/40 rounded-xl shadow-sm">
                 <div className="flex items-center gap-1 text-gold-dark font-telugu-body text-xs font-bold">
                   <TrendingUp className="w-3.5 h-3.5" />
                   <span>మొత్తం డివిడెండ్ లాభం:</span>
@@ -201,7 +201,7 @@ export function ChitCalculator({ onSelectSchemeForInquiry }) {
                 </span>
               </div>
 
-              <div className="p-4 bg-white dark:bg-forest/60 border border-gold/20 rounded-[2px] shadow-sm">
+              <div className="p-4 bg-white dark:bg-forest/60 border border-gold/20 rounded-xl shadow-sm">
                 <div className="flex items-center gap-1 text-terracotta font-telugu-body text-xs font-bold">
                   <PiggyBank className="w-3.5 h-3.5" />
                   <span>తక్షణ వేలం నిధుల పరిమితి:</span>
@@ -227,7 +227,7 @@ export function ChitCalculator({ onSelectSchemeForInquiry }) {
                   tenure: tenure,
                   monthly: netMonthly,
                 })}
-                className="w-full py-3.5 bg-forest hover:bg-forest-light text-white font-telugu-body font-bold text-base rounded-[2px] shadow-card-light hover:shadow-card-hover transition-all flex items-center justify-center gap-2"
+                className="w-full py-3.5 bg-forest hover:bg-forest-light text-white font-telugu-body font-bold text-base rounded-xl shadow-card-light hover:shadow-card-hover transition-all flex items-center justify-center gap-2"
               >
                 <span>ఈ ప్లాన్ ({formatINR(chitValue)}) కోసం అడ్మిషన్ నమోదు చేసుకోండి</span>
                 <ArrowRight className="w-4 h-4" />

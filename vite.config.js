@@ -3,8 +3,10 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  publicDir: 'public',
   server: {
     port: 3000,
-    open: true
-  }
+    open: false,
+  },
 });
+

@@ -11,7 +11,6 @@ export function Header({ theme, onToggleTheme }) {
     { labelTelugu: "క్యాలిక్యులేటర్", href: "#calculator" },
     { labelTelugu: "ఎలా పనిచేస్తుంది?", href: "#how-it-works" },
     { labelTelugu: "ప్రభుత్వ భద్రత", href: "#security" },
-    { labelTelugu: "లైవ్ వేలం", href: "#auctions" },
     { labelTelugu: "సంప్రదించండి", href: "#contact" },
   ];
 
@@ -50,8 +49,12 @@ export function Header({ theme, onToggleTheme }) {
         
         {/* Brand Logo & Title */}
         <a href="#" className="flex items-center gap-3.5 group">
-          <div className="w-11 h-11 rounded-[3px] border-2 border-gold bg-gradient-to-br from-forest to-forest-dark text-gold font-telugu-display text-2xl font-bold flex items-center justify-center shadow-card-light group-hover:scale-105 transition-transform">
-            శ్రీ
+          <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-full border-2 border-gold bg-white p-1 shadow-md group-hover:scale-105 transition-transform flex items-center justify-center overflow-hidden flex-shrink-0">
+            <img 
+              src={BRAND.logo} 
+              alt="Siva Kaveri Chits Logo" 
+              className="w-full h-full object-contain" 
+            />
           </div>
           <div className="flex flex-col">
             <span className="font-telugu-display text-xl sm:text-2xl font-extrabold text-forest dark:text-ivory leading-tight tracking-tight">
@@ -101,7 +104,7 @@ export function Header({ theme, onToggleTheme }) {
           {/* Quick WhatsApp / Join CTA */}
           <a
             href="#contact"
-            className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-forest hover:bg-forest-light text-white dark:bg-gold dark:hover:bg-gold-light dark:text-forest-deep font-telugu-body font-bold text-xs rounded-[3px] shadow-sm transition-all hover:shadow-card-light"
+            className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-forest hover:bg-forest-light text-white dark:bg-gold dark:hover:bg-gold-light dark:text-forest-deep font-telugu-body font-bold text-xs rounded-full shadow-sm transition-all hover:shadow-card-light"
           >
             <span>చిట్‌లో చేరండి</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -110,7 +113,7 @@ export function Header({ theme, onToggleTheme }) {
           {/* Mobile Menu Hamburger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded text-charcoal dark:text-ivory hover:bg-forest/5 dark:hover:bg-gold/10"
+            className="lg:hidden p-2 rounded-lg text-charcoal dark:text-ivory hover:bg-forest/5 dark:hover:bg-gold/10"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -138,7 +141,7 @@ export function Header({ theme, onToggleTheme }) {
           <div className="pt-2 flex flex-col gap-3">
             <a
               href={`tel:${BRAND.mobile}`}
-              className="flex items-center justify-center gap-2 py-2.5 bg-forest text-white rounded font-semibold text-sm"
+              className="flex items-center justify-center gap-2 py-2.5 bg-forest text-white rounded-xl font-semibold text-sm"
             >
               <Phone className="w-4 h-4" />
               <span>కాల్ చేయండి: {BRAND.mobile}</span>

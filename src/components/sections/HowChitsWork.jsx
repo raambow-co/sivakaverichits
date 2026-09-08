@@ -13,7 +13,7 @@ const ICON_MAP = {
 
 export function HowChitsWork({ onOpenInquiry }) {
   return (
-    <section id="how-it-works" className="py-16 sm:py-24 px-4 sm:px-8 max-w-[1360px] mx-auto bg-[#FAF6EC] dark:bg-forest-dark/40 border-y border-gold/30 rounded-[4px] my-6">
+    <section id="how-it-works" className="py-16 sm:py-24 px-4 sm:px-8 max-w-[1360px] mx-auto bg-[#FAF6EC] dark:bg-forest-dark/40 border-y border-gold/30 rounded-3xl my-6">
       
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-14">
@@ -36,14 +36,14 @@ export function HowChitsWork({ onOpenInquiry }) {
           return (
             <div
               key={item.step}
-              className="relative bg-white dark:bg-forest/80 border border-gold/30 rounded-[3px] p-6 shadow-card-light hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+              className="relative bg-white dark:bg-forest/80 border border-gold/30 rounded-2xl p-6 shadow-card-light hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               {/* Step Pill */}
               <div className="flex items-center justify-between mb-4">
                 <div className="w-10 h-10 rounded-full bg-forest text-gold font-english-display font-bold text-base flex items-center justify-center shadow-sm">
                   {item.step}
                 </div>
-                <div className="p-2 bg-forest-surface dark:bg-forest-dark rounded border border-forest/10">
+                <div className="p-2 bg-forest-surface dark:bg-forest-dark rounded-lg border border-forest/10">
                   <IconComponent className="w-5 h-5 text-forest dark:text-gold" />
                 </div>
               </div>
@@ -66,14 +66,14 @@ export function HowChitsWork({ onOpenInquiry }) {
       </div>
 
       {/* Comparison: Why Chit Fund vs Traditional Methods */}
-      <div className="bg-white dark:bg-forest/90 border border-gold/40 rounded-[3px] p-6 sm:p-8 shadow-card-light">
+      <div className="bg-white dark:bg-forest/90 border border-gold/40 rounded-2xl p-6 sm:p-8 shadow-card-light">
         <h3 className="font-telugu-display text-xl sm:text-2xl font-bold text-forest dark:text-ivory text-center mb-6">
           చిట్ ఫండ్ ఎందుకు ఉత్తమమైన ఎంపిక? (చిట్ vs ఇతర మార్గాలు)
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-telugu-body text-xs sm:text-sm">
           
-          <div className="p-4 bg-forest-surface dark:bg-forest-dark/70 rounded border border-forest/20 space-y-2">
+          <div className="p-4 bg-forest-surface dark:bg-forest-dark/70 rounded-xl border border-forest/20 space-y-2">
             <div className="font-bold text-forest dark:text-gold-light text-base border-b border-forest/20 pb-2">
               ✨ శివ కావేరి చిట్స్
             </div>

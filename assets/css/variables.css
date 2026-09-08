@@ -132,10 +132,10 @@
   /* ---------------------------------------------------------
      7. BORDER RADIUS & CORNER TREATMENTS
      --------------------------------------------------------- */
-  --radius-sharp: 0px;
-  --radius-subtle: 2px;
-  --radius-heritage: 4px;
-  --radius-card: 8px;
+  --radius-sharp: 8px;
+  --radius-subtle: 12px;
+  --radius-heritage: 16px;
+  --radius-card: 20px;
   --radius-pill: 9999px;
 }
 

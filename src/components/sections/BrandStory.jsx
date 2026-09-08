@@ -1,19 +1,17 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ShieldCheck, TrendingUp, Award } from 'lucide-react';
 import { BRAND } from '../../constants/tokens';
 
 /**
- * SECTION 02 — BRAND STORY (100% MOBILE RESPONSIVE & POLISHED)
- * 
- * CORE STATEMENT:
- *   "ఒక చిన్న అడుగు… ఒక పెద్ద ప్రయాణం."
+ * SECTION 02 — BRAND STORY & INSTITUTIONAL FOUNDATION
+ * Clean, standard English typography and high-trust financial presentation.
  */
 
 export function BrandStory({ onOpenInquiry }) {
   return (
     <section 
       id="brand-story"
-      className="relative w-full py-16 sm:py-28 lg:py-40 px-4 sm:px-12 lg:px-20 overflow-hidden bg-ivory dark:bg-[#03120C] text-charcoal dark:text-ivory transition-colors duration-500 border-t border-gold/15 select-none"
+      className="relative w-full py-16 sm:py-24 lg:py-32 px-4 sm:px-12 lg:px-20 overflow-hidden bg-ivory dark:bg-[#03120C] text-charcoal dark:text-ivory transition-colors duration-500 border-t border-gold/15"
     >
       {/* Background Texture & Ambient Halos */}
       <div className="grain-overlay absolute inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.045] z-[1] mix-blend-multiply dark:mix-blend-screen" />
@@ -37,80 +35,80 @@ export function BrandStory({ onOpenInquiry }) {
         }}
       />
 
-      {/* Faint Telugu Background Watermark ("వారసత్వం" - Heritage) */}
-      <div className="absolute top-[8%] -left-[4%] pointer-events-none select-none z-[1] opacity-[0.02] dark:opacity-[0.025] font-telugu-display font-black text-[clamp(5rem,14vw,18rem)] leading-none text-forest dark:text-gold">
-        వారసత్వం
+      {/* Subtle Background Typography Watermark */}
+      <div className="absolute top-[8%] -left-[2%] pointer-events-none select-none z-[1] opacity-[0.02] dark:opacity-[0.03] font-black text-[clamp(4rem,12vw,14rem)] leading-none text-forest dark:text-gold uppercase tracking-tight">
+        HERITAGE
       </div>
 
       <div className="relative z-10 max-w-[1360px] mx-auto">
         
         {/* Section Heading */}
-        <div className="space-y-3 sm:space-y-4 mb-10 sm:mb-20">
+        <div className="space-y-3 sm:space-y-4 mb-10 sm:mb-16">
           <div className="inline-flex items-center gap-2.5 sm:gap-3">
-            <span className="w-4 sm:w-5 h-[1px] bg-gold" />
-            <span className="font-telugu-display text-xs sm:text-sm font-bold text-terracotta dark:text-gold-light">
-              ఆ పునాదిని ఎవరు నిర్మిస్తున్నారు?
+            <span className="w-5 sm:w-6 h-[1.5px] bg-gold" />
+            <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-terracotta dark:text-gold-light">
+              Our Foundation & Heritage
             </span>
           </div>
 
-          <h2 className="font-telugu-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-forest dark:text-ivory leading-[1.25] tracking-tight">
-            ఒక చిన్న అడుగు… <br />
-            <span className="text-gradient-gold">ఒక పెద్ద ప్రయాణం.</span>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-forest dark:text-ivory leading-[1.2] tracking-tight">
+            A small disciplined step… <br />
+            <span className="text-gradient-gold">A major financial milestone.</span>
           </h2>
         </div>
 
         {/* Editorial Two-Column Composition */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-start">
           
-          {/* Left Column: Story Prose & Telugu Milestones */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-10">
+          {/* Left Column: Story Prose & English Milestones */}
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             
-            <div className="space-y-4 sm:space-y-6 text-sm sm:text-base lg:text-lg font-telugu-body text-charcoal/85 dark:text-ivory/85 leading-relaxed font-normal">
+            <div className="space-y-4 sm:space-y-5 text-sm sm:text-base lg:text-lg text-charcoal/85 dark:text-ivory/85 leading-relaxed font-normal">
               <p>
-                పొదుపు అంటే కేవలం మిగిలిన డబ్బును దాచుకోవడం కాదు. అది మన కుటుంబ భవిష్యత్తు కోసం తీసుకునే క్రమశిక్షణతో కూడిన ఒక సంకల్పం; పిల్లల ఉన్నత విద్య, సొంతింటి కల లేదా వ్యాపార విస్తరణకు దారితీసే ధైర్యం.
+                Savings is not merely setting aside leftover income. It is a structured commitment towards the long-term prosperity and security of your family — funding higher education, constructing a dream home, or fueling commercial business expansion.
               </p>
               <p className="text-xs sm:text-sm lg:text-base text-charcoal/70 dark:text-ivory/70 leading-relaxed">
-                ఏలూరు మరియు పశ్చిమ గోదావరి ప్రజల ప్రతి చిన్న పొదుపు అడుగుకూ నమ్మకమైన తోడుగా నిలుస్తూ, వేలాది కుటుంబాల పెద్ద కలల ప్రయాణానికి చట్టబద్ధమైన ఆర్థిక పునాదిని నిర్మిస్తున్నాము.
+                Standing as a reliable financial partner for the families and entrepreneurs of Eluru and the West Godavari region since 1998, we provide a secure, government-regulated framework that turns disciplined monthly savings into substantial capital.
               </p>
             </div>
 
-            {/* Clean Telugu Milestones (పొదుపు → ప్రయాణం → విశ్వాసం) */}
+            {/* Clean English Milestones (Disciplined Savings → Financial Growth → Total Trust) */}
             <div className="pt-4 border-t border-gold/30">
-              <div className="grid grid-cols-3 gap-2 sm:gap-6">
+              <div className="grid grid-cols-3 gap-3 sm:gap-6">
                 
                 <div className="space-y-1">
-                  <span className="font-english-display text-[0.62rem] sm:text-[0.68rem] tracking-[0.16em] sm:tracking-[0.2em] text-gold font-bold block">
+                  <span className="text-[0.65rem] sm:text-xs font-bold tracking-widest text-gold uppercase block">
                     01
                   </span>
-                  <span className="font-telugu-display text-sm sm:text-lg font-bold text-forest dark:text-ivory block">
-                    పొదుపు
+                  <span className="text-sm sm:text-base lg:text-lg font-bold text-forest dark:text-ivory block">
+                    Disciplined Savings
                   </span>
-                  <span className="font-telugu-body text-[0.68rem] sm:text-xs text-charcoal/60 dark:text-ivory/60 block">
-                    క్రమశిక్షణ
+                  <span className="text-[0.7rem] sm:text-xs text-charcoal/60 dark:text-ivory/60 block">
+                    Monthly Habit & Growth
                   </span>
                 </div>
 
-                <div className="space-y-1 border-l border-gold/25 pl-2 sm:pl-6">
-                  <span className="font-english-display text-[0.62rem] sm:text-[0.68rem] tracking-[0.16em] sm:tracking-[0.2em] text-gold font-bold block">
+                <div className="space-y-1 border-l border-gold/25 pl-3 sm:pl-6">
+                  <span className="text-[0.65rem] sm:text-xs font-bold tracking-widest text-gold uppercase block">
                     02
                   </span>
-                  <span className="font-telugu-display text-sm sm:text-lg font-bold text-forest dark:text-ivory block">
-                    ప్రయాణం
+                  <span className="text-sm sm:text-base lg:text-lg font-bold text-forest dark:text-ivory block">
+                    Structured Journey
                   </span>
-                  <span className="font-telugu-body text-[0.68rem] sm:text-xs text-charcoal/60 dark:text-ivory/60 block">
-                    నిరంతర వృద్ధి
+                  <span className="text-[0.7rem] sm:text-xs text-charcoal/60 dark:text-ivory/60 block">
+                    Flexible Borrowing
                   </span>
                 </div>
 
-                <div className="space-y-1 border-l border-gold/25 pl-2 sm:pl-6">
-                  <span className="font-english-display text-[0.62rem] sm:text-[0.68rem] tracking-[0.16em] sm:tracking-[0.2em] text-gold font-bold block">
+                <div className="space-y-1 border-l border-gold/25 pl-3 sm:pl-6">
+                  <span className="text-[0.65rem] sm:text-xs font-bold tracking-widest text-gold uppercase block">
                     03
                   </span>
-                  <span className="font-telugu-display text-sm sm:text-lg font-bold text-forest dark:text-ivory block">
-                    విశ్వాసం
+                  <span className="text-sm sm:text-base lg:text-lg font-bold text-forest dark:text-ivory block">
+                    Unwavering Trust
                   </span>
-                  <span className="font-telugu-body text-[0.68rem] sm:text-xs text-charcoal/60 dark:text-ivory/60 block">
-                    సురక్షితం
+                  <span className="text-[0.7rem] sm:text-xs text-charcoal/60 dark:text-ivory/60 block">
+                    100% Regulated & Safe
                   </span>
                 </div>
 
@@ -121,14 +119,14 @@ export function BrandStory({ onOpenInquiry }) {
             <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
               <button
                 onClick={onOpenInquiry}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-gradient-to-r from-[#B88E38] via-[#D4AF57] to-[#B88E38] hover:from-[#D4AF57] hover:to-[#B88E38] text-[#08221A] rounded-[2px] font-telugu-body font-bold text-sm shadow-xs transition-all duration-300 hover:-translate-y-0.5 cursor-pointer group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-gradient-to-r from-[#B88E38] via-[#D4AF57] to-[#B88E38] hover:from-[#D4AF57] hover:to-[#B88E38] text-[#08221A] rounded-xl font-bold text-sm shadow-xs transition-all duration-300 hover:-translate-y-0.5 cursor-pointer group"
               >
-                <span>మమ్మల్ని సంప్రదించండి</span>
+                <span>Get in Touch with Us</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
 
-              <span className="font-telugu-body text-xs text-charcoal/60 dark:text-ivory/60 text-center sm:text-left">
-                ఏలూరు కార్యాలయంలో ప్రత్యక్ష సమాచారం లభించును
+              <span className="text-xs text-charcoal/60 dark:text-ivory/60 text-center sm:text-left">
+                Direct in-person consultation at our Eluru office
               </span>
             </div>
 
@@ -136,42 +134,47 @@ export function BrandStory({ onOpenInquiry }) {
 
           {/* Right Column: Clean Editorial Plaque */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-5 sm:p-8 rounded-[2px] border border-gold/40 bg-white/70 dark:bg-forest-dark/70 backdrop-blur-sm shadow-xs space-y-3.5 sm:space-y-4 select-text">
+            <div className="p-5 sm:p-8 rounded-2xl border border-gold/40 bg-white/80 dark:bg-forest-dark/80 backdrop-blur-sm shadow-sm space-y-4">
               
-              <div className="flex items-center gap-3.5 border-b border-gold/20 pb-3 sm:pb-4">
-                <div className="w-10 h-10 rounded-[2px] border border-gold bg-[#08221A] flex items-center justify-center text-gold font-telugu-display text-xl font-bold flex-shrink-0">
-                  శ్రీ
+              <div className="flex items-center gap-3.5 border-b border-gold/20 pb-4">
+                <div className="w-14 h-14 rounded-full border-2 border-gold bg-white p-1.5 flex items-center justify-center flex-shrink-0 shadow-md overflow-hidden">
+                  <img src={BRAND.logo} alt="Siva Kaveri Chits Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <div className="font-telugu-display text-base sm:text-lg font-bold text-forest dark:text-ivory">
-                    {BRAND.nameTelugu}
-                  </div>
-                  <div className="font-english-display text-[0.62rem] sm:text-[0.65rem] tracking-[0.18em] text-gold-dark dark:text-gold uppercase">
+                  <div className="text-base sm:text-lg font-bold text-forest dark:text-ivory tracking-tight">
                     {BRAND.nameEnglish}
                   </div>
+                  <div className="text-[0.68rem] sm:text-[0.72rem] tracking-wider text-gold-dark dark:text-gold uppercase font-semibold">
+                    ESTABLISHED {BRAND.establishedYear} • ELURU, AP
+                  </div>
                 </div>
               </div>
 
-              <div className="space-y-2.5 font-telugu-body text-xs sm:text-sm">
-                <div className="flex items-center justify-between border-b border-gold/15 pb-2">
-                  <span className="text-charcoal/60 dark:text-ivory/60">ప్రాంతం:</span>
-                  <span className="font-semibold text-forest dark:text-ivory">ఏలూరు, ఆంధ్రప్రదేశ్</span>
+              <div className="space-y-3 text-xs sm:text-sm">
+                <div className="flex items-center justify-between border-b border-gold/15 pb-2.5">
+                  <span className="text-charcoal/60 dark:text-ivory/60 font-medium">Head Office:</span>
+                  <span className="font-semibold text-forest dark:text-ivory">Eluru, Andhra Pradesh</span>
                 </div>
 
-                <div className="flex items-center justify-between border-b border-gold/15 pb-2">
-                  <span className="text-charcoal/60 dark:text-ivory/60">చట్టబద్ధ రిజిస్ట్రేషన్:</span>
-                  <span className="font-mono text-gold-dark dark:text-gold-light font-bold">ప్రభుత్వ నమోదిత చిట్ ఫండ్</span>
+                <div className="flex items-center justify-between border-b border-gold/15 pb-2.5">
+                  <span className="text-charcoal/60 dark:text-ivory/60 font-medium">Regulatory Status:</span>
+                  <span className="text-gold-dark dark:text-gold-light font-bold">Chit Funds Act, 1982 Registered</span>
                 </div>
 
-                <div className="flex items-center justify-between border-b border-gold/15 pb-2">
-                  <span className="text-charcoal/60 dark:text-ivory/60">సేవా విధానం:</span>
-                  <span className="font-semibold text-forest dark:text-ivory">100% పారదర్శక వేలం</span>
+                <div className="flex items-center justify-between border-b border-gold/15 pb-2.5">
+                  <span className="text-charcoal/60 dark:text-ivory/60 font-medium">Service Standards:</span>
+                  <span className="font-semibold text-forest dark:text-ivory">100% Transparent Live Auctions</span>
+                </div>
+
+                <div className="flex items-center justify-between border-b border-gold/15 pb-2.5">
+                  <span className="text-charcoal/60 dark:text-ivory/60 font-medium">Security Guarantee:</span>
+                  <span className="font-semibold text-forest dark:text-ivory">Bank-backed Statutory Deposits</span>
                 </div>
               </div>
 
-              <div className="pt-1 sm:pt-2">
-                <p className="font-telugu-body text-xs text-charcoal/80 dark:text-ivory/80 italic">
-                  "{BRAND.mottoTelugu}"
+              <div className="pt-2">
+                <p className="text-xs text-charcoal/80 dark:text-ivory/80 italic font-medium leading-relaxed">
+                  "{BRAND.mottoEnglish}"
                 </p>
               </div>
 

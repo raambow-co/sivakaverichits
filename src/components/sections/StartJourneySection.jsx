@@ -1,18 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, X } from 'lucide-react';
+import { ArrowRight, X, Phone, Mail, MapPin, CheckCircle2 } from 'lucide-react';
+import { BRAND } from '../../constants/tokens';
 
 /**
- * SECTION 10 — START YOUR CHIT JOURNEY (100% MOBILE RESPONSIVE & POLISHED)
- * 
- * CORE STATEMENT:
- *   "మీ కలలకు… మీ పొదుపుతో తొలి అడుగు."
- *   Supporting: "మీకు సరిపోయే చిట్ పథకం గురించి తెలుసుకోవడానికి మమ్మల్ని సంప్రదించండి."
+ * SECTION 10 — START YOUR CHIT JOURNEY
+ * High-conversion enquiry CTA and consultation form in clean English.
  */
 
 export function StartJourneySection() {
   const [isVisible, setIsVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', phone: '', scheme: '₹2,50,000 Scheme', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const sectionRef = useRef(null);
 
@@ -40,7 +38,7 @@ export function StartJourneySection() {
     setTimeout(() => {
       setIsModalOpen(false);
       setSubmitted(false);
-      setFormData({ name: '', phone: '', message: '' });
+      setFormData({ name: '', phone: '', scheme: '₹2,50,000 Scheme', message: '' });
     }, 2000);
   };
 
@@ -48,7 +46,7 @@ export function StartJourneySection() {
     <section
       ref={sectionRef}
       id="start-journey"
-      className="relative w-full py-16 sm:py-32 lg:py-44 px-4 sm:px-12 lg:px-20 overflow-hidden bg-[#071D16] text-ivory transition-colors duration-500 border-t border-gold/25 select-none"
+      className="relative w-full py-16 sm:py-24 lg:py-32 px-4 sm:px-12 lg:px-20 overflow-hidden bg-[#071D16] text-ivory transition-colors duration-500 border-t border-gold/25"
     >
       {/* Background Texture & Ambient Halos */}
       <div className="grain-overlay absolute inset-0 pointer-events-none opacity-[0.045] z-[1] mix-blend-screen" />
@@ -64,99 +62,109 @@ export function StartJourneySection() {
         }}
       />
 
-      {/* Faint Regional Watermark ("పునాది" - Foundation) */}
-      <div className="absolute top-[15%] -left-[3%] pointer-events-none select-none z-[1] opacity-[0.025] font-telugu-display font-black text-[clamp(6rem,18vw,22rem)] leading-none text-gold">
-        పునాది
+      {/* Subtle Background Watermark */}
+      <div className="absolute top-[15%] -left-[2%] pointer-events-none select-none z-[1] opacity-[0.025] font-black text-[clamp(4rem,14vw,18rem)] leading-none text-gold uppercase tracking-tight">
+        FUTURE
       </div>
 
       <div className="relative z-10 max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
         
-        {/* Left / Center: Dominant Emotional Statement & Primary CTA */}
+        {/* Left / Center: Dominant Statement & Primary CTA */}
         <div
-          className={`lg:col-span-8 space-y-6 sm:space-y-10 transition-all duration-1000 ease-out ${
+          className={`lg:col-span-7 space-y-6 sm:space-y-8 transition-all duration-1000 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <h2 className="font-telugu-display text-2xl sm:text-4xl md:text-5xl lg:text-[4.25rem] font-bold text-ivory leading-[1.2] tracking-tight">
-            మీ కలలకు…<br />
-            <span className="text-gradient-gold">మీ పొదుపుతో తొలి అడుగు.</span>
+          <div className="inline-flex items-center gap-2">
+            <span className="w-5 h-[1.5px] bg-gold" />
+            <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-gold-light">
+              Start Your Journey
+            </span>
+          </div>
+
+          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-ivory leading-[1.15] tracking-tight">
+            For Your Family's Dreams…<br />
+            <span className="text-gradient-gold">Take the first step with disciplined savings.</span>
           </h2>
 
-          <p className="font-telugu-body text-sm sm:text-lg lg:text-xl text-ivory/85 leading-relaxed max-w-2xl font-normal">
-            మీకు సరిపోయే చిట్ పథకం గురించి తెలుసుకోవడానికి మమ్మల్ని సంప్రదించండి.
+          <p className="text-sm sm:text-lg lg:text-xl text-ivory/85 leading-relaxed max-w-2xl font-normal">
+            Contact our advisors today to find the exact chit scheme tailored for your life goals, wedding plans, or commercial business milestones.
           </p>
 
           {/* Primary Dominant CTA */}
           <div className="pt-2">
             <button
               onClick={() => setIsModalOpen(true)}
-              className="w-full sm:w-auto text-center group relative inline-flex items-center justify-center gap-3.5 px-8 py-4 sm:px-10 sm:py-4.5 bg-gradient-to-r from-[#B88E38] via-[#D4AF57] to-[#B88E38] hover:from-[#D4AF57] hover:to-[#B88E38] text-[#08221A] rounded-[2px] font-telugu-body font-bold text-base sm:text-lg shadow-[0_8px_30px_rgba(184,142,56,0.25)] hover:shadow-[0_12px_40px_rgba(184,142,56,0.4)] transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
+              className="w-full sm:w-auto text-center group relative inline-flex items-center justify-center gap-3.5 px-8 py-4 sm:px-10 sm:py-4.5 bg-gradient-to-r from-[#B88E38] via-[#D4AF57] to-[#B88E38] hover:from-[#D4AF57] hover:to-[#B88E38] text-[#08221A] rounded-xl font-bold text-base sm:text-lg shadow-[0_8px_30px_rgba(184,142,56,0.25)] hover:shadow-[0_12px_40px_rgba(184,142,56,0.4)] transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
             >
-              <span>మాతో మాట్లాడండి</span>
+              <span>Speak with Our Advisors</span>
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
             </button>
           </div>
 
-          {/* Minimal Secondary Contact Placeholders */}
-          <div className="pt-6 sm:pt-10 border-t border-gold/20 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-x-10 sm:gap-y-4 text-xs sm:text-sm font-telugu-body text-ivory/70">
+          {/* Contact Details Row */}
+          <div className="pt-6 sm:pt-8 border-t border-gold/20 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-x-8 sm:gap-y-3 text-xs sm:text-sm text-ivory/70">
             <div>
-              <span className="text-ivory/40 uppercase tracking-widest text-[0.65rem] sm:text-[0.68rem] block mb-0.5">ఫోన్</span>
-              <span className="font-english-display font-medium text-gold-light tracking-wider">XXXXXXXXXX</span>
+              <span className="text-ivory/40 uppercase tracking-widest text-[0.68rem] block mb-0.5 font-medium">Direct Phone</span>
+              <span className="font-semibold text-gold-light tracking-wide">{BRAND.phone}</span>
             </div>
 
             <div className="hidden sm:block w-[1px] h-6 bg-gold/20" />
 
             <div>
-              <span className="text-ivory/40 uppercase tracking-widest text-[0.65rem] sm:text-[0.68rem] block mb-0.5">ఈమెయిల్</span>
-              <span className="font-english-display font-medium text-gold-light">example@example.com</span>
+              <span className="text-ivory/40 uppercase tracking-widest text-[0.68rem] block mb-0.5 font-medium">Email Support</span>
+              <span className="font-semibold text-gold-light">{BRAND.email}</span>
             </div>
 
             <div className="hidden sm:block w-[1px] h-6 bg-gold/20" />
 
             <div>
-              <span className="text-ivory/40 uppercase tracking-widest text-[0.65rem] sm:text-[0.68rem] block mb-0.5">ప్రాంతం</span>
-              <span className="font-telugu-display text-ivory font-medium">ఎలూరు, ఆంధ్రప్రదేశ్</span>
+              <span className="text-ivory/40 uppercase tracking-widest text-[0.68rem] block mb-0.5 font-medium">Branch Location</span>
+              <span className="text-ivory font-medium">Eluru, Andhra Pradesh</span>
             </div>
           </div>
         </div>
 
-        {/* Right: Hero Gold Medallion Callback (Compact on Mobile) */}
+        {/* Right: Massive Gold Medallion Emblem with Rotating Orbital Rings & Breathing Glow */}
         <div
-          className={`lg:col-span-4 flex justify-center lg:justify-end transition-all duration-1000 delay-200 ease-out ${
+          className={`lg:col-span-5 flex justify-center lg:justify-end transition-all duration-1000 delay-200 ease-out ${
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}
         >
-          <div className="relative w-48 h-48 sm:w-80 sm:h-80 lg:w-96 lg:h-96 flex items-center justify-center pointer-events-none select-none">
-            <div className="absolute inset-0 bg-gradient-to-br from-gold/20 via-gold/5 to-transparent rounded-full filter blur-2xl" />
+          <div className="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[440px] lg:h-[440px] flex items-center justify-center pointer-events-none select-none">
+            {/* Breathing Gold Ambient Glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-gold/35 via-gold/15 to-transparent rounded-full filter blur-3xl animate-glow-pulse" />
 
-            <div className="absolute inset-2 rounded-full border border-gold/30" />
-            <div className="absolute inset-5 sm:inset-6 rounded-full border border-dashed border-gold/25" />
-            <div className="absolute inset-9 sm:inset-12 rounded-full border border-gold/20" />
+            {/* Rotating Outer Dashed Rings */}
+            <div className="absolute inset-2 sm:inset-4 rounded-full border-2 border-gold/30" />
+            <div className="absolute inset-6 sm:inset-10 rounded-full border-2 border-dashed border-gold/40 animate-spin-slow" />
+            <div className="absolute inset-12 sm:inset-16 rounded-full border border-gold/25" />
 
-            <div className="relative w-28 h-28 sm:w-44 sm:h-44 rounded-full border-2 border-gold/60 bg-gradient-to-br from-[#0F382C] via-[#08221A] to-[#04130E] flex flex-col items-center justify-center shadow-[0_16px_40px_rgba(0,0,0,0.6)]">
-              <div className="absolute inset-1.5 sm:inset-2 rounded-full border border-gold/30" />
+            {/* Central 3D Embossed Seal with Big Official Logo */}
+            <div className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full border-4 border-gold/90 bg-gradient-to-br from-[#0F382C] via-[#08221A] to-[#04130E] flex flex-col items-center justify-center shadow-[0_20px_60px_rgba(0,0,0,0.8)] animate-float-gentle p-3">
+              <div className="absolute inset-2 rounded-full border border-gold/40" />
+              
+              <div className="w-36 h-36 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-full bg-white border-4 border-gold overflow-hidden flex items-center justify-center p-3 relative z-10 shadow-[0_0_40px_rgba(184,142,56,0.6)]">
+                <img 
+                  src={BRAND.logo} 
+                  alt="Siva Kaveri Chits Logo" 
+                  className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.15)]" 
+                />
+              </div>
 
-              <span className="font-telugu-display text-2xl sm:text-4xl font-bold text-gradient-gold">
-                శ్రీ
-              </span>
-              <span className="font-english-display text-[0.55rem] sm:text-[0.6rem] tracking-[0.2em] text-gold/70 uppercase mt-0.5 sm:mt-1">
-                ESTD. 1998
+              <span className="text-[0.6rem] sm:text-xs tracking-[0.2em] text-gold-light uppercase font-bold font-english-display relative z-10 mt-1.5">
+                ESTD. {BRAND.establishedYear} • ELURU
               </span>
             </div>
-
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 sm:w-2 sm:h-2 rotate-45 border border-gold bg-gold/40" />
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 sm:w-2 sm:h-2 rotate-45 border border-gold bg-gold/40" />
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 sm:w-2 sm:h-2 rotate-45 border border-gold bg-gold/40" />
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 sm:w-2 sm:h-2 rotate-45 border border-gold bg-gold/40" />
           </div>
         </div>
 
       </div>
 
-      {/* Lightweight Editorial Contact Modal (Keyboard-Safe & Scrollable) */}
+      {/* Modal Consultation Form */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-[#04130E]/85 backdrop-blur-sm">
-          <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-[#08221A] border border-gold/40 rounded-[2px] p-5 sm:p-8 text-ivory shadow-[0_24px_60px_rgba(0,0,0,0.8)] select-text">
+          <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-[#08221A] border border-gold/40 rounded-2xl p-5 sm:p-8 text-ivory shadow-[0_24px_60px_rgba(0,0,0,0.8)] select-text">
             
             <button
               onClick={() => setIsModalOpen(false)}
@@ -166,13 +174,18 @@ export function StartJourneySection() {
               <X className="w-5 h-5" />
             </button>
 
-            <div className="space-y-1 mb-5 pr-8">
-              <h3 className="font-telugu-display text-xl sm:text-2xl font-bold text-ivory">
-                మాతో మాట్లాడండి
-              </h3>
-              <p className="font-telugu-body text-xs sm:text-sm text-ivory/70">
-                మీ వివరాలను నమోదు చేయండి, మా ప్రతినిధులు త్వరలో సంప్రదిస్తారు.
-              </p>
+            <div className="flex items-center gap-4 mb-5 pr-8 border-b border-gold/20 pb-4">
+              <div className="w-16 h-16 rounded-full border-2 border-gold bg-white p-1.5 shadow-md flex items-center justify-center flex-shrink-0 overflow-hidden">
+                <img src={BRAND.logo} alt="Siva Kaveri Chits Logo" className="w-full h-full object-contain" />
+              </div>
+              <div className="space-y-0.5">
+                <h3 className="text-lg sm:text-xl font-bold text-ivory">
+                  Request a Consultation
+                </h3>
+                <p className="text-xs text-ivory/70">
+                  {BRAND.nameEnglish} • Registered Chit Funds, Eluru
+                </p>
+              </div>
             </div>
 
             {submitted ? (
@@ -180,62 +193,79 @@ export function StartJourneySection() {
                 <div className="w-10 h-10 rounded-full border border-gold/60 bg-gold/20 flex items-center justify-center mx-auto text-gold font-bold">
                   ✓
                 </div>
-                <div className="font-telugu-display text-lg font-bold text-ivory">
-                  ధన్యవాదాలు!
+                <div className="text-lg font-bold text-ivory">
+                  Thank You!
                 </div>
-                <p className="font-telugu-body text-xs text-ivory/70">
-                  మీ సందేశం అందింది. మేము త్వరలోనే సంప్రదిస్తాము.
+                <p className="text-xs text-ivory/70">
+                  Your enquiry has been received. Our team will get in touch with you shortly.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-3.5 font-telugu-body text-xs sm:text-sm">
+              <form onSubmit={handleSubmit} className="space-y-3.5 text-xs sm:text-sm">
                 <div>
-                  <label className="block text-xs text-ivory/70 mb-1">
-                    పేరు
+                  <label className="block text-xs text-ivory/70 mb-1 font-medium">
+                    Full Name
                   </label>
                   <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="మీ పూర్తి పేరు"
-                    className="w-full px-3 py-2 sm:py-2.5 bg-black/30 border border-gold/30 rounded-[2px] text-ivory placeholder-ivory/30 focus:outline-none focus:border-gold transition-colors text-xs sm:text-sm"
+                    placeholder="Enter your full name"
+                    className="w-full px-3.5 py-2.5 bg-black/30 border border-gold/30 rounded-lg text-ivory placeholder-ivory/30 focus:outline-none focus:border-gold transition-colors text-xs sm:text-sm"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs text-ivory/70 mb-1">
-                    మొబైల్ నంబర్
+                  <label className="block text-xs text-ivory/70 mb-1 font-medium">
+                    Mobile Number
                   </label>
                   <input
                     type="tel"
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="10 అంకెల మొబైల్ నంబర్"
-                    className="w-full px-3 py-2 sm:py-2.5 bg-black/30 border border-gold/30 rounded-[2px] text-ivory placeholder-ivory/30 focus:outline-none focus:border-gold transition-colors text-xs sm:text-sm"
+                    placeholder="10-digit mobile number"
+                    className="w-full px-3.5 py-2.5 bg-black/30 border border-gold/30 rounded-lg text-ivory placeholder-ivory/30 focus:outline-none focus:border-gold transition-colors text-xs sm:text-sm"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs text-ivory/70 mb-1">
-                    మీ సందేశం
+                  <label className="block text-xs text-ivory/70 mb-1 font-medium">
+                    Preferred Scheme Value
+                  </label>
+                  <select
+                    value={formData.scheme}
+                    onChange={(e) => setFormData({ ...formData, scheme: e.target.value })}
+                    className="w-full px-3.5 py-2.5 bg-[#04130E] border border-gold/30 rounded-lg text-ivory focus:outline-none focus:border-gold transition-colors text-xs sm:text-sm"
+                  >
+                    <option value="₹50,000 Scheme">₹50,000 Scheme (₹2,000/mo)</option>
+                    <option value="₹1,00,000 Scheme">₹1,00,000 Scheme (₹4,000/mo)</option>
+                    <option value="₹2,50,000 Scheme">₹2,50,000 Scheme (₹6,250/mo)</option>
+                    <option value="₹5,00,000 Scheme">₹5,00,000 Scheme (₹12,500/mo)</option>
+                    <option value="₹10,00,000 Scheme">₹10,00,000 Scheme (₹25,000/mo)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs text-ivory/70 mb-1 font-medium">
+                    Message / Queries (Optional)
                   </label>
                   <textarea
                     rows={3}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="మీరు తెలుసుకోవాలనుకుంటున్న వివరాలు..."
-                    className="w-full px-3 py-2 sm:py-2.5 bg-black/30 border border-gold/30 rounded-[2px] text-ivory placeholder-ivory/30 focus:outline-none focus:border-gold transition-colors resize-none text-xs sm:text-sm"
+                    placeholder="Tell us what you are saving for..."
+                    className="w-full px-3.5 py-2.5 bg-black/30 border border-gold/30 rounded-lg text-ivory placeholder-ivory/30 focus:outline-none focus:border-gold transition-colors resize-none text-xs sm:text-sm"
                   />
                 </div>
 
                 <div className="pt-1">
                   <button
                     type="submit"
-                    className="w-full py-3 bg-gold hover:bg-gold-light text-[#08221A] font-bold rounded-[2px] flex items-center justify-center gap-2 transition-colors cursor-pointer text-sm"
+                    className="w-full py-3 bg-gold hover:bg-gold-light text-[#08221A] font-bold rounded-lg flex items-center justify-center gap-2 transition-colors cursor-pointer text-sm"
                   >
-                    <span>సంప్రదించండి</span>
+                    <span>Submit Enquiry</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>

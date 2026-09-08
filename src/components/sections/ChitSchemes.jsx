@@ -62,10 +62,10 @@ export function ChitSchemes({ onSelectSchemeForInquiry }) {
         {filteredSchemes.map((scheme) => (
           <div
             key={scheme.id}
-            className="group relative bg-white dark:bg-forest/85 border border-gold/40 rounded-[3px] p-6 sm:p-7 shadow-card-light hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+            className="group relative bg-white dark:bg-forest/85 border border-gold/40 rounded-2xl p-6 sm:p-7 shadow-card-light hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
           >
             {/* Top Accent Line */}
-            <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-gold via-forest to-terracotta" />
+            <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-gold via-forest to-terracotta rounded-t-2xl" />
 
             <div>
               {/* Badge & Category */}
@@ -123,7 +123,7 @@ export function ChitSchemes({ onSelectSchemeForInquiry }) {
               </div>
 
               {/* Ideal for note */}
-              <div className="text-xs font-telugu-body text-charcoal/75 dark:text-ivory/70 mb-5 leading-relaxed bg-[#FAF6EC] dark:bg-forest-dark/60 p-2.5 rounded border border-gold/20">
+              <div className="text-xs font-telugu-body text-charcoal/75 dark:text-ivory/70 mb-5 leading-relaxed bg-[#FAF6EC] dark:bg-forest-dark/60 p-2.5 rounded-lg border border-gold/20">
                 <strong>ఎవరికి అనుకూలం:</strong> {scheme.recommendedFor}
               </div>
             </div>
@@ -147,7 +147,7 @@ export function ChitSchemes({ onSelectSchemeForInquiry }) {
                   tenure: scheme.tenureMonths,
                   monthly: scheme.monthlyInstallment,
                 })}
-                className="w-full py-2.5 bg-forest hover:bg-forest-light text-white dark:bg-gold dark:text-forest-deep font-telugu-body font-bold text-sm rounded-[2px] transition-all flex items-center justify-center gap-2 group-hover:shadow-sm"
+                className="w-full py-2.5 bg-forest hover:bg-forest-light text-white dark:bg-gold dark:text-forest-deep font-telugu-body font-bold text-sm rounded-xl transition-all flex items-center justify-center gap-2 group-hover:shadow-sm"
               >
                 <span>ఈ గ్రూప్‌లో చేరండి</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />

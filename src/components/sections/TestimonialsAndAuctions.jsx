@@ -31,7 +31,7 @@ export function TestimonialsAndAuctions() {
             {TESTIMONIALS.map((t) => (
               <div
                 key={t.id}
-                className="bg-white dark:bg-forest/80 border border-gold/30 rounded-[3px] p-5 sm:p-6 shadow-card-light space-y-3"
+                className="bg-white dark:bg-forest/80 border border-gold/30 rounded-2xl p-5 sm:p-6 shadow-card-light space-y-3"
               >
                 {/* Rating Stars */}
                 <div className="flex items-center justify-between">
@@ -40,7 +40,7 @@ export function TestimonialsAndAuctions() {
                       <Star key={i} className="w-4 h-4 fill-gold" />
                     ))}
                   </div>
-                  <span className="text-[0.68rem] font-telugu-body font-semibold px-2 py-0.5 bg-forest-surface dark:bg-forest-dark text-forest dark:text-gold rounded border border-forest/10">
+                  <span className="text-[0.68rem] font-telugu-body font-semibold px-2.5 py-0.5 bg-forest-surface dark:bg-forest-dark text-forest dark:text-gold rounded-full border border-forest/10">
                     {t.scheme}
                   </span>
                 </div>
@@ -85,7 +85,7 @@ export function TestimonialsAndAuctions() {
             </p>
           </div>
 
-          <div className="bg-white dark:bg-forest/80 border-2 border-gold/40 rounded-[3px] p-5 sm:p-6 shadow-card-light space-y-4">
+          <div className="bg-white dark:bg-forest/80 border-2 border-gold/40 rounded-2xl p-5 sm:p-6 shadow-card-light space-y-4">
             
             <div className="flex items-center justify-between text-xs font-telugu-body font-bold text-forest dark:text-gold-light border-b border-gold/30 pb-2">
               <span>మార్చి 2026 వేలం వివరాలు</span>
@@ -96,7 +96,7 @@ export function TestimonialsAndAuctions() {
               {UPCOMING_AUCTIONS.map((auc, i) => (
                 <div
                   key={i}
-                  className="p-3.5 bg-forest-surface dark:bg-forest-dark rounded border border-forest/15 hover:border-gold transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                  className="p-3.5 bg-forest-surface dark:bg-forest-dark rounded-xl border border-forest/15 hover:border-gold transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                 >
                   <div>
                     <div className="flex items-center gap-2 font-telugu-body text-xs">

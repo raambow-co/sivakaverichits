@@ -35,10 +35,10 @@ export function TrustSecurity() {
           return (
             <div
               key={idx}
-              className="bg-white dark:bg-forest/80 border border-gold/30 rounded-[3px] p-6 shadow-card-light hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between"
+              className="bg-white dark:bg-forest/80 border border-gold/30 rounded-2xl p-6 shadow-card-light hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                <div className="w-12 h-12 rounded bg-forest-surface dark:bg-forest-dark border border-forest/20 dark:border-gold/30 flex items-center justify-center text-forest dark:text-gold mb-4 shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-forest-surface dark:bg-forest-dark border border-forest/20 dark:border-gold/30 flex items-center justify-center text-forest dark:text-gold mb-4 shadow-sm">
                   <IconComponent className="w-6 h-6" />
                 </div>
                 <h3 className="font-telugu-display text-base font-bold text-forest dark:text-ivory mb-2">
@@ -58,7 +58,7 @@ export function TrustSecurity() {
       </div>
 
       {/* Official Registration Proof Banner */}
-      <div className="bg-forest text-white rounded-[4px] p-8 sm:p-10 shadow-heritage-lg border-2 border-gold/60 relative overflow-hidden">
+      <div className="bg-forest text-white rounded-3xl p-8 sm:p-10 shadow-heritage-lg border-2 border-gold/60 relative overflow-hidden">
         
         {/* Background Subtle Watermark */}
         <div className="absolute right-0 bottom-0 text-[10rem] font-telugu-display font-black text-white/5 pointer-events-none select-none leading-none">
@@ -68,7 +68,7 @@ export function TrustSecurity() {
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           <div className="lg:col-span-8 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 border border-gold/40 rounded text-xs font-telugu-body text-gold-light">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/10 border border-gold/40 rounded-full text-xs font-telugu-body text-gold-light">
               <Lock className="w-3.5 h-3.5" />
               <span>రిజిస్ట్రార్ ఆఫ్ చిట్స్, ఏలూరు కార్యాలయ పరిధి</span>
             </div>

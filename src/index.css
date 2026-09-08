@@ -102,6 +102,163 @@ body {
   }
 
   /* ==========================================================================
+     SCHEMES SLIDESHOW TRANSITIONS & KEYFRAMES
+     ========================================================================== */
+  @keyframes slideInRight {
+    0% {
+      opacity: 0;
+      transform: translate3d(45px, 0, 0) scale(0.97);
+      filter: blur(4px);
+    }
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: blur(0px);
+    }
+  }
+
+  @keyframes slideInLeft {
+    0% {
+      opacity: 0;
+      transform: translate3d(-45px, 0, 0) scale(0.97);
+      filter: blur(4px);
+    }
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: blur(0px);
+    }
+  }
+
+  @keyframes elementFadeUp {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 16px, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-fade-up-1 {
+    animation: elementFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.06s both;
+  }
+  .animate-fade-up-2 {
+    animation: elementFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.14s both;
+  }
+  .animate-fade-up-3 {
+    animation: elementFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+  }
+  .animate-fade-up-4 {
+    animation: elementFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.30s both;
+  }
+
+  /* ==========================================================================
+     PREMIUM LUXURY HIGH-ANIMATIONS (BORDER BEAM, GLOW, RADAR & 3D TILT)
+     ========================================================================== */
+  @keyframes borderBeam {
+    0% {
+      offset-distance: 0%;
+    }
+    100% {
+      offset-distance: 100%;
+    }
+  }
+
+  @keyframes glowPulse {
+    0%, 100% {
+      opacity: 0.45;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.85;
+      transform: scale(1.04);
+    }
+  }
+
+  @keyframes radarPing {
+    0% {
+      transform: scale(0.95);
+      opacity: 0.8;
+    }
+    70%, 100% {
+      transform: scale(2.2);
+      opacity: 0;
+    }
+  }
+
+  @keyframes floatGentle {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-8px) rotate(0.8deg);
+    }
+  }
+
+  @keyframes shimmerSlide {
+    0% {
+      transform: translateX(-150%) skewX(-20deg);
+    }
+    50%, 100% {
+      transform: translateX(250%) skewX(-20deg);
+    }
+  }
+
+  @keyframes spinSlow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-glow-pulse {
+    animation: glowPulse 3.5s ease-in-out infinite;
+  }
+
+  .animate-radar-ping {
+    animation: radarPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .animate-float-gentle {
+    animation: floatGentle 4.5s ease-in-out infinite;
+  }
+
+  .animate-shimmer-slide {
+    animation: shimmerSlide 3.2s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spinSlow 20s linear infinite;
+  }
+
+  /* 3D Depth Card perspective */
+  .perspective-card {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+  }
+
+  /* Interactive Liquid Gold Glow Border */
+  .border-glow-gold {
+    box-shadow: 0 0 25px -5px rgba(184, 142, 56, 0.35), 0 0 10px -2px rgba(212, 175, 87, 0.25);
+  }
+
+  [data-theme="dark-forest"] .border-glow-gold {
+    box-shadow: 0 0 30px -4px rgba(212, 175, 87, 0.4), 0 0 15px -2px rgba(243, 238, 219, 0.2);
+  }
+
+  /* ==========================================================================
      PROMINENT, VISIBLE 60FPS GPU FLOATING & GLOWING 3D GOLD COIN ANIMATIONS
      - Fluid 26px - 34px vertical float range with realistic 3D pitch/roll tilts
      - Pure GPU transform for silky 60fps with zero lag

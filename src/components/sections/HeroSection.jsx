@@ -11,14 +11,9 @@ import { GoldCoinsOverlay } from '../common/GoldCoinsOverlay';
  * English: "Small savings become the foundation for big dreams."
  */
 
-const HOLD_DURATION = 4200;
-const MORPH_DURATION = 1300;
-
 export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme }) {
   const [currentLang, setCurrentLang] = useState('te'); 
-  const [targetLang, setTargetLang] = useState('te');
   const [isAuto, setIsAuto] = useState(true);
-  const [phase, setPhase] = useState('HOLD_TE');
 
   const teluguStatement = useMemo(() => ({
     line1: [
@@ -49,145 +44,49 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
     ]
   }), []);
 
-  // Robust 4-stage State Machine: Telugu ↔ English continuous auto-loop
+  // Continuous auto-loop alternating between Telugu and English every 4.2 seconds
   useEffect(() => {
     if (!isAuto) return;
 
-    let timer;
+    const interval = setInterval(() => {
+      setCurrentLang((prev) => (prev === 'te' ? 'en' : 'te'));
+    }, 4200);
 
-    if (phase === 'HOLD_TE') {
-      timer = setTimeout(() => {
-        setPhase('MORPHING_TO_EN');
-        setTargetLang('en');
-      }, HOLD_DURATION);
-    } else if (phase === 'MORPHING_TO_EN') {
-      timer = setTimeout(() => {
-        setCurrentLang('en');
-        setPhase('HOLD_EN');
-      }, MORPH_DURATION);
-    } else if (phase === 'HOLD_EN') {
-      timer = setTimeout(() => {
-        setPhase('MORPHING_TO_TE');
-        setTargetLang('te');
-      }, HOLD_DURATION);
-    } else if (phase === 'MORPHING_TO_TE') {
-      timer = setTimeout(() => {
-        setCurrentLang('te');
-        setPhase('HOLD_TE');
-      }, MORPH_DURATION);
-    }
-
-    return () => clearTimeout(timer);
-  }, [isAuto, phase]);
+    return () => clearInterval(interval);
+  }, [isAuto]);
 
   const handleSelectLanguage = useCallback((lang) => {
-    if (lang === targetLang && !isAuto) return;
-
     setIsAuto(false);
-
-    if (lang === 'en' && currentLang !== 'en') {
-      setPhase('MORPHING_TO_EN');
-      setTargetLang('en');
-    } else if (lang === 'te' && currentLang !== 'te') {
-      setPhase('MORPHING_TO_TE');
-      setTargetLang('te');
-    }
-  }, [currentLang, targetLang, isAuto]);
+    setCurrentLang(lang);
+  }, []);
 
   const handleResumeAuto = useCallback(() => {
     setIsAuto(true);
-    if (currentLang === 'te') {
-      setPhase('HOLD_TE');
-    } else {
-      setPhase('HOLD_EN');
-    }
-  }, [currentLang]);
+  }, []);
 
   const getWordStyle = (lang, lineIndex, wordIndex) => {
     const totalIndex = lineIndex * 4 + wordIndex;
-    const enterDelay = totalIndex * 60;
-    const exitDelay = totalIndex * 40;
+    const isTelugu = lang === 'te';
+    const isActive = currentLang === lang;
 
-    const isTeluguActive = phase === 'HOLD_TE';
-    const isEnglishActive = phase === 'HOLD_EN';
-    const isMorphingToEn = phase === 'MORPHING_TO_EN';
-    const isMorphingToTe = phase === 'MORPHING_TO_TE';
-
-    if (lang === 'te') {
-      if (isTeluguActive) {
-        return {
-          opacity: 1,
-          filter: 'blur(0px)',
-          transform: 'translate3d(0, 0, 0) scale(1)',
-          letterSpacing: 'normal',
-        };
-      }
-      if (isMorphingToEn) {
-        return {
-          opacity: 0,
-          filter: 'blur(6px)',
-          transform: 'translate3d(0, -6px, 0) scale(0.97)',
-          letterSpacing: '0.02em',
-          transition: `opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1) ${exitDelay}ms, transform 0.75s cubic-bezier(0.4, 0, 0.2, 1) ${exitDelay}ms, filter 0.65s ease ${exitDelay}ms`,
-        };
-      }
-      if (isEnglishActive) {
-        return {
-          opacity: 0,
-          filter: 'blur(6px)',
-          transform: 'translate3d(0, -6px, 0) scale(0.97)',
-          pointerEvents: 'none',
-        };
-      }
-      if (isMorphingToTe) {
-        return {
-          opacity: 1,
-          filter: 'blur(0px)',
-          transform: 'translate3d(0, 0, 0) scale(1)',
-          letterSpacing: 'normal',
-          transition: `opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${enterDelay}ms, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) ${enterDelay}ms, filter 0.75s ease ${enterDelay}ms`,
-        };
-      }
+    if (isActive) {
+      return {
+        opacity: 1,
+        filter: 'blur(0px)',
+        transform: 'translate3d(0, 0, 0) scale(1)',
+        pointerEvents: 'auto',
+        transition: `opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) ${totalIndex * 60}ms, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${totalIndex * 60}ms, filter 0.6s ease ${totalIndex * 60}ms`,
+      };
+    } else {
+      const yOffset = isTelugu ? '-10px' : '10px';
+      return {
+        opacity: 0,
+        filter: 'blur(6px)',
+        transform: `translate3d(0, ${yOffset}, 0) scale(0.96)`,
+        pointerEvents: 'none',
+        transition: `opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${totalIndex * 40}ms, transform 0.55s cubic-bezier(0.4, 0, 0.2, 1) ${totalIndex * 40}ms, filter 0.5s ease ${totalIndex * 40}ms`,
+      };
     }
-
-    if (lang === 'en') {
-      if (isEnglishActive) {
-        return {
-          opacity: 1,
-          filter: 'blur(0px)',
-          transform: 'translate3d(0, 0, 0) scale(1)',
-          letterSpacing: '0.02em',
-        };
-      }
-      if (isMorphingToTe) {
-        return {
-          opacity: 0,
-          filter: 'blur(6px)',
-          transform: 'translate3d(0, 6px, 0) scale(1.02)',
-          letterSpacing: '0.03em',
-          transition: `opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1) ${exitDelay}ms, transform 0.75s cubic-bezier(0.4, 0, 0.2, 1) ${exitDelay}ms, filter 0.65s ease ${exitDelay}ms`,
-        };
-      }
-      if (isTeluguActive) {
-        return {
-          opacity: 0,
-          filter: 'blur(6px)',
-          transform: 'translate3d(0, 6px, 0) scale(1.02)',
-          pointerEvents: 'none',
-        };
-      }
-      if (isMorphingToEn) {
-        return {
-          opacity: 1,
-          filter: 'blur(0px)',
-          transform: 'translate3d(0, 0, 0) scale(1)',
-          letterSpacing: '0.02em',
-          transition: `opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${enterDelay}ms, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) ${enterDelay}ms, filter 0.75s ease ${enterDelay}ms`,
-        };
-      }
-    }
-
-    return {};
   };
 
   return (
@@ -227,15 +126,19 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
       <header className="relative z-10 pt-4 sm:pt-8 px-4 sm:px-12 lg:px-16 flex items-center justify-between gap-2 sm:gap-4 max-w-7xl mx-auto w-full">
         
         {/* Brand Logo & Title */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-[2px] bg-forest dark:bg-forest-dark border border-gold/60 text-gold flex items-center justify-center font-telugu-display text-lg sm:text-2xl font-bold shadow-xs flex-shrink-0">
-            శ్రీ
+        <div className="flex items-center gap-2.5 sm:gap-3.5">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-gold bg-white p-1 shadow-md flex-shrink-0 flex items-center justify-center">
+            <img 
+              src={BRAND.logo} 
+              alt="Siva Kaveri Chits Logo" 
+              className="w-full h-full object-contain"
+            />
           </div>
           <div className="flex flex-col">
-            <span className="font-telugu-display text-sm sm:text-lg font-bold text-forest dark:text-ivory leading-tight tracking-tight">
+            <span className="font-telugu-display text-base sm:text-xl font-bold text-forest dark:text-ivory leading-tight tracking-tight">
               {BRAND.nameTelugu}
             </span>
-            <span className="font-english-display text-[0.55rem] sm:text-[0.68rem] tracking-[0.16em] sm:tracking-[0.18em] text-gold-dark dark:text-gold-light uppercase">
+            <span className="font-english-display text-[0.55rem] sm:text-[0.68rem] tracking-[0.16em] sm:tracking-[0.18em] text-gold-dark dark:text-gold-light uppercase font-semibold">
               {BRAND.nameEnglish} • ELURU
             </span>
           </div>
@@ -282,7 +185,7 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
             <button
               onClick={() => handleSelectLanguage('te')}
               className={`px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full font-telugu-body text-[0.62rem] sm:text-xs font-semibold transition-all duration-300 cursor-pointer ${
-                targetLang === 'te'
+                currentLang === 'te'
                   ? 'bg-forest text-white dark:bg-gold dark:text-forest-deep shadow-xs'
                   : 'text-charcoal/60 dark:text-ivory/60 hover:text-forest dark:hover:text-gold'
               }`}
@@ -293,7 +196,7 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
             <button
               onClick={() => handleSelectLanguage('en')}
               className={`px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full font-english-display text-[0.62rem] sm:text-xs font-semibold tracking-wider transition-all duration-300 cursor-pointer ${
-                targetLang === 'en'
+                currentLang === 'en'
                   ? 'bg-forest text-white dark:bg-gold dark:text-forest-deep shadow-xs'
                   : 'text-charcoal/60 dark:text-ivory/60 hover:text-forest dark:hover:text-gold'
               }`}
@@ -306,117 +209,241 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
 
       </header>
 
-      {/* Center Cinematic Typography Frame */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-8 max-w-6xl mx-auto w-full my-auto py-8 sm:py-12">
+      {/* Main Two-Column Hero Stage */}
+      <main className="relative z-10 flex-1 flex items-center justify-center px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto w-full py-6 sm:py-10 my-auto">
         
-        {/* Visual Center Frame */}
-        <div className="relative w-full flex flex-col items-center justify-center select-none py-2 min-h-[140px] sm:min-h-[180px] md:min-h-[220px] lg:min-h-[260px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center w-full">
           
-          {/* Line 1 Frame */}
-          <div className="relative w-full flex items-center justify-center h-[55px] sm:h-[75px] md:h-[100px] lg:h-[120px]">
+          {/* LEFT COLUMN: Left-Weighted Animated Statement, Narrative, CTAs & Stats */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6 sm:space-y-8">
             
-            {/* Telugu Line 1 */}
-            <div 
-              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-2 sm:gap-x-4 md:gap-x-7 font-telugu-display text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-forest dark:text-ivory leading-none text-center"
-              aria-hidden={targetLang !== 'te'}
-            >
-              {teluguStatement.line1.map((item, idx) => {
-                const style = getWordStyle('te', 0, idx);
-                return (
-                  <span
-                    key={`te-l1-${idx}`}
-                    className={`morph-word ${item.isAccent ? 'text-gradient-gold' : ''}`}
-                    style={style}
-                  >
-                    {item.text}
-                  </span>
-                );
-              })}
+            {/* Regulatory & Heritage Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-gold/40 bg-white/70 dark:bg-forest-dark/80 backdrop-blur-sm shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-gold animate-pulse flex-shrink-0" />
+              <span className="font-telugu-body text-[0.7rem] sm:text-xs font-bold text-forest dark:text-gold-light tracking-wide">
+                {currentLang === 'te' 
+                  ? 'ఆంధ్రప్రదేశ్ ప్రభుత్వ గుర్తింపు • 25+ ఏళ్ల విశ్వసనీయత' 
+                  : 'AP GOVT REGISTERED • 25+ YEARS OF TRUST'}
+              </span>
             </div>
 
-            {/* English Line 1 */}
-            <div 
-              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-1.5 sm:gap-x-3 md:gap-x-5 font-english-display text-lg sm:text-2xl md:text-4xl lg:text-[3.25rem] font-semibold tracking-tight text-forest dark:text-ivory leading-none text-center"
-              aria-hidden={targetLang !== 'en'}
-            >
-              {englishStatement.line1.map((item, idx) => {
-                const style = getWordStyle('en', 0, idx);
-                return (
-                  <span
-                    key={`en-l1-${idx}`}
-                    className="morph-word"
-                    style={style}
-                  >
-                    {item.text}
-                  </span>
-                );
-              })}
+            {/* Visual Typography Frame (Telugu ↔ English Morphing Animation) */}
+            <div className="relative w-full select-none min-h-[110px] sm:min-h-[135px] md:min-h-[155px] lg:min-h-[175px] xl:min-h-[195px] flex flex-col justify-center">
+              
+              {/* Line 1 Frame */}
+              <div className="relative w-full flex items-center justify-start h-[45px] sm:h-[56px] md:h-[68px] lg:h-[78px] xl:h-[88px]">
+                
+                {/* Telugu Line 1 */}
+                <div 
+                  className="absolute inset-y-0 left-0 flex items-center justify-start flex-wrap gap-x-2 sm:gap-x-3.5 md:gap-x-4 font-telugu-display text-2xl sm:text-4xl md:text-5xl lg:text-[2.75rem] xl:text-[3.4rem] font-extrabold tracking-tight text-forest dark:text-ivory leading-none text-left"
+                  aria-hidden={currentLang !== 'te'}
+                >
+                  {teluguStatement.line1.map((item, idx) => {
+                    const style = getWordStyle('te', 0, idx);
+                    return (
+                      <span
+                        key={`te-l1-${idx}`}
+                        className={`morph-word ${item.isAccent ? 'text-gradient-gold' : ''}`}
+                        style={style}
+                      >
+                        {item.text}
+                      </span>
+                    );
+                  })}
+                </div>
+
+                {/* English Line 1 */}
+                <div 
+                  className="absolute inset-y-0 left-0 flex items-center justify-start flex-wrap gap-x-1.5 sm:gap-x-3 md:gap-x-3.5 font-english-display text-lg sm:text-2xl md:text-3xl lg:text-[2.25rem] xl:text-[2.75rem] font-semibold tracking-tight text-forest dark:text-ivory leading-none text-left"
+                  aria-hidden={currentLang !== 'en'}
+                >
+                  {englishStatement.line1.map((item, idx) => {
+                    const style = getWordStyle('en', 0, idx);
+                    return (
+                      <span
+                        key={`en-l1-${idx}`}
+                        className="morph-word"
+                        style={style}
+                      >
+                        {item.text}
+                      </span>
+                    );
+                  })}
+                </div>
+
+              </div>
+
+              {/* Line 2 Frame */}
+              <div className="relative w-full flex items-center justify-start h-[45px] sm:h-[56px] md:h-[68px] lg:h-[78px] xl:h-[88px] mt-1 sm:mt-2">
+                
+                {/* Telugu Line 2 */}
+                <div 
+                  className="absolute inset-y-0 left-0 flex items-center justify-start flex-wrap gap-x-2 sm:gap-x-3.5 md:gap-x-4 font-telugu-display text-2xl sm:text-4xl md:text-5xl lg:text-[2.75rem] xl:text-[3.4rem] font-extrabold tracking-tight text-forest dark:text-ivory leading-none text-left"
+                  aria-hidden={currentLang !== 'te'}
+                >
+                  {teluguStatement.line2.map((item, idx) => {
+                    const style = getWordStyle('te', 1, idx);
+                    return (
+                      <span
+                        key={`te-l2-${idx}`}
+                        className={`morph-word ${item.isAccent ? 'text-gradient-gold' : ''}`}
+                        style={style}
+                      >
+                        {item.text}
+                      </span>
+                    );
+                  })}
+                </div>
+
+                {/* English Line 2 */}
+                <div 
+                  className="absolute inset-y-0 left-0 flex items-center justify-start flex-wrap gap-x-1.5 sm:gap-x-3 md:gap-x-3.5 font-english-display text-lg sm:text-2xl md:text-3xl lg:text-[2.25rem] xl:text-[2.75rem] font-semibold tracking-tight text-forest dark:text-ivory leading-none text-left"
+                  aria-hidden={currentLang !== 'en'}
+                >
+                  {englishStatement.line2.map((item, idx) => {
+                    const style = getWordStyle('en', 1, idx);
+                    return (
+                      <span
+                        key={`en-l2-${idx}`}
+                        className={`morph-word ${item.isAccent ? 'text-gradient-gold' : ''}`}
+                        style={style}
+                      >
+                        {item.text}
+                      </span>
+                    );
+                  })}
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* Supporting Calls to Action */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto pt-1">
+              
+              <a
+                href="#schemes"
+                className="inline-flex items-center justify-center gap-3 px-7 py-4 bg-gradient-to-r from-[#B88E38] via-[#D4AF57] to-[#B88E38] hover:from-[#D4AF57] hover:to-[#B88E38] text-[#08221A] rounded-xl font-telugu-body font-bold text-sm sm:text-base shadow-[0_8px_25px_rgba(184,142,56,0.35)] hover:shadow-[0_12px_35px_rgba(184,142,56,0.5)] transition-all duration-300 hover:-translate-y-0.5 cursor-pointer group"
+              >
+                <span>{currentLang === 'te' ? 'చిట్ పథకాలను చూడండి' : 'Explore Chit Schemes'}</span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </a>
+
+              <button
+                onClick={onOpenInquiry}
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-white/85 dark:bg-forest-dark/85 hover:bg-white dark:hover:bg-forest-dark text-forest dark:text-ivory rounded-xl border border-forest/20 dark:border-gold/40 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 font-telugu-body font-semibold text-sm sm:text-base cursor-pointer hover:border-gold"
+              >
+                <span>{currentLang === 'te' ? 'మమ్మల్ని సంప్రదించండి' : 'Inquire / Contact Us'}</span>
+              </button>
+
+            </div>
+
+            {/* Quick Credibility Markers with Interactive Hover Accents */}
+            <div className="pt-3.5 sm:pt-4 border-t border-gold/30 w-full max-w-xl">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 text-left">
+                <div className="space-y-0.5 group/stat cursor-default">
+                  <div className="text-sm sm:text-base lg:text-lg font-black text-forest dark:text-gold-light font-english-display transition-transform duration-200 group-hover/stat:scale-105">
+                    25+ YRS
+                  </div>
+                  <div className="text-[0.68rem] sm:text-xs text-charcoal/70 dark:text-ivory/70 font-telugu-body">
+                    {currentLang === 'te' ? 'విశ్వసనీయ సేవ' : 'Trusted Legacy'}
+                  </div>
+                </div>
+                <div className="space-y-0.5 border-l border-gold/30 pl-2.5 sm:pl-4 group/stat cursor-default">
+                  <div className="text-sm sm:text-base lg:text-lg font-black text-forest dark:text-gold-light font-english-display transition-transform duration-200 group-hover/stat:scale-105">
+                    100%
+                  </div>
+                  <div className="text-[0.68rem] sm:text-xs text-charcoal/70 dark:text-ivory/70 font-telugu-body">
+                    {currentLang === 'te' ? 'ప్రభుత్వ రిజిస్టర్డ్' : 'AP Govt Regd.'}
+                  </div>
+                </div>
+                <div className="space-y-0.5 border-l border-gold/30 pl-2.5 sm:pl-4 group/stat cursor-default">
+                  <div className="text-sm sm:text-base lg:text-lg font-black text-forest dark:text-gold-light font-english-display transition-transform duration-200 group-hover/stat:scale-105">
+                    ₹50K - ₹50L
+                  </div>
+                  <div className="text-[0.68rem] sm:text-xs text-charcoal/70 dark:text-ivory/70 font-telugu-body">
+                    {currentLang === 'te' ? 'ఫ్లెక్సిబుల్ ప్లాన్స్' : 'Chit Schemes'}
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
 
-          {/* Line 2 Frame */}
-          <div className="relative w-full flex items-center justify-center h-[55px] sm:h-[75px] md:h-[100px] lg:h-[120px] mt-1 sm:mt-2">
+          {/* RIGHT COLUMN: Premium Image Showcase & Placeholder */}
+          <div className="lg:col-span-5 relative w-full mt-4 lg:mt-0">
             
-            {/* Telugu Line 2 */}
-            <div 
-              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-2 sm:gap-x-4 md:gap-x-7 font-telugu-display text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-forest dark:text-ivory leading-none text-center"
-              aria-hidden={targetLang !== 'te'}
-            >
-              {teluguStatement.line2.map((item, idx) => {
-                const style = getWordStyle('te', 1, idx);
-                return (
-                  <span
-                    key={`te-l2-${idx}`}
-                    className={`morph-word ${item.isAccent ? 'text-gradient-gold' : ''}`}
-                    style={style}
-                  >
-                    {item.text}
-                  </span>
-                );
-              })}
-            </div>
+            <div className="relative w-full max-w-lg mx-auto lg:max-w-none group">
+              
+              {/* Outer Decorative Heritage Frame Border */}
+              <div className="absolute -inset-2.5 sm:-inset-3 border border-gold/35 dark:border-gold/30 rounded-2xl pointer-events-none transition-all duration-500 group-hover:border-gold/60" />
+              
+              {/* Corner Heritage Accents */}
+              <div className="absolute -top-3.5 -left-3.5 w-3 h-3 border-t-2 border-l-2 border-gold pointer-events-none rounded-tl-sm" />
+              <div className="absolute -top-3.5 -right-3.5 w-3 h-3 border-t-2 border-r-2 border-gold pointer-events-none rounded-tr-sm" />
+              <div className="absolute -bottom-3.5 -left-3.5 w-3 h-3 border-b-2 border-l-2 border-gold pointer-events-none rounded-bl-sm" />
+              <div className="absolute -bottom-3.5 -right-3.5 w-3 h-3 border-b-2 border-r-2 border-gold pointer-events-none rounded-br-sm" />
 
-            {/* English Line 2 */}
-            <div 
-              className="absolute inset-0 flex items-center justify-center flex-wrap gap-x-1.5 sm:gap-x-3 md:gap-x-5 font-english-display text-lg sm:text-2xl md:text-4xl lg:text-[3.25rem] font-semibold tracking-tight text-forest dark:text-ivory leading-none text-center"
-              aria-hidden={targetLang !== 'en'}
-            >
-              {englishStatement.line2.map((item, idx) => {
-                const style = getWordStyle('en', 1, idx);
-                return (
-                  <span
-                    key={`en-l2-${idx}`}
-                    className={`morph-word ${item.isAccent ? 'text-gradient-gold' : ''}`}
-                    style={style}
-                  >
-                    {item.text}
-                  </span>
-                );
-              })}
+              {/* Main Image Frame Container */}
+              <div className="relative overflow-hidden rounded-2xl bg-forest/5 dark:bg-forest-dark border border-gold/50 shadow-heritage-md dark:shadow-gold-soft">
+                
+                {/* Hero Showcase Image */}
+                <img
+                  src="/assets/images/hero_prosperity.jpg"
+                  alt="Siva Kaveri Chits — Family Savings, Prosperity & Financial Trust in Eluru"
+                  className="w-full h-[280px] sm:h-[350px] lg:h-[400px] xl:h-[440px] object-cover object-center filter saturate-[1.02] contrast-[1.02] transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                  loading="eager"
+                />
+
+                {/* Ambient Dark/Gold Vignette Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#04130E]/90 via-[#04130E]/20 to-transparent pointer-events-none" />
+
+                {/* Floating Top-Left Trust Badge */}
+                <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 z-10">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[#04130E]/85 backdrop-blur-md border border-gold/50 text-ivory text-[0.68rem] sm:text-xs font-semibold shadow-md">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="font-english-display tracking-wider uppercase text-gold-light">
+                      AP CHIT FUNDS ACT, 1982
+                    </span>
+                  </div>
+                </div>
+
+                {/* Floating Bottom-Right Dividend & Security Tag */}
+                <div className="absolute bottom-16 sm:bottom-20 right-3.5 sm:right-4 z-10 hidden sm:block">
+                  <div className="px-3.5 py-2 rounded-xl bg-[#08221A]/90 backdrop-blur-md border border-gold/40 text-ivory shadow-lg flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-full bg-white/95 border border-gold/60 flex items-center justify-center p-0.5 overflow-hidden flex-shrink-0 shadow-xs">
+                      <img src={BRAND.logo} alt="Siva Kaveri Chits Logo" className="w-full h-full object-contain" />
+                    </div>
+                    <div>
+                      <div className="text-[0.65rem] text-gold-light uppercase tracking-wider font-bold">
+                        100% SECURE & VERIFIED
+                      </div>
+                      <div className="text-xs font-bold text-ivory font-telugu-body">
+                        బ్యాంక్ గ్యారెంటీ డిపాజిట్స్
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Hero Caption Plaque */}
+                <div className="absolute bottom-0 inset-x-0 p-3.5 sm:p-5 text-ivory flex items-center justify-between bg-gradient-to-t from-[#04130E] via-[#04130E]/90 to-transparent">
+                  <div className="space-y-0.5">
+                    <div className="text-xs sm:text-sm font-bold text-ivory font-telugu-body">
+                      కుటుంబ శ్రేయస్సు • వ్యాపార అభివృద్ధి
+                    </div>
+                    <div className="text-[0.65rem] sm:text-[0.72rem] text-gold-light uppercase tracking-wider font-english-display">
+                      {BRAND.nameEnglish} • ELURU
+                    </div>
+                  </div>
+
+                  <div className="w-3 h-3 rotate-45 border border-gold bg-gold/30 flex-shrink-0" />
+                </div>
+
+              </div>
+
             </div>
 
           </div>
-
-        </div>
-
-        {/* Supporting Calls to Action */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mt-8 sm:mt-14 w-full max-w-md sm:max-w-none">
-          
-          <a
-            href="#schemes"
-            className="w-full sm:w-auto text-center inline-flex items-center justify-center gap-3 px-7 py-3.5 sm:px-8 sm:py-4 bg-gradient-to-r from-[#B88E38] via-[#D4AF57] to-[#B88E38] hover:from-[#D4AF57] hover:to-[#B88E38] text-[#08221A] rounded-[2px] font-telugu-body font-bold text-sm sm:text-base shadow-xs hover:shadow-heritage-sm transition-all duration-300 hover:-translate-y-0.5 cursor-pointer group"
-          >
-            <span>చిట్ పథకాలను చూడండి</span>
-            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
-
-          <button
-            onClick={onOpenInquiry}
-            className="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-7 sm:py-4 bg-white/70 dark:bg-forest-dark/70 hover:bg-white dark:hover:bg-forest-dark text-forest dark:text-ivory rounded-[2px] border border-forest/20 dark:border-gold/40 shadow-xs transition-all duration-300 hover:-translate-y-0.5 font-telugu-body font-semibold text-sm sm:text-base cursor-pointer"
-          >
-            <span>మమ్మల్ని సంప్రదించండి</span>
-          </button>
 
         </div>
 
