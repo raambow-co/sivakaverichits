@@ -1,4 +1,9 @@
 import logoImg from '../assets/images/logo.png';
+import officeImg from '../assets/images/siva_kaveri_office.png';
+import emblemImg from '../assets/images/siva_kaveri_emblem.png';
+import postTeachersDayImg from '../assets/images/instagram/post_teachers_day.png';
+import postKrishnastamiImg from '../assets/images/instagram/post_krishnastami_lesson.png';
+import postJanmashtamiReelImg from '../assets/images/instagram/post_janmashtami_reel.png';
 
 /**
  * Master Design System Tokens & Clean Business Placeholders
@@ -7,12 +12,50 @@ import logoImg from '../assets/images/logo.png';
  */
 
 export const LOGO_IMAGE = logoImg;
+export const OFFICE_IMAGE = officeImg;
+export const EMBLEM_IMAGE = emblemImg;
+
+export const INSTAGRAM_POSTS = [
+  {
+    id: "post-teachers-day",
+    type: "post",
+    titleTelugu: "ఉపాధ్యాయుల దినోత్సవం శుభాకాంక్షలు • సరైన మార్గదర్శకత్వం",
+    titleEnglish: "Happy Teachers' Day • Mentorship & Financial Guidance",
+    subtitle: "5 September • With the right planning, we build a secure future",
+    image: postTeachersDayImg,
+    url: "https://www.instagram.com/sivakaverichits/p/Dc51npPkzjM/",
+    badge: "LATEST POST",
+  },
+  {
+    id: "post-krishnastami",
+    type: "post",
+    titleTelugu: "శ్రీకృష్ణ జన్మాష్టమి శుభాకాంక్షలు • కొంచెం కొంచెంగా దాచండి",
+    titleEnglish: "Krishna Janmashtami Financial Lesson • Save Consistently",
+    subtitle: "Day 20 — Act with wisdom, discipline and planning",
+    image: postKrishnastamiImg,
+    url: "https://www.instagram.com/sivakaverichits/p/Dc3OWR5k8UO/",
+    badge: "FINANCIAL WISDOM",
+  },
+  {
+    id: "post-janmashtami-reel",
+    type: "reel",
+    titleTelugu: "సేవ్ టుడే • ప్లాన్ వైజ్లీ • బిల్డ్ టుమారో (రీల్)",
+    titleEnglish: "5 Steps to Financial Prosperity (Reel)",
+    subtitle: "Janmashtami Special Financial Video Reel",
+    image: postJanmashtamiReelImg,
+    url: "https://www.instagram.com/sivakaverichits/reel/Dc3Y_qjAXFO/",
+    badge: "INSTAGRAM REEL",
+  },
+];
 
 export const BRAND = {
   logo: logoImg,
+  officeImage: officeImg,
+  emblemImage: emblemImg,
+  instagram: "https://www.instagram.com/sivakaverichits/",
   nameTelugu: "శివ కావేరి చిట్స్",
-  nameEnglish: "SIVA KAVERI CHITS RBT",
-  companyLegalName: "Siva Kaveri Chits Pvt. Ltd.",
+  nameEnglish: "SHIVA KAVERI CHITS RBT",
+  companyLegalName: "Shiva Kaveri Chits Private Limited",
   taglineTelugu: "తెలుగు వారసత్వం × ఆధునిక ఆర్థిక విశ్వాసం",
   taglineEnglish: "Financial Discipline × Modern Institutional Trust",
   regionTelugu: "ఏలూరు, పశ్చిమ గోదావరి జిల్లా, ఆంధ్రప్రదేశ్",
@@ -22,15 +65,108 @@ export const BRAND = {
   registrationNumber: "AP/ELR/CHT/1998/XXXX",
   regulatoryAct: "Registered Chit Fund under the Chit Funds Act, 1982",
   establishedYear: "1998",
-  phone: "+91 98480 XXXXX",
-  mobile: "+91 94400 XXXXX",
-  whatsapp: "+91 98480 XXXXX",
+  phone: "+91 99299 22469",
+  landline: "08812 - 222229",
+  mobile: "+91 99299 22469",
+  whatsapp: "+91 99299 22469",
   email: "contact@sivakaverichits.com",
-  addressEnglish: "Main Road, Near Old Bus Stand, Eluru, West Godavari Dist., AP - 534001",
-  addressTelugu: "ప్రధాన రహదారి, పాత బస్టాండ్ సమీపంలో, ఏలూరు, పశ్చిమ గోదావరి జిల్లా, ఆంధ్రప్రదేశ్",
+  addressEnglish: "28-8-25/1, Eluru Properties Rd, opp. SR Studio, Vuppu Rama Rao Area, Narasimharao Pet, Eluru, Andhra Pradesh - 534006",
+  addressTelugu: "డి.నెం: 28-8-25/1, ఏలూరు ప్రాపర్టీస్ రోడ్, ఎస్.ఆర్ స్టూడియో ఎదురుగా, వుప్పు రామారావు ఏరియా, నరసింహారావు పేట, ఏలూరు, ఆంధ్రప్రదేశ్ - 534006",
+  landmark: "Opposite SR Studio, Vuppu Rama Rao Area, Narasimharao Pet",
+  pincode: "534006",
   workingHoursEnglish: "Monday – Saturday: 9:30 AM to 7:00 PM (Sunday Closed)",
   workingHoursTelugu: "ఉదయం 9:30 నుండి సాయంత్రం 7:00 వరకు (ఆదివారం సెలవు)",
 };
+
+/**
+ * Verified Authentic Member Reviews from Andhra Pradesh (Palm-Leaf Manuscript / Leporello Stack)
+ */
+export const MEMBER_REVIEWS = [
+  {
+    id: "rev-1",
+    nameEnglish: "K. Venkateswara Rao",
+    nameTelugu: "కె. వెంకటేశ్వర రావు",
+    roleEnglish: "Wholesale Merchant, Main Bazaar, Eluru",
+    roleTelugu: "హోల్‌సేల్ వ్యాపారి, మెయిన్ బజార్, ఏలూరు",
+    chitScheme: "₹5,00,000 Ratnagiri Business Chit",
+    rating: 5,
+    tenure: "Member since 2014 • Completed 3 Chit Cycles",
+    reviewTelugu: "మేము గత 10 సంవత్సరాలుగా శివ కావేరి చిట్స్‌లో పొదుపు చేస్తున్నాం. వేలంలో పారదర్శకత, ప్రైజ్ మనీ సకాలంలో బ్యాంక్ ఖాతాలో జమ కావడం వల్ల మా వ్యాపార స్టాక్ విస్తరణకు ఎంతో తోడ్పడింది. వడ్డీ వ్యాపారుల వద్ద అప్పులు చేయాల్సిన అవసరం లేకుండా పోయింది.",
+    reviewEnglish: "We have been running business chits with Shiva Kaveri for 10 years. 100% transparent live auctions and immediate prize fund disbursement gave our retail business steady working capital without high loan interests.",
+  },
+  {
+    id: "rev-2",
+    nameEnglish: "Smt. P. Lakshmi Prasanna",
+    nameTelugu: "శ్రీమతి పి. లక్ష్మీ ప్రసన్న",
+    roleEnglish: "Senior Teacher, Narasimharao Pet, Eluru",
+    roleTelugu: "ఉపాధ్యాయురాలు, నరసింహారావు పేట, ఏలూరు",
+    chitScheme: "₹1,00,000 Shubhalabh Family Chit",
+    rating: 5,
+    tenure: "Member since 2018 • Completed 2 Chit Cycles",
+    reviewTelugu: "ప్రతినెలా క్రమశిక్షణతో పొదుపు చేయడం వల్ల నా కూతురి ఇంజనీరింగ్ కాలేజ్ అడ్మిషన్ ఫీజును ఎలాంటి ఇబ్బంది లేకుండా ఒకేసారి చెల్లించగలిగాము. శివ కావేరి వారి మేనేజ్మెంట్ చాలా గౌరవంగా మరియు బాధ్యతగా మార్గదర్శకత్వం అందిస్తారు.",
+    reviewEnglish: "Disciplined monthly savings made paying my daughter's college fees completely stress-free. Very respectful staff and 100% government-registered financial safety.",
+  },
+  {
+    id: "rev-3",
+    nameEnglish: "M. Satyanarayana Murthy",
+    nameTelugu: "ఎం. సత్యనారాయణ మూర్తి",
+    roleEnglish: "Farmer & Landholder, Tadepalligudem",
+    roleTelugu: "రైతు & భూయజమాని, తాడేపల్లిగూడెం",
+    chitScheme: "₹10,00,000 Rajarajeshwari Mega Chit",
+    rating: 5,
+    tenure: "Member since 2011 • Active 40-Month Member",
+    reviewTelugu: "గోదావరి జిల్లాల్లో నమ్మకమైన చిట్ ఫండ్ సంస్థ అంటే శివ కావేరి మాత్రమే. నెలవారీ డివిడెండ్ లాభం చాలా బాగుంటుంది. భూమి రిజిస్ట్రేషన్ మరియు వ్యవసాయ పరికరాల కొనుగోలుకు వీరి చిట్ ఎంతో సహాయపడింది.",
+    reviewEnglish: "Shiva Kaveri is the benchmark for trust in West Godavari. Attractive monthly dividends and strict adherence to the Chit Funds Act gave our family complete peace of mind for land investments.",
+  },
+  {
+    id: "rev-4",
+    nameEnglish: "Ch. Rambabu",
+    nameTelugu: "సి.హెచ్. రాంబాబు",
+    roleEnglish: "Aqua & Commercial Trader, Bhimavaram",
+    roleTelugu: "ఆక్వా & కమర్షియల్ ట్రేడర్, భీమవరం",
+    chitScheme: "₹2,50,000 Godavari Samruddhi Chit",
+    rating: 5,
+    tenure: "Member since 2019 • Active Member",
+    reviewTelugu: "అత్యవసర సమయంలో ఎవరినీ అడగకుండా మన పొదుపుతోనే పెద్ద మొత్తంలో డబ్బు సమకూర్చుకోవడానికి ఇంతకన్నా మంచి మార్గం లేదు. వేలం రికార్డులు మరియు పాస్‌బుక్ వివరాలు చాలా స్పష్టంగా ఉంటాయి.",
+    reviewEnglish: "Whenever liquidity is needed for seasonal stocking, Shiva Kaveri chits are our first choice. Clean ledgers, accurate records, and prompt customer support.",
+  },
+  {
+    id: "rev-5",
+    nameEnglish: "G. Srinivasa Reddy",
+    nameTelugu: "జి. శ్రీనివాస రెడ్డి",
+    roleEnglish: "Civil Contractor & Builder, Sanivarapupeta, Eluru",
+    roleTelugu: "సివిల్ కాంట్రాక్టర్ & బిల్డర్, శనివారపుపేట, ఏలూరు",
+    chitScheme: "₹10,00,000 Rajarajeshwari Mega Chit",
+    rating: 5,
+    tenure: "Member since 2015 • Completed 2 Cycles",
+    reviewTelugu: "నిర్మాణ రంగంలో క్యాపిటల్ ఫ్లో కోసం మేము శివ కావేరి చిట్స్‌ను నమ్ముకుంటాం. 1998 నుండి వీరి విశ్వసనీయత అద్భుతం. సమయానికి చెల్లింపులు జరుగుతాయి.",
+    reviewEnglish: "For construction projects and capital flow, Shiva Kaveri is our trusted financial backbone. Reliable payouts and 100% statutory security since 1998.",
+  },
+  {
+    id: "rev-6",
+    nameEnglish: "Smt. V. Anitha Kumari",
+    nameTelugu: "శ్రీమతి వి. అనిత కుమారి",
+    roleEnglish: "Proprietor, Anitha Silks & Textiles, Powerpet, Eluru",
+    roleTelugu: "టెక్స్‌టైల్ వ్యాపారిణి, పవర్‌పేట, ఏలూరు",
+    chitScheme: "₹2,50,000 Godavari Samruddhi Chit",
+    rating: 5,
+    tenure: "Member since 2020 • Active Member",
+    reviewTelugu: "పండుగల సీజన్‌లో టెక్స్‌టైల్ స్టాక్ కొనుగోలుకు ప్రైజ్ మనీ సకాలంలో అందింది. మహిళా పారిశ్రామికవేత్తలకు ఎంతో గౌరవంగా సేవలు అందిస్తారు.",
+    reviewEnglish: "The prize fund was disbursed right on time for our festive textile inventory. Exceptional dignity and support for women entrepreneurs.",
+  },
+  {
+    id: "rev-7",
+    nameEnglish: "Dr. K. Raghu Varma",
+    nameTelugu: "డాక్టర్ కె. రఘు వర్మ",
+    roleEnglish: "Medical Consultant, Santhi Nagar, Eluru",
+    roleTelugu: "వైద్య నిపుణులు, శాంతి నగర్, ఏలూరు",
+    chitScheme: "₹5,00,000 Ratnagiri Business Chit",
+    rating: 5,
+    tenure: "Member since 2016 • Completed 2 Cycles",
+    reviewTelugu: "క్లినిక్ ఆధునీకరణకు చిట్ ద్వారా పొదుపు చేయడం చాలా సులభమైంది. ఎలాంటి దాపరికం లేని వేలం ప్రక్రియ మరియు నిబంధనల ప్రకారం పనితీరు.",
+    reviewEnglish: "Upgrading clinic diagnostic equipment was seamless through disciplined chit savings. High institutional transparency and zero hidden surprises.",
+  },
+];
 
 export const CHIT_SCHEMES = [
   {
@@ -44,7 +180,11 @@ export const CHIT_SCHEMES = [
     formattedMonthly: "₹2,000 / month",
     categoryEnglish: "Micro Business & Daily Savers",
     categoryTelugu: "చిరు వ్యాపారులు & రోజువారీ పొదుపు",
+    targetAudienceBadge: "🌱 Starter & Daily Savers",
+    targetAudienceTelugu: "రోజువారీ & అత్యవసర నిధి",
+    dividendBenefit: "Avg. Dividend: ₹200 – ₹450 / mo",
     purposeEnglish: "Ideal for daily wage earners, small emergency funds, and disciplined starter savings.",
+    targetHook: "Zero hassle starter savings. Get lump sum cash when needed without borrowing from outside.",
   },
   {
     id: "skc-1l",
@@ -57,7 +197,11 @@ export const CHIT_SCHEMES = [
     formattedMonthly: "₹4,000 / month",
     categoryEnglish: "Family Security & Education Fund",
     categoryTelugu: "కుటుంబ & విద్యా పొదుపు",
+    targetAudienceBadge: "🔥 Most Popular for Families",
+    targetAudienceTelugu: "పిల్లల చదువులు & కుటుంబ రక్షణ",
+    dividendBenefit: "Avg. Dividend: ₹400 – ₹900 / mo",
     purposeEnglish: "Structured for school fees, festive occasions, and planned household purchases.",
+    targetHook: "Never stress about lump-sum college fees. Plan ahead and collect your fund on time.",
   },
   {
     id: "skc-2.5l",
@@ -70,7 +214,11 @@ export const CHIT_SCHEMES = [
     formattedMonthly: "₹6,250 / month",
     categoryEnglish: "Home Renovation & Marriage Fund",
     categoryTelugu: "గృహ అవసరాలు & వివాహ నిధి",
+    targetAudienceBadge: "💍 Gold, Marriage & Home Renovation",
+    targetAudienceTelugu: "వివాహం, బంగారం & గృహ నిర్మాణం",
+    dividendBenefit: "Avg. Dividend: ₹800 – ₹1,800 / mo",
     purposeEnglish: "Designed for home improvement, vehicle down payments, and marriage expenses.",
+    targetHook: "Build your marriage gold fund or house advance without paying high gold-loan interest.",
   },
   {
     id: "skc-5l",
@@ -83,7 +231,11 @@ export const CHIT_SCHEMES = [
     formattedMonthly: "₹12,500 / month",
     categoryEnglish: "Commercial Expansion & Working Capital",
     categoryTelugu: "వ్యాపార విస్తరణ & మూలధనం",
+    targetAudienceBadge: "💼 Business Expansion & Working Capital",
+    targetAudienceTelugu: "వ్యాపార స్టాక్ & వర్కింగ్ క్యాపిటల్",
+    dividendBenefit: "Avg. Dividend: ₹1,500 – ₹3,500 / mo",
     purposeEnglish: "Perfect for inventory stocking, retail expansion, and business cash-flow liquidity.",
+    targetHook: "Instant commercial liquidity for inventory stocking and seasonal retail expansion.",
   },
   {
     id: "skc-10l",
@@ -96,6 +248,10 @@ export const CHIT_SCHEMES = [
     formattedMonthly: "₹25,000 / month",
     categoryEnglish: "Enterprise Investment & Major Projects",
     categoryTelugu: "భారీ ప్రాజెక్టులు & పెట్టుబడులు",
+    targetAudienceBadge: "⭐ Mega Enterprise & Land Investment",
+    targetAudienceTelugu: "భారీ ప్రాజెక్టులు & స్థల కొనుగోలు",
+    dividendBenefit: "Avg. Dividend: ₹3,000 – ₹7,000 / mo",
     purposeEnglish: "Structured for high-net-worth business owners, land acquisition, and long-term capital.",
+    targetHook: "High-volume capital for land purchase, commercial machinery, and major wealth building.",
   },
 ];

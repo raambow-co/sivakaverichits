@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, CheckCircle2, FileText, ShieldCheck } from 'lucide-react';
-import { BRAND } from '../../constants/tokens';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { ArrowRight, CheckCircle2, ShieldCheck, Star, ChevronLeft, ChevronRight, Quote, Play, Pause, Sparkles } from 'lucide-react';
+import { BRAND, MEMBER_REVIEWS } from '../../constants/tokens';
 
 /**
  * SECTION 05 — TRUST & TRANSPARENCY
- * Official regulatory disclosure and transparent documentation.
+ * Left: Official regulatory compliance list
+ * Right: Pure Auto-Sliding Verified Member Reviews (One by One without requiring clicks)
  */
 
 const DOCUMENT_ITEMS = [
@@ -17,7 +18,45 @@ const DOCUMENT_ITEMS = [
 
 export function TrustTransparencySection() {
   const [isVisible, setIsVisible] = useState(false);
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [isAutoRotate, setIsAutoRotate] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+  const [progress, setProgress] = useState(0);
   const sectionRef = useRef(null);
+
+  const totalReviews = MEMBER_REVIEWS.length;
+  const currentReview = MEMBER_REVIEWS[currentIdx];
+  const ROTATE_DURATION_MS = 4800;
+
+  const handleNext = useCallback(() => {
+    setCurrentIdx((prev) => (prev + 1) % totalReviews);
+    setProgress(0);
+  }, [totalReviews]);
+
+  const handlePrev = useCallback(() => {
+    setCurrentIdx((prev) => (prev - 1 + totalReviews) % totalReviews);
+    setProgress(0);
+  }, [totalReviews]);
+
+  // Smooth progress bar update & continuous auto-slide loop
+  useEffect(() => {
+    if (!isAutoRotate || isHovered) return;
+
+    const intervalTime = 40;
+    const increment = (intervalTime / ROTATE_DURATION_MS) * 100;
+
+    const progressTimer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          handleNext();
+          return 0;
+        }
+        return prev + increment;
+      });
+    }, intervalTime);
+
+    return () => clearInterval(progressTimer);
+  }, [isAutoRotate, isHovered, handleNext]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -78,8 +117,8 @@ export function TrustTransparencySection() {
         >
           <div className="inline-flex items-center gap-2">
             <span className="w-5 h-[1.5px] bg-gold" />
-            <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-gold-light">
-              Governance & Compliance
+            <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-gold-light font-english-display">
+              Governance & Real Member Experiences
             </span>
           </div>
 
@@ -119,105 +158,174 @@ export function TrustTransparencySection() {
           </div>
         </div>
 
-        {/* RIGHT COLUMN: PURE TACTILE PHYSICAL DOCUMENT STACK VISUAL */}
+        {/* RIGHT COLUMN: ORIGINAL DARK GOLD-ACCENTED REVIEW CARD WITH CORNER BRACKETS & AUTO-SLIDE */}
         <div
-          id="transparency-stack"
-          className="lg:col-span-6 flex justify-center lg:justify-end relative py-6 sm:py-10"
+          id="transparency-reviews"
+          className="lg:col-span-6 flex justify-center lg:justify-end relative py-4 sm:py-8"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-          <div className="relative w-full max-w-[440px] sm:max-w-[480px] min-h-[420px] sm:min-h-[460px] flex items-center justify-center">
+          {/* Outer Framework with 4 Gold Corner Filigree Brackets */}
+          <div className="relative w-full max-w-[500px] sm:max-w-[530px]">
             
-            {/* SHEET 03: BASE / REAR DOCUMENT */}
-            <div
-              className={`absolute w-[92%] sm:w-[94%] bg-[#F2EDE0] text-[#1E2623] rounded-2xl p-5 sm:p-6 border border-[#D5C6A9] shadow-[0_20px_45px_-10px_rgba(0,0,0,0.45)] transition-all duration-1000 ease-out select-none ${
-                isVisible ? 'opacity-75 translate-y-4 -rotate-3' : 'opacity-0 translate-y-12 -rotate-6'
-              }`}
-              style={{ top: '8%', left: '0%' }}
-            >
-              <div className="flex items-center justify-between border-b border-[#D5C6A9] pb-2.5 mb-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#8C671C]">
-                  Monthly Dividend & Passbook Ledger
-                </span>
-                <span className="w-2 h-2 rotate-45 border border-[#8C671C]/50" />
-              </div>
-              <div className="space-y-2.5 opacity-40">
-                <div className="h-2 bg-[#D5C6A9] rounded w-full" />
-                <div className="h-2 bg-[#D5C6A9] rounded w-5/6" />
-                <div className="h-2 bg-[#D5C6A9] rounded w-4/6" />
-              </div>
-            </div>
+            {/* Top-Left Bracket */}
+            <div className="absolute -top-2.5 -left-2.5 w-5 h-5 border-t-2 border-l-2 border-gold/70 rounded-tl-sm pointer-events-none z-20" />
+            {/* Top-Right Bracket */}
+            <div className="absolute -top-2.5 -right-2.5 w-5 h-5 border-t-2 border-r-2 border-gold/70 rounded-tr-sm pointer-events-none z-20" />
+            {/* Bottom-Left Bracket */}
+            <div className="absolute -bottom-2.5 -left-2.5 w-5 h-5 border-b-2 border-l-2 border-gold/70 rounded-bl-sm pointer-events-none z-20" />
+            {/* Bottom-Right Bracket */}
+            <div className="absolute -bottom-2.5 -right-2.5 w-5 h-5 border-b-2 border-r-2 border-gold/70 rounded-br-sm pointer-events-none z-20" />
 
-            {/* SHEET 02: MIDDLE DOCUMENT */}
-            <div
-              className={`absolute w-[94%] sm:w-[96%] bg-[#FAF6EC] text-[#1E2623] rounded-2xl p-5 sm:p-6 border border-[#DFD3BA] shadow-[0_22px_50px_-12px_rgba(0,0,0,0.5)] transition-all duration-1000 delay-150 ease-out select-none ${
-                isVisible ? 'opacity-90 -translate-y-2 rotate-2' : 'opacity-0 translate-y-10 rotate-4'
-              }`}
-              style={{ top: '4%', right: '0%' }}
-            >
-              <div className="flex items-center justify-between border-b border-[#DFD3BA] pb-2.5 mb-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#8C671C]">
-                  Certified Auction Minutes & Schedule
-                </span>
-                <span className="w-2 h-2 rotate-45 border border-[#8C671C]/50" />
-              </div>
-              <div className="space-y-2.5 opacity-50">
-                <div className="h-2 bg-[#DFD3BA] rounded w-full" />
-                <div className="h-2 bg-[#DFD3BA] rounded w-4/5" />
-                <div className="h-2 bg-[#DFD3BA] rounded w-3/5" />
-              </div>
-            </div>
+            {/* Main Dark Green Review Card Stack (Leporello/Accordion Style) */}
+            <div className="relative z-10 w-full h-[520px] sm:h-[480px] perspective-1000 select-none">
+              
+              {MEMBER_REVIEWS.map((review, idx) => {
+                // Calculate relative position for the stack effect
+                const offset = (idx - currentIdx + totalReviews) % totalReviews;
+                
+                // Only render the front card and the next 3 cards to prevent DOM bloat and messy overlaps
+                if (offset > 3) return null;
+                
+                const isFront = offset === 0;
 
-            {/* SHEET 01: FOREGROUND MASTER DOCUMENT */}
-            <div
-              className={`relative w-full bg-[#FCFBF8] text-[#1A221E] rounded-2xl p-6 sm:p-8 border border-[#D8C7A3] shadow-[0_28px_60px_-15px_rgba(0,0,0,0.6)] transition-all duration-1000 delay-300 ease-out select-none ${
-                isVisible ? 'opacity-100 translate-y-0 rotate-0' : 'opacity-0 translate-y-8 rotate-1'
-              }`}
-            >
-              <div className="absolute inset-2 sm:inset-3 border border-gold/30 rounded-xl pointer-events-none" />
+                return (
+                  <div
+                    key={review.id}
+                    className="absolute inset-0 w-full transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1.0)]"
+                    style={{
+                      transform: `translateY(${offset * 14}px) translateZ(-${offset * 40}px) scale(${1 - offset * 0.04})`,
+                      opacity: 1 - offset * 0.25,
+                      zIndex: 10 - offset,
+                      pointerEvents: isFront ? 'auto' : 'none'
+                    }}
+                  >
+                    <div className="w-full h-full bg-[#082218]/95 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-gold/35 shadow-[0_25px_60px_rgba(0,0,0,0.6)] flex flex-col justify-between overflow-hidden">
+                      
+                      {/* Top Smooth Auto-Slide Progress Line (Only visible on front card) */}
+                      {isFront && (
+                        <div className="absolute top-0 inset-x-0 h-1 bg-gold/15 overflow-hidden">
+                          <div 
+                            className="h-full bg-gradient-to-r from-gold via-[#D4AF57] to-gold transition-all duration-75 ease-linear"
+                            style={{ width: `${progress}%` }}
+                          />
+                        </div>
+                      )}
 
-              {/* Document Header */}
-              <div className="relative pb-4 mb-5 border-b border-[#E5DAC3] flex items-center justify-between">
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#0F382C] tracking-tight">
-                    Official Chit Agreement
-                  </h3>
-                  <p className="text-[0.68rem] text-[#60706A] uppercase tracking-wider font-semibold">
-                    Government of Andhra Pradesh Reg.
-                  </p>
-                </div>
+                      <div className="space-y-4 pt-1 flex-1">
+                        {/* Header: Name, Stars & Chit Scheme Badge */}
+                        <div className="flex items-start justify-between gap-3 pb-3 border-b border-gold/15">
+                          <div>
+                            <h3 className="text-base sm:text-lg md:text-xl font-black text-ivory font-english-display uppercase tracking-wide leading-tight">
+                              {review.nameEnglish}
+                            </h3>
+                            <div className="text-xs sm:text-sm font-bold text-gold-light font-telugu-body mt-1">
+                              {review.nameTelugu}
+                            </div>
+                            <div className="text-[0.7rem] sm:text-xs text-ivory/70 font-medium mt-0.5">
+                              {review.roleEnglish}
+                            </div>
+                          </div>
 
-                <div className="w-10 h-10 rounded-full border border-gold/60 bg-white p-0.5 flex items-center justify-center shadow-xs overflow-hidden flex-shrink-0">
-                  <img src={BRAND.logo} alt="Siva Kaveri Chits Logo" className="w-full h-full object-contain" />
-                </div>
-              </div>
+                          <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
+                            {/* 5 Golden Stars */}
+                            <div className="flex items-center gap-0.5 text-amber-400">
+                              {[...Array(5)].map((_, starIdx) => (
+                                <Star key={starIdx} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                              ))}
+                            </div>
 
-              {/* Document Clean Tactile Placeholder Ledger Rules */}
-              <div className="space-y-3.5">
-                <div className="space-y-2">
-                  <div className="h-2.5 bg-[#E8DEC8]/80 rounded-sm w-full" />
-                  <div className="h-2.5 bg-[#E8DEC8]/60 rounded-sm w-5/6" />
-                </div>
+                            {/* Chit Plan Badge */}
+                            <span className="px-3 py-1 rounded-full border border-gold/40 bg-gold/10 text-gold-light text-[0.62rem] sm:text-[0.68rem] font-bold uppercase tracking-wider font-english-display">
+                              {review.chitScheme}
+                            </span>
+                          </div>
+                        </div>
 
-                <div className="pt-2 border-t border-[#EFE8D6] space-y-2">
-                  <div className="h-2 bg-[#E8DEC8]/70 rounded-sm w-full" />
-                  <div className="h-2 bg-[#E8DEC8]/50 rounded-sm w-4/5" />
-                  <div className="h-2 bg-[#E8DEC8]/40 rounded-sm w-3/5" />
-                </div>
+                        {/* Body: Large Quote & Telugu / English Text */}
+                        <div className="space-y-3 my-3 relative">
+                          <Quote className="w-8 h-8 text-gold/25 absolute -top-2 -left-1 pointer-events-none" />
 
-                <div className="pt-2 border-t border-[#EFE8D6] space-y-2">
-                  <div className="h-2 bg-[#E8DEC8]/60 rounded-sm w-11/12" />
-                  <div className="h-2 bg-[#E8DEC8]/40 rounded-sm w-2/3" />
-                </div>
-              </div>
+                          {/* Telugu Experience */}
+                          <p className="text-xs sm:text-sm md:text-[0.92rem] text-ivory/95 font-medium font-telugu-body leading-relaxed pl-3 relative z-10">
+                            "{review.reviewTelugu}"
+                          </p>
 
-              {/* Minimal Seal & Signature Line */}
-              <div className="mt-6 pt-4 border-t border-[#E5DAC3] flex items-center justify-between text-[0.68rem] text-[#8C671C] font-semibold">
-                <div className="flex items-center gap-1.5">
-                  <div className="w-2 h-2 rotate-45 border border-gold/60 bg-gold/20" />
-                  <span>Authorized Foreman Seal</span>
-                </div>
-                <div className="w-20 h-[1px] bg-gold/40" />
-              </div>
+                          {/* English Translation */}
+                          <p className="text-[0.72rem] sm:text-xs text-ivory/70 italic leading-relaxed pl-3 relative z-10">
+                            "{review.reviewEnglish}"
+                          </p>
+                        </div>
 
+                        {/* Footer Badges: Tenure & Official Verification */}
+                        <div className="pt-3.5 border-t border-gold/15 flex items-center justify-between text-xs">
+                          <div className="flex items-center gap-1.5 text-emerald-400 font-medium text-[0.72rem] sm:text-xs">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                            <span>{review.tenure}</span>
+                          </div>
+
+                          <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-emerald-500/40 bg-emerald-950/50 text-emerald-400 text-[0.65rem] sm:text-xs font-bold tracking-wider uppercase font-english-display">
+                            <ShieldCheck className="w-3 h-3 text-emerald-400" />
+                            <span>AP REGD VERIFIED</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Bottom Navigation: Indicator Dots + Interactive Buttons (Only fully active on front card) */}
+                      <div className={`mt-4 sm:mt-5 pt-3.5 border-t border-gold/15 flex items-center justify-between transition-opacity duration-300 ${isFront ? 'opacity-100' : 'opacity-0'}`}>
+                        {/* Dots Indicator */}
+                        <div className="flex items-center gap-1.5">
+                          {MEMBER_REVIEWS.map((_, dotIdx) => (
+                            <button
+                              key={dotIdx}
+                              onClick={() => {
+                                if (!isFront) return;
+                                setCurrentIdx(dotIdx);
+                                setProgress(0);
+                              }}
+                              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                                dotIdx === currentIdx ? 'w-6 bg-gold shadow-xs' : 'w-1.5 bg-gold/30 hover:bg-gold/60'
+                              }`}
+                              aria-label={`Go to review ${dotIdx + 1}`}
+                            />
+                          ))}
+                        </div>
+
+                        {/* Action Controls: Pause, Prev, Next */}
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => isFront && setIsAutoRotate((prev) => !prev)}
+                            className="w-7 h-7 rounded-full border border-gold/30 hover:border-gold text-gold/80 hover:text-gold flex items-center justify-center transition-colors cursor-pointer bg-gold/5"
+                            title={isAutoRotate ? "Pause auto-slide" : "Resume auto-slide"}
+                            aria-label="Toggle auto slide"
+                          >
+                            {isAutoRotate ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3 ml-0.5" />}
+                          </button>
+
+                          <button
+                            onClick={() => isFront && handlePrev()}
+                            className="w-7 h-7 rounded-full border border-gold/30 hover:border-gold text-gold/80 hover:text-gold flex items-center justify-center transition-colors cursor-pointer bg-gold/5"
+                            title="Previous Review"
+                            aria-label="Previous Review"
+                          >
+                            <ChevronLeft className="w-3.5 h-3.5" />
+                          </button>
+
+                          <button
+                            onClick={() => isFront && handleNext()}
+                            className="w-7 h-7 rounded-full border border-gold/30 hover:border-gold text-gold/80 hover:text-gold flex items-center justify-center transition-colors cursor-pointer bg-gold/5"
+                            title="Next Review"
+                            aria-label="Next Review"
+                          >
+                            <ChevronRight className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
           </div>

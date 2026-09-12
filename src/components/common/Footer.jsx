@@ -36,7 +36,12 @@ export function Footer() {
     { label: 'FAQ', href: '#faq' },
   ];
 
-  const socialLinks = ['WhatsApp', 'Instagram', 'Facebook', 'YouTube'];
+  const socialLinks = [
+    { label: 'Instagram', href: BRAND.instagram, isExternal: true },
+    { label: 'WhatsApp', href: `https://wa.me/${BRAND.whatsapp.replace(/[^0-9]/g, '')}`, isExternal: true },
+    { label: 'Facebook', href: '#', isExternal: false },
+    { label: 'YouTube', href: '#', isExternal: false },
+  ];
 
   const legalLinks = ['Chit Funds Act, 1982 Disclosures', 'Privacy Policy', 'Terms & Conditions', 'Surety Guidelines'];
 
@@ -152,9 +157,15 @@ export function Footer() {
               
               <div className="pt-2 flex items-center gap-4 text-xs text-ivory/70 font-semibold">
                 {socialLinks.map((s, idx) => (
-                  <span key={idx} className="hover:text-gold transition-colors cursor-pointer py-1">
-                    {s}
-                  </span>
+                  <a
+                    key={idx}
+                    href={s.href}
+                    target={s.isExternal ? "_blank" : undefined}
+                    rel={s.isExternal ? "noopener noreferrer" : undefined}
+                    className="hover:text-gold transition-colors cursor-pointer py-1"
+                  >
+                    {s.label}
+                  </a>
                 ))}
               </div>
             </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { Sun, Moon, ArrowRight, ArrowDown } from 'lucide-react';
-import { BRAND } from '../../constants/tokens';
+import { Sun, Moon, ArrowRight, ArrowDown, Instagram, ExternalLink, Sparkles, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+import { BRAND, INSTAGRAM_POSTS } from '../../constants/tokens';
 import { GoldCoinsOverlay } from '../common/GoldCoinsOverlay';
 
 /**
@@ -14,6 +14,23 @@ import { GoldCoinsOverlay } from '../common/GoldCoinsOverlay';
 export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme }) {
   const [currentLang, setCurrentLang] = useState('te'); 
   const [isAuto, setIsAuto] = useState(true);
+
+  // Active Instagram Post Showcase state
+  const [activePostIndex, setActivePostIndex] = useState(0);
+  const [isPostHovered, setIsPostHovered] = useState(false);
+  const [isPostAuto, setIsPostAuto] = useState(true);
+
+  const totalPosts = INSTAGRAM_POSTS.length;
+  const currentPost = INSTAGRAM_POSTS[activePostIndex];
+
+  // Auto-cycle through Instagram posts every 4.8 seconds unless hovered
+  useEffect(() => {
+    if (!isPostAuto || isPostHovered) return;
+    const timer = setInterval(() => {
+      setActivePostIndex((prev) => (prev + 1) % totalPosts);
+    }, 4800);
+    return () => clearInterval(timer);
+  }, [isPostAuto, isPostHovered, totalPosts]);
 
   const teluguStatement = useMemo(() => ({
     line1: [
@@ -370,79 +387,74 @@ export function HeroSection({ onOpenInquiry, theme = 'warm-ivory', onToggleTheme
 
           </div>
 
-          {/* RIGHT COLUMN: Premium Image Showcase & Placeholder */}
-          <div className="lg:col-span-5 relative w-full mt-4 lg:mt-0">
-            
-            <div className="relative w-full max-w-lg mx-auto lg:max-w-none group">
+          {/* RIGHT COLUMN: Pure Instagram Post Image Linked to Instagram */}
+          <div 
+            className="lg:col-span-5 relative w-full mt-4 lg:mt-0 flex flex-col items-center lg:items-end"
+            onMouseEnter={() => setIsPostHovered(true)}
+            onMouseLeave={() => setIsPostHovered(false)}
+          >
+            <div className="relative w-full max-w-[390px] sm:max-w-[420px]">
               
-              {/* Outer Decorative Heritage Frame Border */}
-              <div className="absolute -inset-2.5 sm:-inset-3 border border-gold/35 dark:border-gold/30 rounded-2xl pointer-events-none transition-all duration-500 group-hover:border-gold/60" />
-              
-              {/* Corner Heritage Accents */}
-              <div className="absolute -top-3.5 -left-3.5 w-3 h-3 border-t-2 border-l-2 border-gold pointer-events-none rounded-tl-sm" />
-              <div className="absolute -top-3.5 -right-3.5 w-3 h-3 border-t-2 border-r-2 border-gold pointer-events-none rounded-tr-sm" />
-              <div className="absolute -bottom-3.5 -left-3.5 w-3 h-3 border-b-2 border-l-2 border-gold pointer-events-none rounded-bl-sm" />
-              <div className="absolute -bottom-3.5 -right-3.5 w-3 h-3 border-b-2 border-r-2 border-gold pointer-events-none rounded-br-sm" />
-
-              {/* Main Image Frame Container */}
-              <div className="relative overflow-hidden rounded-2xl bg-forest/5 dark:bg-forest-dark border border-gold/50 shadow-heritage-md dark:shadow-gold-soft">
-                
-                {/* Hero Showcase Image */}
+              {/* Only Pure Instagram Image - Directly Linked to Instagram Profile */}
+              <a
+                href={BRAND.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Click to follow on Instagram"
+                className="group relative block w-full aspect-square rounded-2xl overflow-hidden bg-[#0A241C] border border-transparent shadow-[0_0_50px_rgba(255,255,255,0.1)] hover:shadow-[0_0_80px_rgba(255,255,255,0.2)] transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+              >
+                {/* Pure Instagram Post Graphic */}
                 <img
-                  src="/assets/images/hero_prosperity.jpg"
-                  alt="Siva Kaveri Chits — Family Savings, Prosperity & Financial Trust in Eluru"
-                  className="w-full h-[280px] sm:h-[350px] lg:h-[400px] xl:h-[440px] object-cover object-center filter saturate-[1.02] contrast-[1.02] transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                  key={currentPost.id}
+                  src={currentPost.image}
+                  alt={currentPost.titleEnglish || "Shiva Kaveri Chits Instagram"}
+                  className="w-full h-full object-cover object-center animate-fade-in transition-transform duration-700 ease-out group-hover:scale-105"
                   loading="eager"
                 />
 
-                {/* Ambient Dark/Gold Vignette Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#04130E]/90 via-[#04130E]/20 to-transparent pointer-events-none" />
-
-                {/* Floating Top-Left Trust Badge */}
-                <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 z-10">
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[#04130E]/85 backdrop-blur-md border border-gold/50 text-ivory text-[0.68rem] sm:text-xs font-semibold shadow-md">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="font-english-display tracking-wider uppercase text-gold-light">
-                      AP CHIT FUNDS ACT, 1982
-                    </span>
-                  </div>
+                {/* Subtle Sleek Instagram Pill Watermark (Top-Right) */}
+                <div className="absolute top-3.5 right-3.5 z-10 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[0.7rem] font-bold shadow-md group-hover:bg-gradient-to-r group-hover:from-[#833AB4] group-hover:via-[#FD1D1D] group-hover:to-[#F77737] group-hover:border-transparent transition-all duration-300">
+                  <Instagram className="w-3.5 h-3.5 text-white" />
+                  <span>Follow Us</span>
+                  <ExternalLink className="w-2.5 h-2.5 opacity-80" />
                 </div>
 
-                {/* Floating Bottom-Right Dividend & Security Tag */}
-                <div className="absolute bottom-16 sm:bottom-20 right-3.5 sm:right-4 z-10 hidden sm:block">
-                  <div className="px-3.5 py-2 rounded-xl bg-[#08221A]/90 backdrop-blur-md border border-gold/40 text-ivory shadow-lg flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-full bg-white/95 border border-gold/60 flex items-center justify-center p-0.5 overflow-hidden flex-shrink-0 shadow-xs">
-                      <img src={BRAND.logo} alt="Siva Kaveri Chits Logo" className="w-full h-full object-contain" />
-                    </div>
-                    <div>
-                      <div className="text-[0.65rem] text-gold-light uppercase tracking-wider font-bold">
-                        100% SECURE & VERIFIED
-                      </div>
-                      <div className="text-xs font-bold text-ivory font-telugu-body">
-                        బ్యాంక్ గ్యారెంటీ డిపాజిట్స్
-                      </div>
+                {/* Play Button Overlay for Reels */}
+                {currentPost.type === 'reel' && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/20 pointer-events-none transition-opacity group-hover:bg-black/30">
+                    <div className="w-14 h-14 rounded-full bg-black/65 border-2 border-white/90 flex items-center justify-center text-white shadow-2xl backdrop-blur-xs transition-transform group-hover:scale-110">
+                      <Play className="w-6 h-6 fill-white ml-0.5" />
                     </div>
                   </div>
+                )}
+
+                {/* Subtle Bottom Vignette with Click to Open Guidance */}
+                <div className="absolute inset-x-0 bottom-0 p-3.5 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex items-center justify-between text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <span className="text-[0.72rem] font-semibold truncate max-w-[260px]">
+                    {currentPost.titleTelugu}
+                  </span>
+                  <span className="text-[0.68rem] text-gold-light font-bold flex items-center gap-1 flex-shrink-0">
+                    <span>ఇన్‌స్టాగ్రామ్‌లో చూడండి</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </span>
                 </div>
+              </a>
 
-                {/* Bottom Hero Caption Plaque */}
-                <div className="absolute bottom-0 inset-x-0 p-3.5 sm:p-5 text-ivory flex items-center justify-between bg-gradient-to-t from-[#04130E] via-[#04130E]/90 to-transparent">
-                  <div className="space-y-0.5">
-                    <div className="text-xs sm:text-sm font-bold text-ivory font-telugu-body">
-                      కుటుంబ శ్రేయస్సు • వ్యాపార అభివృద్ధి
-                    </div>
-                    <div className="text-[0.65rem] sm:text-[0.72rem] text-gold-light uppercase tracking-wider font-english-display">
-                      {BRAND.nameEnglish} • ELURU
-                    </div>
-                  </div>
-
-                  <div className="w-3 h-3 rotate-45 border border-gold bg-gold/30 flex-shrink-0" />
-                </div>
-
+              {/* Clean Minimal Dots Progress Indicator */}
+              <div className="mt-3.5 flex items-center justify-center gap-2">
+                {INSTAGRAM_POSTS.map((post, idx) => (
+                  <button
+                    key={post.id}
+                    onClick={() => setActivePostIndex(idx)}
+                    className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                      idx === activePostIndex ? 'w-6 bg-gold shadow-xs' : 'w-2 bg-gold/30 hover:bg-gold/60'
+                    }`}
+                    aria-label={`Go to Instagram post ${idx + 1}`}
+                  />
+                ))}
               </div>
 
             </div>
-
           </div>
 
         </div>

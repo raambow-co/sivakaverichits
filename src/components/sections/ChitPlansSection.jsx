@@ -314,12 +314,13 @@ export function ChitPlansSection({ onSelectSchemeForInquiry }) {
                     PLAN 0{currentIndex + 1} OF 0{totalPlans}
                   </span>
 
-                  <span className="px-3 py-1 rounded-lg bg-gold/20 text-gold-light border border-gold/35 text-xs font-bold font-telugu-body">
-                    {currentPlan.categoryTelugu}
+                  {/* Target Audience Persona Badge */}
+                  <span className="px-3 py-1 rounded-lg bg-emerald-900/60 text-emerald-300 border border-emerald-500/40 text-xs font-bold font-english-display flex items-center gap-1.5 shadow-xs">
+                    <span>{currentPlan.targetAudienceBadge}</span>
                   </span>
 
-                  <span className="text-xs text-ivory/70 font-medium hidden md:inline">
-                    • {currentPlan.categoryEnglish}
+                  <span className="px-3 py-1 rounded-lg bg-gold/20 text-gold-light border border-gold/35 text-xs font-bold font-telugu-body hidden sm:inline">
+                    {currentPlan.categoryTelugu}
                   </span>
                 </div>
 
@@ -350,7 +351,7 @@ export function ChitPlansSection({ onSelectSchemeForInquiry }) {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-center py-6 sm:py-8">
                 
                 {/* LEFT SHOWCASE: Titles, Big ₹ Value & Purpose */}
-                <div className="lg:col-span-6 space-y-5 text-left animate-fade-up-2">
+                <div className="lg:col-span-6 space-y-4 sm:space-y-5 text-left animate-fade-up-2">
                   
                   <div className="space-y-1">
                     <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-ivory font-telugu-display leading-tight">
@@ -362,7 +363,7 @@ export function ChitPlansSection({ onSelectSchemeForInquiry }) {
                   </div>
 
                   {/* Highlighted ₹ Value Display with Shimmer and Pop */}
-                  <div className="p-4 sm:p-6 rounded-2xl bg-[#04130E]/85 border-2 border-gold/45 relative overflow-hidden group/box hover:border-gold transition-colors duration-300">
+                  <div className="p-4 sm:p-5 rounded-2xl bg-[#04130E]/85 border-2 border-gold/45 relative overflow-hidden group/box hover:border-gold transition-colors duration-300">
                     
                     {/* Top Corner Badge */}
                     <div className="flex items-center justify-between gap-2 mb-1">
@@ -373,7 +374,7 @@ export function ChitPlansSection({ onSelectSchemeForInquiry }) {
                     </div>
 
                     {/* Massive Value with Gold Gradient */}
-                    <div className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-gradient-gold leading-none font-english-display py-1">
+                    <div className="text-3xl sm:text-5xl font-black tracking-tight text-gradient-gold leading-none font-english-display py-1">
                       {currentPlan.formattedValue}
                     </div>
 
@@ -383,10 +384,11 @@ export function ChitPlansSection({ onSelectSchemeForInquiry }) {
                     </div>
                   </div>
 
-                  {/* Purpose Statement */}
-                  <p className="text-xs sm:text-sm text-ivory/80 leading-relaxed font-normal italic border-l-2 border-gold pl-3.5 py-0.5">
-                    "{currentPlan.purposeEnglish}"
-                  </p>
+                  {/* High-Converting Target Hook Statement */}
+                  <div className="p-3 sm:p-3.5 rounded-xl bg-gold/10 border border-gold/30 text-xs sm:text-sm text-ivory/90 leading-relaxed font-normal">
+                    <span className="text-gold font-bold block mb-0.5">🎯 ముఖ్య ప్రయోజనం (Key Advantage):</span>
+                    {currentPlan.targetHook || currentPlan.purposeEnglish}
+                  </div>
 
                 </div>
 
@@ -398,7 +400,7 @@ export function ChitPlansSection({ onSelectSchemeForInquiry }) {
                     <div className="flex items-center gap-2 mb-1.5 text-gold">
                       <Wallet className="w-4 h-4 text-gold flex-shrink-0 transition-transform duration-300 group-hover/tile:scale-115" />
                       <span className="text-[0.7rem] sm:text-xs font-bold uppercase tracking-wider text-ivory/60 font-english-display">
-                        Monthly Subscription
+                        Monthly Installment
                       </span>
                     </div>
                     <div className="text-base sm:text-lg font-black text-gold-light leading-tight">
@@ -425,19 +427,19 @@ export function ChitPlansSection({ onSelectSchemeForInquiry }) {
                     </div>
                   </div>
 
-                  {/* Tile 3: Live Auctions */}
+                  {/* Tile 3: Dividend Benefit */}
                   <div className="p-4 rounded-xl bg-[#0A241C]/90 border border-gold/35 hover:border-gold shadow-md transition-all duration-300 hover:-translate-y-0.5 group/tile cursor-pointer">
                     <div className="flex items-center gap-2 mb-1.5 text-gold">
                       <TrendingUp className="w-4 h-4 text-gold flex-shrink-0 transition-transform duration-300 group-hover/tile:scale-115" />
                       <span className="text-[0.7rem] sm:text-xs font-bold uppercase tracking-wider text-ivory/60 font-english-display">
-                        Live Auction Payouts
+                        Dividend Benefit
                       </span>
                     </div>
-                    <div className="text-base sm:text-lg font-black text-ivory leading-tight">
-                      100% Transparent
+                    <div className="text-sm sm:text-base font-black text-emerald-300 leading-tight">
+                      {currentPlan.dividendBenefit || "Attractive Dividends"}
                     </div>
                     <div className="text-[0.68rem] text-ivory/60 mt-0.5 font-telugu-body">
-                      అవసరమైనప్పుడు తక్షణ నిధుల లభ్యత
+                      నెలవారీ వేలం డివిడెండ్ లాభం
                     </div>
                   </div>
 
@@ -453,7 +455,7 @@ export function ChitPlansSection({ onSelectSchemeForInquiry }) {
                       100% Bank Backed
                     </div>
                     <div className="text-[0.68rem] text-ivory/60 mt-0.5 font-telugu-body">
-                      చట్టబద్ధమైన బ్యాంక్ డిపాజిట్ భద్రత
+                      AP చిట్ ఫండ్ చట్టం 1982 భద్రత
                     </div>
                   </div>
 
@@ -462,22 +464,53 @@ export function ChitPlansSection({ onSelectSchemeForInquiry }) {
               </div>
 
               {/* Card Footer Actions Strip */}
-              <div className="pt-6 border-t border-gold/20 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 animate-fade-up-4">
+              <div className="relative z-30 pt-6 border-t border-gold/20 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
                 
                 <div className="flex items-center gap-2 text-xs text-ivory/80 font-telugu-body">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                   <span>
-                    ఈ ప్లాన్ కోసం తక్షణ రిజిస్ట్రేషన్ & కస్టమర్ సేవ అందుబాటులో ఉంది.
+                    తక్షణ రిజిస్ట్రేషన్ & అనుభవజ్ఞులైన సలహాదారు మార్గదర్శకత్వం.
                   </span>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={() => onSelectSchemeForInquiry && onSelectSchemeForInquiry(currentPlan)}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-gradient-to-r from-[#B88E38] via-[#D4AF57] to-[#B88E38] hover:from-[#D4AF57] hover:to-[#B88E38] text-[#08221A] rounded-xl font-telugu-body font-bold text-sm sm:text-base shadow-lg shadow-gold/25 hover:shadow-gold/45 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer group/btn"
+                <div className="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3 relative z-30">
+                  <a
+                    href={`https://wa.me/919929922469?text=${encodeURIComponent(
+                      `నమస్కారం Shiva Kaveri Chits,\nనేను ${currentPlan.formattedValue} (${currentPlan.nameEnglish} - ${currentPlan.tenureMonths} నెలలు) చిట్ పథకం వివరాలు & ప్రారంభ తేదీలు తెలుసుకోవాలనుకుంటున్నాను.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl font-bold text-xs sm:text-sm shadow-md transition-all duration-200 hover:-translate-y-0.5 cursor-pointer relative z-30"
                   >
-                    <span>ఈ చిట్ ప్లాన్ ఎంచుకోండి (Enquire Now)</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1.5" />
+                    <span>WhatsApp విచారణ</span>
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      if (onSelectSchemeForInquiry) {
+                        onSelectSchemeForInquiry(currentPlan);
+                      }
+                      const target = document.getElementById('enquiry');
+                      if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        setTimeout(() => {
+                          const nameInput = target.querySelector('input[name="fullName"]');
+                          if (nameInput) {
+                            nameInput.focus();
+                          }
+                        }, 500);
+                      }
+                    }}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 bg-gradient-to-r from-[#B88E38] via-[#D4AF57] to-[#B88E38] hover:from-[#D4AF57] hover:to-[#B88E38] text-[#08221A] rounded-xl font-telugu-body font-bold text-xs sm:text-sm shadow-lg shadow-gold/25 hover:shadow-gold/45 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer group/btn relative z-30"
+                  >
+                    <span>ఈ ప్లాన్ ఎంచుకోండి (Enquire Now)</span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                   </button>
                 </div>
 

@@ -42,33 +42,30 @@ export function BrandStory({ onOpenInquiry }) {
 
       <div className="relative z-10 max-w-[1360px] mx-auto">
         
-        {/* Section Heading */}
-        <div className="space-y-3 sm:space-y-4 mb-10 sm:mb-16">
-          <div className="inline-flex items-center gap-2.5 sm:gap-3">
-            <span className="w-5 sm:w-6 h-[1.5px] bg-gold" />
-            <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-terracotta dark:text-gold-light">
-              Our Foundation & Heritage
-            </span>
-          </div>
-
-          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-forest dark:text-ivory leading-[1.2] tracking-tight">
-            A small disciplined step… <br />
-            <span className="text-gradient-gold">A major financial milestone.</span>
-          </h2>
-        </div>
-
         {/* Editorial Two-Column Composition */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-start">
           
-          {/* Left Column: Story Prose & English Milestones */}
+          {/* Left Column: Heading + Story Prose & English Milestones */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             
-            <div className="space-y-4 sm:space-y-5 text-sm sm:text-base lg:text-lg text-charcoal/85 dark:text-ivory/85 leading-relaxed font-normal">
+            {/* Section Heading */}
+            <div className="space-y-3 sm:space-y-4">
+              <div className="inline-flex items-center gap-2.5 sm:gap-3">
+                <span className="w-5 sm:w-6 h-[1.5px] bg-gold" />
+                <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-terracotta dark:text-gold-light">
+                  Our Foundation & Heritage
+                </span>
+              </div>
+
+              <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-forest dark:text-ivory leading-[1.2] tracking-tight">
+                A small disciplined step… <br />
+                <span className="text-gradient-gold">A major financial milestone.</span>
+              </h2>
+            </div>
+            
+            <div className="text-sm sm:text-base lg:text-lg text-charcoal/85 dark:text-ivory/85 leading-relaxed font-normal">
               <p>
                 Savings is not merely setting aside leftover income. It is a structured commitment towards the long-term prosperity and security of your family — funding higher education, constructing a dream home, or fueling commercial business expansion.
-              </p>
-              <p className="text-xs sm:text-sm lg:text-base text-charcoal/70 dark:text-ivory/70 leading-relaxed">
-                Standing as a reliable financial partner for the families and entrepreneurs of Eluru and the West Godavari region since 1998, we provide a secure, government-regulated framework that turns disciplined monthly savings into substantial capital.
               </p>
             </div>
 
@@ -132,11 +129,14 @@ export function BrandStory({ onOpenInquiry }) {
 
           </div>
 
-          {/* Right Column: Clean Editorial Plaque */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="p-5 sm:p-8 rounded-2xl border border-gold/40 bg-white/80 dark:bg-forest-dark/80 backdrop-blur-sm shadow-sm space-y-4">
+          {/* Right Column: Clean Editorial Plaque (Aligned Centrally to the Right) */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="w-full max-w-md p-6 sm:p-7 rounded-2xl border-2 border-gold/40 bg-white/90 dark:bg-forest-dark/90 backdrop-blur-md shadow-xl space-y-4 relative overflow-hidden">
               
-              <div className="flex items-center gap-3.5 border-b border-gold/20 pb-4">
+              {/* Subtle gold top border accent */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
+
+              <div className="flex items-center gap-3.5 border-b border-gold/20 pb-4 pt-1">
                 <div className="w-14 h-14 rounded-full border-2 border-gold bg-white p-1.5 flex items-center justify-center flex-shrink-0 shadow-md overflow-hidden">
                   <img src={BRAND.logo} alt="Siva Kaveri Chits Logo" className="w-full h-full object-contain" />
                 </div>
@@ -173,7 +173,7 @@ export function BrandStory({ onOpenInquiry }) {
               </div>
 
               <div className="pt-2">
-                <p className="text-xs text-charcoal/80 dark:text-ivory/80 italic font-medium leading-relaxed">
+                <p className="text-xs text-charcoal/80 dark:text-ivory/80 italic font-medium leading-relaxed text-center">
                   "{BRAND.mottoEnglish}"
                 </p>
               </div>

@@ -115,44 +115,44 @@ function GoldCoinSvg({ className = "" }) {
 export function GoldCoinsOverlay({ className = "" }) {
   return (
     <div
-      className={`absolute inset-0 pointer-events-none overflow-hidden z-20 ${className}`}
+      className={`absolute inset-0 pointer-events-none overflow-hidden z-[2] ${className}`}
       aria-hidden="true"
     >
-      {/* Coin 1: Top-Left (Desktop + Mobile) */}
+      {/* Coin 1: Top-Left Outer Ambient Margin (Desktop, away from badge & heading) */}
       <div
-        className="absolute left-[4%] sm:left-[7%] top-[16%] sm:top-[18%] w-12 h-12 sm:w-16 sm:h-16 animate-coin-float-1"
+        className="hidden lg:block absolute left-[1.5%] xl:left-[2.5%] top-[7%] xl:top-[9%] w-10 h-10 xl:w-14 xl:h-14 opacity-75 animate-coin-float-1"
         style={{ perspective: '800px', transformStyle: 'preserve-3d' }}
       >
         <GoldCoinSvg />
       </div>
 
-      {/* Coin 2: Mid-Low Left (Desktop & Tablet only) */}
+      {/* Coin 2: Bottom-Left Outer Margin (Desktop, well below stats row & far from CTA buttons) */}
       <div
-        className="hidden sm:block absolute left-[8%] sm:left-[10%] top-[62%] w-14 h-14 sm:w-20 sm:h-20 animate-coin-float-2"
+        className="hidden lg:block absolute left-[1.5%] xl:left-[2.5%] bottom-[5%] xl:bottom-[7%] w-10 h-10 xl:w-14 xl:h-14 opacity-70 animate-coin-float-2"
         style={{ perspective: '800px', transformStyle: 'preserve-3d' }}
       >
         <GoldCoinSvg />
       </div>
 
-      {/* Coin 3: Top-Right (Desktop + Mobile) */}
+      {/* Coin 3: Top-Right Outer Margin (Desktop, far above right column image card) */}
       <div
-        className="absolute right-[4%] sm:right-[7%] top-[15%] sm:top-[17%] w-12 h-12 sm:w-18 sm:h-18 animate-coin-float-3"
+        className="hidden lg:block absolute right-[1.5%] xl:right-[2.5%] top-[6%] xl:top-[8%] w-10 h-10 xl:w-14 xl:h-14 opacity-75 animate-coin-float-3"
         style={{ perspective: '800px', transformStyle: 'preserve-3d' }}
       >
         <GoldCoinSvg />
       </div>
 
-      {/* Coin 4: Mid-Right (Desktop only) */}
+      {/* Coin 4: Far-Right Outer Boundary (Ultra-wide screens only, completely outside container) */}
       <div
-        className="hidden md:block absolute right-[11%] top-[46%] w-10 h-10 sm:w-13 sm:h-13 opacity-90 animate-coin-float-4"
+        className="hidden 2xl:block absolute right-[0.8%] top-[50%] -translate-y-1/2 w-8 h-8 opacity-45 animate-coin-float-4"
         style={{ perspective: '800px', transformStyle: 'preserve-3d' }}
       >
         <GoldCoinSvg />
       </div>
 
-      {/* Coin 5: Bottom-Right (Desktop & Tablet only) */}
+      {/* Coin 5: Bottom-Right Outer Margin (Desktop, far below right column image card) */}
       <div
-        className="hidden sm:block absolute right-[6%] sm:right-[8%] top-[72%] w-13 h-13 sm:w-16 sm:h-16 animate-coin-float-5"
+        className="hidden lg:block absolute right-[1.5%] xl:right-[2.5%] bottom-[5%] xl:bottom-[7%] w-10 h-10 xl:w-13 xl:h-13 opacity-70 animate-coin-float-5"
         style={{ perspective: '800px', transformStyle: 'preserve-3d' }}
       >
         <GoldCoinSvg />

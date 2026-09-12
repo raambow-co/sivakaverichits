@@ -6,13 +6,14 @@ import { HowChitsWorkSection } from './components/sections/HowChitsWorkSection';
 import { TrustTransparencySection } from './components/sections/TrustTransparencySection';
 import { WhyChooseUsSection } from './components/sections/WhyChooseUsSection';
 import { PeopleLocalPresenceSection } from './components/sections/PeopleLocalPresenceSection';
-import { StartJourneySection } from './components/sections/StartJourneySection';
+import { EnquiryAndMapSection } from './components/sections/EnquiryAndMapSection';
 import { FAQSection } from './components/sections/FAQSection';
 import { Footer } from './components/common/Footer';
 
 export default function App() {
   // Default to clean, radiant 'warm-ivory' Light Theme
   const [theme, setTheme] = useState('warm-ivory');
+  const [selectedScheme, setSelectedScheme] = useState(null);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -25,14 +26,15 @@ export default function App() {
   };
 
   const handleOpenInquiry = () => {
-    const targetElem = document.getElementById('start-journey') || document.getElementById('faq');
+    const targetElem = document.getElementById('enquiry') || document.getElementById('faq');
     if (targetElem) {
       targetElem.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   const handleSelectSchemeForInquiry = (scheme) => {
-    const targetElem = document.getElementById('start-journey') || document.getElementById('faq');
+    setSelectedScheme(scheme);
+    const targetElem = document.getElementById('enquiry') || document.getElementById('faq');
     if (targetElem) {
       targetElem.scrollIntoView({ behavior: 'smooth' });
     }
@@ -87,10 +89,11 @@ export default function App() {
       <PeopleLocalPresenceSection />
 
       {/* 
-        SECTION 08: START YOUR CHIT JOURNEY
-        Emotional closing composition & hero callback ("మీ కలలకు… మీ పొదుపుతో తొలి అడుగు.")
+        SECTION 08: ENQUIRY FORM & MAP NAVIGATION (HALF & HALF)
+        Left: High-conversion enquiry consultation form with WhatsApp direct
+        Right: Interactive Google Map navigation and central Eluru branch details
       */}
-      <StartJourneySection />
+      <EnquiryAndMapSection selectedScheme={selectedScheme} />
 
       {/* 
         SECTION 09: FAQ
